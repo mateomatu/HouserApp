@@ -58,7 +58,13 @@ Route::get('service/{id}', [
     'as' => 'api.services.id'
 ]);
 
-Route::get('service/search', [
+/* Route::get('service/search', [
     'uses' => 'api\\ServicesController@searchService',
     'as' => 'api.services.search'
 ]);
+
+Route::get('service/{id}/search', [
+    'uses' => 'api\\ServicesHousersController@showServiceByHouser',
+    'as' => 'api.serviceshousers.id.search'
+]);
+ */

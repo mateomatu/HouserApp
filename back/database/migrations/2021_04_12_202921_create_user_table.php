@@ -21,7 +21,7 @@ class CreateUserTable extends Migration
             $table->string('name', 80);
             $table->string('lastname', 80);
             $table->string('telephone', 20);
-            $table->string('address', 255);
+            $table->string('address', 255)->nullable();
             $table->string('desc', 200);
             $table->date('birthday');
             $table->string('portrait', 255);
