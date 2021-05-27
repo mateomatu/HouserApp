@@ -48,12 +48,12 @@ Route::post('users/{id}/profile', [
 
 /*************** SERVICES **************/
 
-Route::get('service', [
+Route::get('services', [
     'uses' => 'api\\ServicesController@getAllServices',
     'as' => 'api.service'
 ]);
 
-Route::get('service/{id}', [
+Route::get('services/{id}', [
     'uses' => 'api\\ServicesController@getIDService',
     'as' => 'api.services.id'
 ]);

@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import ServicesFilter from "./ServicesFilter";
 import ServicesList from "./ServicesList";
 
+import { AllServices } from "../../services/Services/Service-service";
+
 import styles from "./Services.module.css";
 
 const SERVICES_DUMMY = [
@@ -52,6 +54,10 @@ const Services = () => {
     const serviceFilterHandler = (filter) => {
         setFilteredService(filter);
     }
+
+/*     const services = AllServices.all().then( res => {
+        console.log(res);
+    }); */
 
     const titleClass = `ml-2 ${styles['service-title']} pages-title gibson-semibold`;
     const servicesFiltered = SERVICES_DUMMY.filter(service => { return service.title.toUpperCase().includes(filteredService.toUpperCase()); })
