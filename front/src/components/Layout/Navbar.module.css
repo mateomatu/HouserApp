@@ -1,0 +1,30 @@
+nav.navbar {
+    position: sticky;
+    bottom: 0;
+    padding: 1rem 0;
+    background: white;
+    box-shadow: 0 -1px 6px #00000066;
+}
+
+nav.navbar ul {
+    display: flex;
+    justify-content: space-around;
+}
+
+nav.navbar ul li {
+    align-self: center;    
+}
+
+nav.navbar ul svg {
+    fill: #292929;
+    width: 30px;
+    text-align: center;
+    padding: 0.6rem;
+    border-radius: 10px;
+    transition: .2s;
+}
+
+nav.navbar ul .navActive svg {
+    background: #FF9800;
+    fill: white;
+}
