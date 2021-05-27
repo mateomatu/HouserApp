@@ -1,13 +1,12 @@
 import React from "react";
 
 import styles from "./Header.module.css";
-import houserImage from "../../assets/logo180.png"
 
 const Header = () => {
     return (
         <header className={styles['app-header']}>
             <h1 id="logo">
-                <img src={houserImage} alt="logo"/>
+                <img src={`${process.env.PUBLIC_URL}/assets/logo180.png`} alt="logo"/>
             </h1>
         </header>
     )
