@@ -1,66 +1,38 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
+//Components 
 import ServicesFilter from "./ServicesFilter";
 import ServicesList from "./ServicesList";
+import Loader from "../UI/Loader";
 
-import { AllServices } from "../../services/Services/Service-service";
+//Services
+import servicesService from "../../services/Services/Service-service";
 
+//Styles
 import styles from "./Services.module.css";
-
-const SERVICES_DUMMY = [
-    {
-        id: 1,
-        title: "Reparación de computadoras",
-        img: "servicio-compu.png",
-        alt: "Computadora sobre un escritorio para ser reparada"
-    },
-    {
-        id: 2,
-        title: "Carpintería",
-        img: "carpinteria.jpg",
-        alt: "Computadora sobre un escritorio para ser reparada"
-    },
-    {
-        id: 3,
-        title: "Pinturería",
-        img: "alba.png",
-        alt: "Computadora sobre un escritorio para ser reparada"
-    },
-    {
-        id: 4,
-        title: "Profesores particulares",
-        img: "profe.png",
-        alt: "Computadora sobre un escritorio para ser reparada"
-    },
-    {
-        id: 5,
-        title: "Flete",
-        img: "flete.png",
-        alt: "Computadora sobre un escritorio para ser reparada"
-    },
-    {
-        id: 6,
-        title: "Aires acondicionados",
-        img: "aires.png",
-        alt: "Computadora sobre un escritorio para ser reparada"
-    }
-]
 
 const Services = () => {
 
     const [filteredService, setFilteredService] = useState("");
+    const [services, setServices] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
 
     const serviceFilterHandler = (filter) => {
         setFilteredService(filter);
     }
 
-/*     const services = AllServices.all().then( res => {
-        console.log(res);
-    }); */
+    useEffect(() => {
+        setIsLoading(true);
+        (async () => {
+            const data = await servicesService.allServices();
+            setServices(data);
+            setIsLoading(false)
+        })().catch(err => console.log("ERROR AL TRAER SERVICIOS"))
+    }, [])
 
     const titleClass = `ml-2 ${styles['service-title']} pages-title gibson-semibold`;
-    const servicesFiltered = SERVICES_DUMMY.filter(service => { return service.title.toUpperCase().includes(filteredService.toUpperCase()); })
+    const servicesFiltered = services.filter(service => { return service.title.toUpperCase().includes(filteredService.toUpperCase()); })
 
     //TODO: Link a la pantalla de ver todos los servicios
     return (
@@ -68,7 +40,8 @@ const Services = () => {
             <ServicesFilter onFilterServices={serviceFilterHandler} />
             <h2 className={titleClass}>SERVICIOS</h2>
             <Link to="/" className={styles['see-all']}>Ver todos</Link>
-            <ServicesList services={servicesFiltered} />
+            { isLoading && <Loader />}
+            { !isLoading && <ServicesList services={servicesFiltered} />}
         </section>
     );
 }

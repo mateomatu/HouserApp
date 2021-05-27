@@ -1,14 +1,16 @@
 import { API_HOST } from "../../constants/api";
 
-export const AllServices = {
+const serviceServices = {
     /**
      * Return all services.
      *
      * @returns {Promise<any>}
      */
-    async all() {
+    async allServices() {
         const response = await fetch(API_HOST + '/api/services');
         const responseData = await response.json();
         return responseData.data;
     }
 }
+
+export default serviceServices;

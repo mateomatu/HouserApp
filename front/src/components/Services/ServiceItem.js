@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 import styles from "./ServiceItem.module.css";
 
-const imgsPath = process.env.PUBLIC_URL + '';
 const publicPath = process.env.PUBLIC_URL;
 
 const ServiceItem = props => {

@@ -32,7 +32,7 @@ const HousersList = props => {
     
     //TODO: Utilizar el ID del servicio para consultar a la tabla pivot los housers que pertenecen
     //a dicho servicio
-    const serviceId = props.serviceId;
+    //const serviceId = props.serviceId;
 
     const housers = DUMMY_HOUSERS.map(houser=>{ return <Houser key={houser.id} houser={houser} />});
 
