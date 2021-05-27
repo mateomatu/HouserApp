@@ -45,12 +45,12 @@ class ServicesController extends Controller
      * @param Request $request
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function searchService(Request $request)
+/*     public function searchService(Request $request)
     {
         $searchService = $request->query('query');
         $result = Service::where(['service', 'like', '%' . $searchService . '%'])->get();
 
         return redirect(url('home'))
             ->with('error', 'El servicio/rubro que buscaste es érroneo o está mal escrito.');
-    }
+    } */
 }

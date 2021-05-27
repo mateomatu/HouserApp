@@ -16,15 +16,16 @@ class CreateUserTable extends Migration
         Schema::create('user', function (Blueprint $table) {
             $table->bigIncrements('id_user');
             $table->unsignedTinyInteger('fk_level');
-            $table->string('username', 45);
             $table->string('password', 100);
             $table->string('email', 150);
             $table->string('name', 80);
-            $table->string('surname', 80);
+            $table->string('lastname', 80);
             $table->string('telephone', 20);
-            $table->string('quote', 200);
-            $table->date('birth-day');
-            $table->string('image', 255);
+            $table->string('address', 255);
+            $table->string('desc', 200);
+            $table->date('birthday');
+            $table->string('portrait', 255);
+            $table->string('avatar', 255);
             $table->rememberToken();
             $table->timestamps();
 
