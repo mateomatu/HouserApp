@@ -10,7 +10,7 @@ const ServicesList = props => {
     }
 
     const services = props.services.map(service => {
-        return <ServiceItem key={service.id_service} service={service} />
+        return <ServiceItem key={service.id} service={service} />
     });
 
     return (

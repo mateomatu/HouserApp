@@ -26,7 +26,20 @@ const Services = () => {
         setIsLoading(true);
         (async () => {
             const data = await servicesService.allServices();
-            setServices(data);
+
+            const loadedServices = [];
+
+
+            data.forEach(service => {
+                loadedServices.push({
+                    id: service.id_service,
+                    title: service.title,
+                    img: service.img,  
+                    alt: service.alt
+                })
+            });        
+            
+            setServices(loadedServices);
             setIsLoading(false)
         })().catch(err => console.log("ERROR AL TRAER SERVICIOS"))
     }, [])
