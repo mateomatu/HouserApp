@@ -13,6 +13,7 @@ import LookForHousersPage from "./pages/LookForHousersPage";
 
 /* Styles */
 import './App.css';
+import LoginPage from "./pages/LoginPage";
 
 function App() {
   return (
@@ -20,6 +21,9 @@ function App() {
       <div className="content">
         <Header />
         <Switch>
+          <Route path="/login" exact>
+            <LoginPage />
+          </Route>
           <Route path="/" exact>
             <Redirect to="/home" />
           </Route>
