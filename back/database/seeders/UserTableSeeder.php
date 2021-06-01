@@ -27,6 +27,7 @@ class UserTableSeeder extends Seeder
             'address' => "avenida buena vibra 123",
             'portrait' => "avatar.png",
             'avatar' => "yo.jpg",
+            'alt' => "foto de perfil del usuario",
             'fk_level' => 1
         ]);
         Users::create([
@@ -41,6 +42,7 @@ class UserTableSeeder extends Seeder
             'address' => "avenida buena vibra 123",
             'portrait' => "avatar.png",
             'avatar' => "perfil1.jpg",
+            'alt' => "foto de perfil del usuario",
             'fk_level' => 2
         ]);
         Users::create([
@@ -55,6 +57,7 @@ class UserTableSeeder extends Seeder
             'address' => "avenida buena vibra 123",
             'portrait' => "avatar.png",
             'avatar' => "perfil2.jpg",
+            'alt' => "foto de perfil del usuario",
             'fk_level' => 3
         ]);
         Users::create([
@@ -69,6 +72,7 @@ class UserTableSeeder extends Seeder
             'address' => "avenida buena vibra 123",
             'portrait' => "avatar.png",
             'avatar' => "avatar.png",
+            'alt' => "foto de perfil del usuario",
             'fk_level' => 3
         ]);
         Users::create([
@@ -83,6 +87,7 @@ class UserTableSeeder extends Seeder
             'address' => "avenida buena vibra 123",
             'portrait' => "avatar.png",
             'avatar' => "avatar.png",
+            'alt' => "foto de perfil del usuario",
             'fk_level' => 3
         ]);
         Users::create([
@@ -97,6 +102,7 @@ class UserTableSeeder extends Seeder
             'address' => "avenida buena vibra 123",
             'portrait' => "avatar.png",
             'avatar' => "avatar.png",
+            'alt' => "foto de perfil del usuario",
             'fk_level' => 3
         ]);
         Users::create([
@@ -111,6 +117,7 @@ class UserTableSeeder extends Seeder
             'address' => "avenida buena vibra 123",
             'portrait' => "avatar.png",
             'avatar' => "avatar.png",
+            'alt' => "foto de perfil del usuario",
             'fk_level' => 3
         ]);
         Users::create([
@@ -125,6 +132,7 @@ class UserTableSeeder extends Seeder
             'address' => "avenida buena vibra 123",
             'portrait' => "avatar.png",
             'avatar' => "avatar.png",
+            'alt' => "foto de perfil del usuario",
             'fk_level' => 3
         ]);
         Users::create([
@@ -139,6 +147,7 @@ class UserTableSeeder extends Seeder
             'address' => "avenida buena vibra 123",
             'portrait' => "avatar.png",
             'avatar' => "avatar.png",
+            'alt' => "foto de perfil del usuario",
             'fk_level' => 3
         ]);
         Users::create([
@@ -153,6 +162,7 @@ class UserTableSeeder extends Seeder
             'address' => "avenida buena vibra 123",
             'portrait' => "avatar.png",
             'avatar' => "avatar.png",
+            'alt' => "foto de perfil del usuario",
             'fk_level' => 3
         ]);
     }

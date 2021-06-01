@@ -29,7 +29,6 @@ const Services = () => {
 
             const loadedServices = [];
 
-
             data.forEach(service => {
                 loadedServices.push({
                     id: service.id_service,

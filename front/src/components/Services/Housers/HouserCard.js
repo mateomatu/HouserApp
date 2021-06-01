@@ -1,10 +1,9 @@
 import React from "react";
-
 import { Link } from "react-router-dom";
+import  { PUBLIC_PATH } from "../../../constants/api";
 
 import styles from "./HouserCard.module.css";
 
-const publicPath = process.env.PUBLIC_URL;
 const cardStlyes = `mb-5 ${styles['houser-card']}`
 
 const HouserCard = props => {
@@ -17,7 +16,7 @@ const HouserCard = props => {
             <Link to="/">
                 <article className={cardStlyes}>
                     <header className={styles['profile-header']}>
-                        <img className={styles['houser-avatar']} src={`${publicPath}/assets/imgs/${houser.avatar}`} alt={houser.alt}/>
+                        <img className={styles['houser-avatar']} src={`${PUBLIC_PATH}/assets/imgs/${houser.avatar}`} alt={houser.alt}/>
                     </header>
                     <h3>{houser.name + " " + houser.lastname}</h3>
                     <section className={styles.valoration}>

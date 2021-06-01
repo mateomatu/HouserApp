@@ -14,7 +14,7 @@ class CreateServicesHousers extends Migration
     public function up()
     {
         Schema::create('services_housers', function (Blueprint $table) {
-            $table->bigIncrements('id_service_houser');
+            $table->increments('id_service_houser');
             $table->unsignedInteger('fk_id_user');
             $table->unsignedInteger('fk_id_service');
             $table->timestamps();
