@@ -61,6 +61,22 @@ a {
   font-style: normal;
 }
 
+.primary-color {
+  color: #FF9800;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.d-block {
+  display: block;
+}
+
+.d-inlineblock {
+  display: inline-block;
+}
+
 .pages-title {
   margin-top: 2rem;
   margin-bottom: 0.5rem;

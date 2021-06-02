@@ -10,10 +10,10 @@ import HomePage from "./pages/HomePage";
 import ProfilePage from "./pages/ProfilePage";
 import NotificationsPage from "./pages/NotificationsPage";
 import LookForHousersPage from "./pages/LookForHousersPage";
+import LoginPage from "./pages/LoginPage";
 
 /* Styles */
 import './App.css';
-import LoginPage from "./pages/LoginPage";
 
 function App() {
   return (

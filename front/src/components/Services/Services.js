@@ -44,8 +44,7 @@ const Services = () => {
     }, [])
 
     const titleClass = `ml-2 ${styles['service-title']} pages-title gibson-semibold`;
-    const servicesFiltered = services.filter(service => { return service.title.toUpperCase().includes(filteredService.toUpperCase()); })
-
+    const servicesFiltered = services.filter(service => { return service.title.toUpperCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "").includes(filteredService.toUpperCase()); })
     //TODO: Link a la pantalla de ver todos los servicios
     return (
         <section>

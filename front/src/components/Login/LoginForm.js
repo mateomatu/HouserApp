@@ -4,19 +4,14 @@ import styles from "./LoginForm.module.css";
 
 const LoginForm = () => {
     return (
-        <form>
-            <section>
-                <div>
-                   <label>Email</label>
-                </div>
-                <input type="text" />
+        <form className={styles["login-form"]}>
+            <section className={styles["input-section"]}>
+                <input type="text" name="email" placeholder="Email" />
             </section>
-            <section>
-                <div>
-                    <label>Contraseña</label>
-                </div>
-                <input type="text" />
+            <section className={styles["input-section"]}>
+                <input type="password" name="password" placeholder="Contraseña" />
             </section>
+            <button className="gibson-medium">Ingresar</button>
         </form>
     )
 }

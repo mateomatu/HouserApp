@@ -1,11 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+
+//Constants
 import { API_IMGS } from "../../constants/api"
+
+//Components
+import Loader from "../UI/Loader";
 
 //Services
 import UserService from "../../services/User/User-service";
-import Loader from "../UI/Loader";
 
+//Styles
 import styles from "./UserProfile.module.css";
 
 
@@ -14,10 +19,13 @@ const UserProfile = () => {
     const [user, setUser] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
 
+    const params = useParams();
+    const userId = params.userId;
+
     useEffect(() => {
         setIsLoading(true);
         (async () => {
-            const data = await UserService.userData(1);
+            const data = await UserService.userData(userId);
 
             console.log(data);
 
@@ -31,8 +39,8 @@ const UserProfile = () => {
                 alt: data.alt
             };
             
-            setIsLoading(false);
             setUser(userData);
+            setIsLoading(false);
         })().catch(err => console.log("ERROR AL TRAER data del useer"))
     }, [])
 
