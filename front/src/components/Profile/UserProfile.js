@@ -17,13 +17,12 @@ import styles from "./UserProfile.module.css";
 const UserProfile = () => {
 
     const [user, setUser] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
 
     const params = useParams();
     const userId = params.userId;
 
     useEffect(() => {
-        setIsLoading(true);
         (async () => {
             const data = await UserService.userData(userId);
 
