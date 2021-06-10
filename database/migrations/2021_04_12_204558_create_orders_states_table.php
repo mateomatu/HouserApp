@@ -15,7 +15,7 @@ class CreateOrdersStatesTable extends Migration
     {
         Schema::create('orders_states', function (Blueprint $table) {
             $table->bigIncrements('id_order_state');
-            $table->string('state', 45);
+            $table->string('state', 45)->default('Pendiente');
             $table->timestamps();
         });
     }

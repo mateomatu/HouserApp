@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\api;
 
 use App\Models\Service;
-//use App\Models\ServiceHouser;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -15,10 +14,10 @@ class ServicesController extends Controller
      */
     public function getAllServices()
     {
-        $service = Service::all();
+        $services = Service::all();
 
         return response()->json([
-            'data' => $service
+            'data' => $services
         ]);
     }
 

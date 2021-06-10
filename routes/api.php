@@ -58,6 +58,7 @@ Route::get('services/{id}', [
     'as' => 'api.services.id'
 ]);
 
+// Servicio Buscador dado de baja desde Back, se muestra/implementa desde Front.
 //Route::get('service/search', [
 //    'uses' => 'api\\ServicesController@searchService',
 //    'as' => 'api.services.search'
@@ -68,7 +69,7 @@ Route::get('services/{id}/search', [
     'as' => 'api.services.id.search'
 ]);
 
-// Rutas que pertenecian a Services Housers
+// Rutas que pertenecian a Services Housers pasaron a 'Services'
 //Route::get('serviceshouser', [
 //    'uses' => 'api\\ServicesHousersController@getServicesByHouser',
 //    'as' => 'api.serviceshousers.id.search'
@@ -79,3 +80,20 @@ Route::get('services/{id}/search', [
 //    'as' => 'api.serviceshousers.id.search'
 //]);
 //
+
+/*************** WORKS **************/
+
+Route::get('works', [
+    'uses' => 'api\\WorksController@getAllWorks',
+    'as' => 'api.works'
+]);
+
+Route::get('workspending', [
+    'uses' => 'api\\WorksController@showPendingWork',
+    'as' => 'api.works.pending'
+]);
+
+Route::post('works', [
+    'uses' => 'api\\WorksController@requestWork',
+    'as' => 'api.works.request'
+]);

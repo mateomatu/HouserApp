@@ -13,15 +13,25 @@ class Work extends Model
     protected $primaryKey = "id_works";
     protected $fillable = ['work', 'price', 'fk_service'];
 
-    /** @var array validation rules. */
-    public static $rules = [
-        'work' => 'required',
-    ];
-    /** @var array error Messages. */
-    public static $errorMessages = [
-        'work.required' => 'El servicio debe ser obligatorio.',
-        'price.required' => 'El precio del servicio no puede quedar sin valor.'
-    ];
+    /**
+     * Validation Rules
+     * @return string[]
+     */
+    public static function rulesCreate()
+    {
+        return [
+            'work' => 'required|min:3',
+            'precio' => 'required|numeric',
+        ];
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function services()
+    {
+        return $this->belongsTo(Service::class);
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

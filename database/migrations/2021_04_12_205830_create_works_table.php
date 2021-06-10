@@ -17,8 +17,10 @@ class CreateWorksTable extends Migration
             $table->bigIncrements('id_works');
             $table->string('work', 200);
             $table->decimal('price', 8, 2)->default('100.00');
-            $table->unsignedTinyInteger('fk_service');
+            $table->unsignedBigInteger('fk_service');
             $table->timestamps();
+
+            $table->foreign('fk_service')->references('id_service')->on('services');
         });
     }
 

@@ -2,12 +2,8 @@
 
 namespace App\Http\Controllers\api;
 
-use App\Models\Models\Cart;
-use App\Models\Models\Producto;
 use App\Models\Work;
-use App\Models\Users;
 use App\Models\Service;
-use App\Models\ServiceHouser;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -39,19 +35,23 @@ class WorksController extends Controller
             ]);
 
         }
-       // return view('cart.index', ['legos' => []]);
     }
 
     /**
      * Work request, from User to Houser
      */
-    public function requestWork(Request $request, $id)
+    public function requestWork(Request $request)
     {
-        $service = Service::findOrFail($id);
-        $price = Service::get($price);
-        $pendingWork = Session::has('work') ? Session::get('work') : new Work();
+//        $service = Service::findOrFail($id);
 
-        $request->session()->put('work', $pendingWork);
+        $data = $request->all();
+
+        $requestWork = Work::create($data);
+
+        return response()->json([
+            'success' => true,
+            'data' => $requestWork
+        ]);
     }
 
 }
