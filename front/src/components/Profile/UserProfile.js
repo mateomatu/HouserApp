@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 //Constants
 import { API_IMGS } from "../../constants/api"
@@ -8,7 +8,7 @@ import { API_IMGS } from "../../constants/api"
 import Loader from "../UI/Loader";
 
 //Services
-import UserService from "../../services/User/User-service";
+import AuthService from "../../services/User/User-service";
 
 //Styles
 import styles from "./UserProfile.module.css";
@@ -19,14 +19,11 @@ const UserProfile = () => {
     const [user, setUser] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
-    const params = useParams();
-    const userId = params.userId;
 
     useEffect(() => {
         (async () => {
-            const data = await UserService.userData(userId);
-
-            console.log(data);
+            const loggedUser = await AuthService.getLoggedUser();
+            const data = await AuthService.getUserData(loggedUser.id_user);
 
             const userData = {
                 id: data.id_user,
