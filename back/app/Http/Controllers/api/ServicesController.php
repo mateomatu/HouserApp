@@ -14,10 +14,10 @@ class ServicesController extends Controller
      */
     public function getAllServices()
     {
-        $service = Service::all();
+        $services = Service::all();
 
         return response()->json([
-            'data' => $service
+            'data' => $services
         ]);
     }
 
@@ -53,4 +53,22 @@ class ServicesController extends Controller
         return redirect(url('home'))
             ->with('error', 'El servicio/rubro que buscaste es érroneo o está mal escrito.');
     } */
+
+    /**
+     * Bring Services By Houser requested.
+     * @param Request $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function showServiceByHouser(Request $request)
+    {
+        $searchServiceByHouser = $request->query('query');
+
+        $result = Service::join('user', 'services.id_service', '=', 'user.id_user')
+            ->get();
+
+
+        return response()->json([
+            'data' => $result
+        ]);
+    }
 }
