@@ -15,3 +15,21 @@
 .login-section a:visited {
     color: #FF9800;
 }
+
+h2.fail-login {
+    color: #f44336;
+    animation: fail-login 200ms ease-in-out;
+    animation-iteration-count: 3;
+}
+
+@keyframes fail-login {
+    0% {
+        transform: translateX(-10px);
+    }
+    50% {
+        transform: translateX(10px);
+    }
+    100% {
+        transform: translateX(0px);
+    }
+}

@@ -3,7 +3,16 @@ import { API_HOST } from "../../constants/api";
 
 let userData = {
     id_usuario: null,
-    email: null
+    email: null,
+    name: null,
+    lastname: null,
+    address: null,
+    avatar: null,
+    alt: null,
+    portrait: null,
+    desc: null,
+    birthday: null,
+    telephone: null
 };
 
 let token = null;
@@ -11,8 +20,6 @@ let token = null;
 if(localStorage.getItem('token') !== null) {
     token = localStorage.getItem('token');
     userData = JSON.parse(localStorage.getItem('userData'));
-    console.log("token", token);
-    console.log("userData", userData);
 }
 
 const AuthContext = React.createContext({
@@ -42,11 +49,19 @@ const AuthService = {
                 }
             });
         const responseData = await res.json();
-        console.log(responseData);
         if(responseData.success) {
             userData = {
                 id_user: responseData.data.id_user,
                 email: responseData.data.email,
+                name: responseData.data.name,
+                lastname: responseData.data.lastname,
+                address: responseData.data.address,
+                avatar: responseData.data.avatar,
+                alt: responseData.data.alt,
+                portrait: responseData.data.portrait,
+                desc: responseData.data.desc,
+                birthday: responseData.data.birthday,
+                telephone: responseData.data.telephone
             };
             token = responseData.data.token;
 
@@ -96,7 +111,16 @@ const AuthService = {
 
         userData = {
             id_usuario: null,
-            email: null
+            email: null,
+            name: null,
+            lastname: null,
+            address: null,
+            avatar: null,
+            alt: null,
+            portrait: null,
+            desc: null,
+            birthday: null,
+            telephone: null
         };
         token = null;
         if(localStorage.getItem('token') !== null) {

@@ -20,6 +20,17 @@
     font-size: 1.2rem;
 }
 
+.login-fail {
+    padding: 0 2rem 1rem 2rem;
+    color: #f44336;
+    font-weight: bold;
+    text-align: center;
+}
+
+.input-section {
+    position: relative;
+}
+
 .input-section input {
     width: 100%;
     padding: 15px 0;
@@ -32,7 +43,7 @@
     text-align: center;
 }
 
-.input-section input::placeholder  {
+.input-section label{
     font-family: "Calibri";
     position: absolute;
     top: 5px;

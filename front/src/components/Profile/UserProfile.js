@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 
 //Constants
@@ -8,7 +8,7 @@ import { API_IMGS } from "../../constants/api"
 import Loader from "../UI/Loader";
 
 //Services
-import AuthService from "../../services/User/User-service";
+import { AuthContext } from "../../services/User/User-service";
 
 //Styles
 import styles from "./UserProfile.module.css";
@@ -16,55 +16,52 @@ import styles from "./UserProfile.module.css";
 
 const UserProfile = () => {
 
-    const [user, setUser] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
+    /* const [user, setUser] = useState([]); */
+    const authCtx = useContext(AuthContext);
 
 
-    useEffect(() => {
-        (async () => {
-            const loggedUser = await AuthService.getLoggedUser();
-            const data = await AuthService.getUserData(loggedUser.id_user);
-
+/*     useEffect(() => {
+        const getUserData = () => {
             const userData = {
-                id: data.id_user,
-                name: data.name,
-                lastname: data.lastname,
-                address: data.address,
-                email: data.email,
-                avatar: data.avatar,
-                alt: data.alt
+                id: authCtx.user.id_user,
+                name: authCtx.user.name,
+                lastname: authCtx.user.lastname,
+                address: authCtx.user.address,
+                email: authCtx.user.email,
+                avatar: authCtx.user.avatar,
+                alt: authCtx.user.alt
             };
-            
             setUser(userData);
-            setIsLoading(false);
-        })().catch(err => console.log("ERROR AL TRAER data del useer"))
-    }, [])
+        }
+        getUserData();
+    }, []) */
 
     return (
         <section className={styles.profile}>
             <header className={styles['profile-header']}>
-                { !isLoading && <img className={styles.photo} src={`${API_IMGS}/${user.avatar}`} alt={`${user.alt}`} />}
+                { authCtx.user.avatar !== undefined && <img className={styles.photo} src={`${API_IMGS}/${authCtx.user.avatar}`} alt={`${authCtx.user.alt}`} />}
+                { authCtx.user.avatar === undefined && <Loader />}
             </header>
             <section className={styles['profile-data']}>
-                { !isLoading && (<ul>
+                <ul>
                     <li className={styles['user-data']}>
                         <Link to="/">
                             <div className={styles['user-info-item']}>
                                 <h3>Nombre y Apellido</h3>
-                                <p>{user.name + " " + user.lastname}</p>
+                                <p>{authCtx.user.name + " " + authCtx.user.lastname}</p>
                             </div>
                             <span className={styles['user-data-icon']}>{'>'}</span>
                         </Link>
                     </li>
                     <li className={styles['user-data']}>
                         <h3>Email</h3>
-                        <p>{user.email}</p>
+                        <p>{authCtx.user.email}</p>
                     </li>
                     <li className={styles['user-data']}>
                         <Link to="/">
                             <div className={styles['user-info-item']}>
                                 <h3>Domicilio</h3>
-                                <p>{user.address}</p>
+                                <p>{authCtx.user.address}</p>
                             </div>
                             <span className={styles['user-data-icon']}>{'>'}</span>
                         </Link>
@@ -78,8 +75,7 @@ const UserProfile = () => {
                             <span className={styles['user-data-icon']}>{'>'}</span>
                         </Link>
                     </li>
-                </ul>)}
-                { isLoading && <Loader />}
+                </ul>
             </section>
         </section>
     );

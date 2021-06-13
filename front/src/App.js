@@ -17,6 +17,7 @@ import AuthService, { AuthContext } from "./services/User/User-service";
 
 /* Styles */
 import "./App.css";
+import BurgerMenu from "./components/Layout/BurgerMenu";
 
 function App() {
   const [auth, setAuth] = useState(AuthService.getLoggedUser());
@@ -34,25 +35,32 @@ function App() {
         }}
       >
         <div className="content">
+{/*           <BurgerMenu /> openMenu={burgerMenuHandler} burgerMenuState={openBurgerMenu} */}
           <Header />
           <Switch>
             <Route path="/login" exact>
-              <LoginPage />
+              { userIsLogged && <Redirect to="/" />}
+              { !userIsLogged && <LoginPage />}
             </Route>
             <Route path="/" exact>
-              <Redirect to="/home" />
+              { userIsLogged && <Redirect to="/home" />}
+              { !userIsLogged && <Redirect to="/login" />}
             </Route>
             <Route path="/home">
-              <HomePage />
+              { userIsLogged && <HomePage />}
+              { !userIsLogged && <Redirect to="/login" />}
             </Route>
             <Route path="/profile/">
-              <ProfilePage />
+              { userIsLogged && <ProfilePage />}
+              { !userIsLogged && <Redirect to="/login" />}
             </Route>
             <Route path="/notifications/">
-              <NotificationsPage />
+              { userIsLogged && <NotificationsPage />}
+              { !userIsLogged && <Redirect to="/login" />}
             </Route>
             <Route path="/services/:serviceId">
-              <LookForHousersPage />
+              { userIsLogged && <LookForHousersPage />}
+              { !userIsLogged && <Redirect to="/login" />}
             </Route>
           </Switch>
         </div>

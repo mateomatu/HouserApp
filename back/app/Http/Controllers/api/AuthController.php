@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\api;
 
-use App\Http\Controllers\Controller;
+
 use App\Models\Users;
 use Illuminate\Http\Request;
 
@@ -33,6 +33,15 @@ class AuthController extends Controller
             'data' => array(
                 'id_user' => $users->id_user,
                 'email' => $users->email,
+                'avatar' => $users->avatar,
+                'name' => $users->name,
+                'lastname' => $users->lastname,
+                'telephone' => $users->telephone,
+                'address' => $users->address,
+                'desc' => $users->desc,
+                'alt' => $users->alt,
+                'portrait' => $users->portrait,
+                'birthday' => $users->birthday,
                 'token' => $token->plainTextToken
             )
         ]);

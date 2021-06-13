@@ -8,7 +8,7 @@ const Navbar = () => {
             <nav className={styles.navbar}>
                 <ul>
                     <li>
-                        <NavLink activeClassName={styles.navActive} to={`/profile/${1}`}>
+                        <NavLink activeClassName={styles.navActive} to={`/profile`}>
                             <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                                 viewBox="0 0 500 500" enableBackground="new 0 0 500 500">
                                 <path d="M147.4,164.8c3.5,59,20.1,108.8,51,142.9c0,0,0.7,0.5,2.2,1.2l-7.7,28.5c15.8,12.9,35.6,20.6,57,20.6
