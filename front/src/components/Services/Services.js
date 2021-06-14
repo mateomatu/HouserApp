@@ -7,7 +7,7 @@ import ServicesList from "./ServicesList";
 import Loader from "../UI/Loader";
 
 //Services
-import servicesService from "../../services/Services/Service-service";
+import serviceServices from "../../services/Services/Service-service";
 
 //Styles
 import styles from "./Services.module.css";
@@ -25,7 +25,7 @@ const Services = () => {
     useEffect(() => {
         setIsLoading(true);
         (async () => {
-            const data = await servicesService.allServices();
+            const data = await serviceServices.allServices();
 
             const loadedServices = [];
 
@@ -45,12 +45,11 @@ const Services = () => {
 
     const titleClass = `ml-2 ${styles['service-title']} pages-title gibson-semibold`;
     const servicesFiltered = services.filter(service => { return service.title.toUpperCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "").includes(filteredService.toUpperCase()); })
-    //TODO: Link a la pantalla de ver todos los servicios
     return (
         <section>
             <ServicesFilter onFilterServices={serviceFilterHandler} />
             <h2 className={titleClass}>SERVICIOS</h2>
-            <Link to="/" className={styles['see-all']}>Ver todos</Link>
+            <Link to="/home/all" className={styles['see-all']}>Ver todos</Link>
             { isLoading && <Loader />}
             { !isLoading && <ServicesList services={servicesFiltered} />}
         </section>

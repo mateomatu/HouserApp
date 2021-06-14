@@ -8,7 +8,6 @@ const ServiceItem = props => {
 
     const service = props.service;
 
-
     return (
         <li className={styles['service-item']}>
             <Link className={styles['service-link']} to={`/services/${service.id}`}> 

@@ -9,7 +9,7 @@ const cardStlyes = `mb-5 ${styles['houser-card']}`
 const HouserCard = props => {
     
     const houser = props.houser;
-    //const stars = houser.stars;
+    console.log(houser);
 
     return (
         <li>

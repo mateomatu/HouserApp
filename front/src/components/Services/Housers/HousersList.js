@@ -1,5 +1,9 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router";
+
 import Houser from "./HouserCard";
+
+import serviceServices from "../../../services/Services/Service-service";
 
 
 
@@ -28,11 +32,40 @@ const DUMMY_HOUSERS = [
     }
 ]
 
-const HousersList = props => {
+const HousersList = (props) => {
     
     //TODO: Utilizar el ID del servicio para consultar a la tabla pivot los housers que pertenecen
     //a dicho servicio
-    //const serviceId = props.serviceId;
+    const [isLoading, setIsLoading] = useState(false);
+    const [houserUsers, setHouserUsers] = useState([]);
+    const serviceId = props.serviceId;
+
+/*     useEffect(() => {
+        setIsLoading(true);
+        (async () => {
+            const data = await serviceServices.bringHousersByService(serviceId);
+
+            const loadedHousers = [];
+
+            data.forEach(houser => {
+                loadedHousers.push({
+                    id: houser.id_user,
+                    desc: houser.desc,
+                    avatar: houser.avatar,  
+                    alt: houser.alt,
+                    email: houser.email,
+                    portrait: houser.portrait,
+                    name: houser.name,
+                    lastname: houser.lastname
+                })
+            });  
+            
+            setHouserUsers(loadedHousers);
+            setIsLoading(false)
+        })().catch(err => console.log("ERROR AL TRAER SERVICIOS"))
+    }, [serviceId]) */
+
+
 
     const housers = DUMMY_HOUSERS.map(houser=>{ return <Houser key={houser.id} houser={houser} />});
 

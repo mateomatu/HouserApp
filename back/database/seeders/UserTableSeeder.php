@@ -135,36 +135,6 @@ class UserTableSeeder extends Seeder
             'alt' => "foto de perfil del usuario",
             'fk_level' => 3
         ]);
-        Users::create([
-            'id_user' => 9,
-            'password' => Hash::make('user'),
-            'email' => "valeriaandreeti@gmail.com",
-            'name' => "Valeria",
-            'lastname' => "Andreeti",
-            'telephone' => "155550010",
-            'desc' => "Soy Profesora Particular de Matemática",
-            'birthday' => "1988-10-15",
-            'address' => "avenida buena vibra 123",
-            'portrait' => "avatar.png",
-            'avatar' => "avatar.png",
-            'alt' => "foto de perfil del usuario",
-            'fk_level' => 3
-        ]);
-        Users::create([
-            'id_user' => 10,
-            'password' => Hash::make('user'),
-            'email' => "gladysenglish@gmail.com",
-            'name' => "Gladys",
-            'lastname' => "Lamanuch",
-            'telephone' => "155550010",
-            'desc' => "Soy profesora de inglés para todos los niveles",
-            'birthday' => "1988-10-15",
-            'address' => "avenida buena vibra 123",
-            'portrait' => "avatar.png",
-            'avatar' => "avatar.png",
-            'alt' => "foto de perfil del usuario",
-            'fk_level' => 3
-        ]);
     }
 }
 

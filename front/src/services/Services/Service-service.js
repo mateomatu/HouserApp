@@ -10,6 +10,13 @@ const serviceServices = {
         const response = await fetch(API_HOST + '/api/services');
         const responseData = await response.json();
         return responseData.data;
+    },
+
+    async bringHousersByService(id) {
+        const response = await fetch(API_HOST + `/api/services/${id}/search`);
+        const responseData = await response.json();
+        console.log(responseData);
+        return responseData.data;
     }
 }
 
