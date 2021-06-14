@@ -2,10 +2,13 @@ import React, { useRef, useContext, useState } from "react";
 import { useHistory } from "react-router";
 import AuthService, { AuthContext } from "../../services/User/User-service";
 
+import Loader from "../UI/Loader";
+
 import styles from "./LoginForm.module.css";
 
 const LoginForm = (props) => {
   const [loginFail, setLoginFail] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [validationMessage, setValidationMessage] = useState();
 
   const history = useHistory();
@@ -16,6 +19,7 @@ const LoginForm = (props) => {
 
   const submitHandler = async (event) => {
     event.preventDefault();
+    setLoading(true);
     setLoginFail(false);
     props.addFailAnimation(false);
     const enteredEmail = emailInputRef.current.value;
@@ -33,6 +37,7 @@ const LoginForm = (props) => {
       props.addFailAnimation(false);
       history.push("/");
     } else {
+      setLoading(false);
       props.addFailAnimation(true);
       setLoginFail(true);
 
@@ -51,6 +56,10 @@ const LoginForm = (props) => {
       passwordInputRef.current.value = "";
     }
   };
+
+  if (loading) {
+    return (<Loader />)
+  }
 
   return (
     <form onSubmit={submitHandler} className={styles["login-form"]}>
