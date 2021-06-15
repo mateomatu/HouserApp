@@ -1,4 +1,4 @@
-import React, { Fragment, useContext, useState } from "react";
+import React, { Fragment, useState } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 
 /* Components */
@@ -22,7 +22,7 @@ import BurgerMenu from "./components/Layout/BurgerMenu";
 function App() {
   const [auth, setAuth] = useState(AuthService.getLoggedUser());
   const [showSidebar, setShowSidebar] = useState(false)
-  const authCtx = useContext(AuthContext);
+  /* const authCtx = useContext(AuthContext); */
   const userIsLogged = AuthService.isLogged();
 
   const showCartHandler = (open) => {

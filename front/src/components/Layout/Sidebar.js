@@ -4,15 +4,20 @@ import ReactDOM from "react-dom";
 import styles from "./Sidebar.module.css";
 
 const Backdrop = props => {
+
+    const closeBurger = () => {
+        props.onCloseSidebar(false);
+    }
+
     return (
-        <div className={styles.backdrop}></div>
+        <div onClick={closeBurger} className={styles.backdrop}></div>
     )
 }
 
 const SidebarOverlay = props => {
     return (
         <div className={styles['burger-container']}>
-            <div className={styles.content}>{props.children}</div>
+            {props.children}
         </div>
     )
 }
@@ -21,9 +26,13 @@ const Sidebar = props => {
 
     const portalElement = document.getElementById('overlays');
 
+    const closeHandler = (close) => {
+        props.closeSidebar(close);
+    }
+
     return (
         <Fragment>
-            {ReactDOM.createPortal(<Backdrop />, portalElement)}
+            {ReactDOM.createPortal(<Backdrop onCloseSidebar={closeHandler} />, portalElement)}
             {ReactDOM.createPortal(<SidebarOverlay>{props.children}</SidebarOverlay>, portalElement)}
         </Fragment>
     )

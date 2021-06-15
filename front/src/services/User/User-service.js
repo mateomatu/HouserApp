@@ -95,9 +95,15 @@ const AuthService = {
             isLogged = true;
         }
         return isLogged;
-    }
-    
-    ,
+    },
+
+    /**
+     *
+     * @returns {boolean}
+     */
+    isAuthenticated() {
+        return token !== null;
+    },
 
     async logout() {
         await fetch(`${API_HOST}/api/auth/logout`, {
@@ -125,8 +131,8 @@ const AuthService = {
         token = null;
         if(localStorage.getItem('token') !== null) {
             localStorage.removeItem('token');
+            localStorage.removeItem('userData');
         }
-
         return true;
     },
 
@@ -146,6 +152,7 @@ const AuthService = {
      */
     authorizationHeader() {
         if(!this.isAuthenticated()) return null;
+        console.log(AuthService.getToken());
         return {'Authorization': 'Bearer ' + AuthService.getToken()};
     }
 }

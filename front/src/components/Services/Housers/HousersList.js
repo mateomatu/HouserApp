@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
-import { useParams } from "react-router";
+import React from "react"; /* { useState, useEffect } */ 
+/* import { useParams } from "react-router"; */
 
 import Houser from "./HouserCard";
 
-import serviceServices from "../../../services/Services/Service-service";
+/* import serviceServices from "../../../services/Services/Service-service"; */
 
 
 
@@ -36,9 +36,9 @@ const HousersList = (props) => {
     
     //TODO: Utilizar el ID del servicio para consultar a la tabla pivot los housers que pertenecen
     //a dicho servicio
-    const [isLoading, setIsLoading] = useState(false);
+/*     const [isLoading, setIsLoading] = useState(false);
     const [houserUsers, setHouserUsers] = useState([]);
-    const serviceId = props.serviceId;
+    const serviceId = props.serviceId; */
 
 /*     useEffect(() => {
         setIsLoading(true);
