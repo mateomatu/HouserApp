@@ -21,8 +21,16 @@ import BurgerMenu from "./components/Layout/BurgerMenu";
 
 function App() {
   const [auth, setAuth] = useState(AuthService.getLoggedUser());
+  const [showSidebar, setShowSidebar] = useState(false)
   const authCtx = useContext(AuthContext);
   const userIsLogged = AuthService.isLogged();
+
+  const showCartHandler = (open) => {
+    setShowSidebar(open);
+  }
+  const closeCartHandler = (close) => {
+    setShowSidebar(close);
+  }
 
   return (
     <Fragment>
@@ -35,8 +43,8 @@ function App() {
         }}
       >
         <div className="content">
-{/*           <BurgerMenu /> openMenu={burgerMenuHandler} burgerMenuState={openBurgerMenu} */}
-          <Header />
+          { showSidebar && <BurgerMenu onCloseSidebar={closeCartHandler}/>} 
+          <Header onOpenSidebar={showCartHandler} />
           <Switch>
             <Route path="/login" exact>
               { userIsLogged && <Redirect to="/" />}

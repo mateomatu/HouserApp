@@ -1,20 +1,3 @@
-.burger-container {
-    width: 13rem;
-    padding: 0.5rem;
-    padding-right: 1rem;
-    position: absolute;
-    top: 0;
-    background: white;
-    bottom: 0;
-    left: 0;
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border-right: 1px solid #33333355;
-    box-shadow: 1px 0 3px #33333355;
-}
-
 .burger-profile {
     display: flex;
     margin: 5rem 0;
@@ -35,13 +18,13 @@
     box-shadow: 0 2px 3px #33333399;
 }
 
-.burger-container svg {
+.burger-nav .burger-nav-svg {
     width: 1.5rem;
     vertical-align: top;
     fill: #949494d4;
 }
 
-.burger-container nav span {
+.burger-nav span {
     color: #949494d4;
     font-size: 1.5rem;
     font-family: "Calibri";
@@ -49,7 +32,7 @@
     margin-left: 0.8rem;
 }
 
-.burger-container nav {
+.burger-nav {
     margin-left: 0.6rem;
     align-self: center;
 }
