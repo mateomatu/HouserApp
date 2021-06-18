@@ -22,15 +22,17 @@ class CreateUserTable extends Migration
             $table->string('lastname', 80);
             $table->string('telephone', 20);
             $table->string('address', 255)->nullable();
-            $table->string('desc', 200);
+            $table->string('quote', 200);
             $table->date('birthday');
             $table->string('portrait', 255);
             $table->string('avatar', 255);
             $table->string('alt', 255);
+            $table->unsignedBigInteger('fk_service')->nullable();
             $table->rememberToken();
             $table->timestamps();
 
             $table->foreign('fk_level')->references('id_level')->on('levels');
+            $table->foreign('fk_service')->references('id_service')->on('services');
         });
     }
 

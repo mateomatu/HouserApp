@@ -23,17 +23,6 @@ class UsersController extends Controller
     }
 
     /**
-     * Show the Edit User's Profile form.
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-     */
-    public function showEditProfile($id) {
-
-        $user = Users::findOrFail($id);
-
-        return response()->json(['data' => $user]);
-    }
-
-    /**
      * Edit User profile data.
      * @param Request $request
      * @param $id
@@ -61,7 +50,7 @@ class UsersController extends Controller
             unlink(public_path('/imgs/' . $oldImg));
         }
 
-        return redirect(url('profile'))
+        return response()->json(['data' => $user])
             ->with('success', 'Tu perfil fue actualizado con éxito.');
     }
 

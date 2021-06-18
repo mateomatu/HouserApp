@@ -22,7 +22,7 @@ class UserTableSeeder extends Seeder
             'name' => "Admin",
             'lastname' => "Houser",
             'telephone' => "155550010",
-            'desc' => "Soy el Administrador de Houser",
+            'quote' => "Soy el Administrador de Houser",
             'birthday' => "1990-06-01",
             'address' => "avenida buena vibra 123",
             'portrait' => "avatar.png",
@@ -37,7 +37,7 @@ class UserTableSeeder extends Seeder
             'name' => "user",
             'lastname' => "user",
             'telephone' => "155550011",
-            'desc' => "Soy un Usuario de prueba",
+            'quote' => "Soy un Usuario de prueba",
             'birthday' => "1990-05-28",
             'address' => "avenida buena vibra 123",
             'portrait' => "avatar.png",
@@ -52,13 +52,14 @@ class UserTableSeeder extends Seeder
             'name' => "Javier",
             'lastname' => "Profesional",
             'telephone' => "155550012",
-            'desc' => "Soy Técnico de PC",
+            'quote' => "Soy Técnico de PC",
             'birthday' => "1988-10-15",
             'address' => "avenida buena vibra 123",
             'portrait' => "avatar.png",
             'avatar' => "perfil2.jpg",
             'alt' => "foto de perfil del usuario",
-            'fk_level' => 3
+            'fk_level' => 3,
+            'fk_service' => 2
         ]);
         Users::create([
             'id_user' => 4,
@@ -67,13 +68,14 @@ class UserTableSeeder extends Seeder
             'name' => "Laura",
             'lastname' => "Reggiano",
             'telephone' => "155550012",
-            'desc' => "Soy Ténica de Pc",
+            'quote' => "Soy Ténica de Pc",
             'birthday' => "1988-10-15",
             'address' => "avenida buena vibra 123",
             'portrait' => "avatar.png",
             'avatar' => "avatar.png",
             'alt' => "foto de perfil del usuario",
-            'fk_level' => 3
+            'fk_level' => 3,
+            'fk_service' => 2
         ]);
         Users::create([
             'id_user' => 5,
@@ -82,13 +84,14 @@ class UserTableSeeder extends Seeder
             'name' => "Jorge",
             'lastname' => "Laurenzo",
             'telephone' => "155550012",
-            'desc' => "Soy Carpintero",
+            'quote' => "Soy Carpintero",
             'birthday' => "1988-10-15",
             'address' => "avenida buena vibra 123",
             'portrait' => "avatar.png",
             'avatar' => "avatar.png",
             'alt' => "foto de perfil del usuario",
-            'fk_level' => 3
+            'fk_level' => 3,
+            'fk_service' => 1
         ]);
         Users::create([
             'id_user' => 6,
@@ -97,13 +100,14 @@ class UserTableSeeder extends Seeder
             'name' => "Raul",
             'lastname' => "Rakora",
             'telephone' => "155550012",
-            'desc' => "Soy Carpintero y Ebanista",
+            'quote' => "Soy Carpintero y Ebanista",
             'birthday' => "1988-10-15",
             'address' => "avenida buena vibra 123",
             'portrait' => "avatar.png",
             'avatar' => "avatar.png",
             'alt' => "foto de perfil del usuario",
-            'fk_level' => 3
+            'fk_level' => 3,
+            'fk_service' => 1
         ]);
         Users::create([
             'id_user' => 7,
@@ -112,13 +116,14 @@ class UserTableSeeder extends Seeder
             'name' => "Matias",
             'lastname' => "Buzcaco",
             'telephone' => "155550012",
-            'desc' => "Soy Pintor de casas y establecimientos",
+            'quote' => "Soy Pintor de casas y establecimientos",
             'birthday' => "1988-10-15",
             'address' => "avenida buena vibra 123",
             'portrait' => "avatar.png",
             'avatar' => "avatar.png",
             'alt' => "foto de perfil del usuario",
-            'fk_level' => 3
+            'fk_level' => 3,
+            'fk_service' => 3
         ]);
         Users::create([
             'id_user' => 8,
@@ -127,13 +132,46 @@ class UserTableSeeder extends Seeder
             'name' => "Pablo",
             'lastname' => "Julens",
             'telephone' => "155550010",
-            'desc' => "Soy Pintor hace 10 años",
+            'quote' => "Soy Pintor hace 10 años",
             'birthday' => "1988-10-15",
             'address' => "avenida buena vibra 123",
             'portrait' => "avatar.png",
             'avatar' => "avatar.png",
             'alt' => "foto de perfil del usuario",
-            'fk_level' => 3
+            'fk_level' => 3,
+            'fk_service' => 3
+        ]);
+        Users::create([
+            'id_user' => 9,
+            'password' => Hash::make('user'),
+            'email' => "valeriaandreeti@gmail.com",
+            'name' => "Valeria",
+            'lastname' => "Andreeti",
+            'telephone' => "155550010",
+            'quote' => "Soy Profesora Particular de Matemática",
+            'birthday' => "1988-10-15",
+            'address' => "avenida buena vibra 123",
+            'portrait' => "avatar.png",
+            'avatar' => "avatar.png",
+            'alt' => "foto de perfil del usuario",
+            'fk_level' => 3,
+            'fk_service' => 6
+        ]);
+        Users::create([
+            'id_user' => 10,
+            'password' => Hash::make('user'),
+            'email' => "gladysenglish@gmail.com",
+            'name' => "Gladys",
+            'lastname' => "Lamanuch",
+            'telephone' => "155550010",
+            'quote' => "Soy profesora de inglés para todos los niveles",
+            'birthday' => "1988-10-15",
+            'address' => "avenida buena vibra 123",
+            'portrait' => "avatar.png",
+            'avatar' => "avatar.png",
+            'alt' => "foto de perfil del usuario",
+            'fk_level' => 3,
+            'fk_service' => 6
         ]);
     }
 }

@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\api;
 
-
 use App\Models\Users;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -38,13 +38,31 @@ class AuthController extends Controller
                 'lastname' => $users->lastname,
                 'telephone' => $users->telephone,
                 'address' => $users->address,
-                'desc' => $users->desc,
+                'quote' => $users->quote,
                 'alt' => $users->alt,
                 'portrait' => $users->portrait,
                 'birthday' => $users->birthday,
                 'token' => $token->plainTextToken
             )
         ]);
+    }
+
+    /**
+     * Sign-Up User into the site.
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function signUp(Request $request)
+    {
+        $request->validate(Users::$rulesCreate, Users::$errorMessages);
+
+        $data = $request->input();
+        $data['password'] = Hash::make($data['password']);
+        $user = Users::create($data);
+
+        return response()->json(['data' => $user])
+            ->with('success', 'Usuario: '. $user->email .' creado con éxito. Ya podés iniciar sesión!');
+
     }
 
     /**
