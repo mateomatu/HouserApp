@@ -39,6 +39,7 @@ const AuthService = {
      async login(cred) {
          const res = await fetch(`${API_HOST}/api/auth/login`, {
              method: 'POST',
+             credentials: 'include',
              body: JSON.stringify({
                  email: cred.email,
                  password: cred.password
@@ -108,6 +109,7 @@ const AuthService = {
     async logout() {
         await fetch(`${API_HOST}/api/auth/logout`, {
             method: 'POST',
+            credentials: 'include',
             headers: {
                 'Content-Type': 'application/json',
                 'X-Requested-With': 'XMLHttpRequest',
@@ -152,7 +154,7 @@ const AuthService = {
      */
     authorizationHeader() {
         if(!this.isAuthenticated()) return null;
-        console.log(AuthService.getToken());
+        //console.log(AuthService.getToken());
         return {'Authorization': 'Bearer ' + AuthService.getToken()};
     }
 }
