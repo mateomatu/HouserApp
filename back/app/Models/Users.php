@@ -46,7 +46,12 @@ class Users extends Authenticatable
      */
     public static $rulesCreate = [
         'email' => 'required|email|unique:user',
-        'password' => 'required'
+        'password' => 'required',
+        'name' => 'required',
+        'lastname' => 'required',
+        'telephone' => 'required',
+        'adress' => 'required',
+        'birthday' => 'required'
     ];
 
     /**
@@ -57,13 +62,28 @@ class Users extends Authenticatable
         'email.required' => 'El email no puede quedar vacío.',
         'email.email' => 'Formato inválido, el email debe ser: ejemplo@dominio.com.',
         'email.unique' => 'Este usuario ya se encuentra registrado.',
-        'password.required' => 'La contraseña no puede quedar vacía.'
+        'password.required' => 'La contraseña no puede quedar vacía.',
+        'name.required' => 'El nombre no puede quedar vacío.',
+        'lastname.required' => 'El apellido no puede quedar vacío.',
+        'telephone.required' => 'Debes ingresar tu número de teléfono.',
+        'adress.required' => 'Debes ingresar tu domicilio.',
+        'bithday.required' => 'La fecha de nacimiento no puede quedar vacía.'
     ];
 
     public function level()
     {
         return $this->belongsTo(Level::class, 'fk_level', 'id_level');
     }
+
+    /**
+     * FK 'id_service' from Services Table
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function services()
+    {
+        return $this->belongsTo(Service::class, 'fk_service', 'id_service');
+    }
+
 
     public function contracts()
     {

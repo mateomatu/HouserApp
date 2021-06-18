@@ -22,6 +22,17 @@ class Service extends Model
         'service.min' => 'El nombre del servicio debe tener al menos :min caracteres.'
     ];
 
+
+    /**
+     * FK 'id_user' belongs To Service
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function users()
+    {
+        return $this->belongsTo(Users::class);
+    }
+
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */

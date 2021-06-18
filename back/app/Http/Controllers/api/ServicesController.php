@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\api;
 
 use App\Models\Service;
+use App\Models\Users;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ServicesController extends Controller
 {
@@ -22,53 +24,20 @@ class ServicesController extends Controller
     }
 
     /**
-     * Bring/Get Service's by ID.
+     * Bring/Get Housers by Service.
      * @param $id
      * @return JsonResponse
      */
-    public function getIDService($id)
+    public function showHousersByService($id)
     {
-        $service = Service::findOrFail($id);
-        return response()->json(['data' => $service]);
+        $query = DB::table('user')
+            ->select('id_user', 'name', 'lastname', 'avatar', 'quote')
+            ->where('fk_level', '=', '3')
+            ->where('fk_service', '=', $id)->get();
+
+        return response()->json(['data' => $query]);
+
     }
 
-    /**
-     * Bring/Get Service's contracted by User.
-     */
-    public function getServiceByUser()
-    {
-        $service = Service::with(['fk_user']);
-    }
 
-    /**
-     * Search results in the "Services" search engine, show results along with their errors.
-     * @param Request $request
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
-     */
-/*     public function searchService(Request $request)
-    {
-        $searchService = $request->query('query');
-        $result = Service::where(['service', 'like', '%' . $searchService . '%'])->get();
-
-        return redirect(url('home'))
-            ->with('error', 'El servicio/rubro que buscaste es érroneo o está mal escrito.');
-    } */
-
-    /**
-     * Bring Services By Houser requested.
-     * @param Request $request
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
-     */
-    public function showServiceByHouser(Request $request)
-    {
-        $searchServiceByHouser = $request->query('query');
-
-        $result = Service::join('user', 'services.id_service', '=', 'user.id_user')
-            ->get();
-
-
-        return response()->json([
-            'data' => $result
-        ]);
-    }
 }

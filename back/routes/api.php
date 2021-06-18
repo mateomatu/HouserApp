@@ -21,41 +21,49 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 /****************  LOGIN *****************/
 Route::prefix('auth')
     ->group(function() {
+        /** Loguea Usuario **/
         Route::post('login', 'api\\AuthController@login')
             ->name('auth.login');
+        /** Registrar Nuevo Usuario **/
+        Route::post('signup', 'api\\AuthController@signUp')
+            ->name('auth.signup')
+            ->middleware(['auth:sanctum']);
+        /** Desloguea Usuario **/
         Route::post('logout', 'api\\AuthController@logout')
-            ->name('auth.logout');
+            ->name('auth.logout')
+            ->middleware(['auth:sanctum']);
     });
 
 /**************** USERS PROFILE *****************/
+
+/** Trae el Perfil del Usuario **/
 Route::get('users/{id}', [
     'uses' => 'api\\UsersController@showProfile',
     'as' => 'api.users.profile',
-//    'middleware' => ['auth:sanctum']
+    'middleware' => ['auth:sanctum']
 ]);
 
-Route::get('users/{id}/profile', [
-    'uses' => 'api\\UsersController@showEditProfile',
-    'as' => 'api.users.profile-form',
-//    'middleware' => ['auth:sanctum']
-]);
-
+/** Edita el Perfil del Usuario **/
 Route::post('users/{id}/profile', [
     'uses' => 'api\\UsersController@editProfile',
     'as' => 'api.users.profile-edit',
-//    'middleware' => ['auth:sanctum']
+    'middleware' => ['auth:sanctum']
 ]);
 
 /*************** SERVICES **************/
 
+/** Trae el listado de Servicios **/
 Route::get('services', [
     'uses' => 'api\\ServicesController@getAllServices',
-    'as' => 'api.service'
+    'as' => 'api.service',
+    'middleware' => ['auth:sanctum']
 ]);
 
+/** Retorna los Housers por Servicios **/
 Route::get('services/{id}', [
-    'uses' => 'api\\ServicesController@getIDService',
-    'as' => 'api.services.id'
+    'uses' => 'api\\ServicesController@showHousersByService',
+    'as' => 'api.services.id',
+    'middleware' => ['auth:sanctum']
 ]);
 
 // Servicio Buscador dado de baja desde Back, se muestra/implementa desde Front.
@@ -64,36 +72,26 @@ Route::get('services/{id}', [
 //    'as' => 'api.services.search'
 //]);
 
-Route::get('services/{id}/search', [
-    'uses' => 'api\\ServicesController@showServiceByHouser',
-    'as' => 'api.services.id.search'
-]);
-
-// Rutas que pertenecian a Services Housers pasaron a 'Services'
-//Route::get('serviceshouser', [
-//    'uses' => 'api\\ServicesHousersController@getServicesByHouser',
-//    'as' => 'api.serviceshousers.id.search'
-//]);
-//
-//Route::get('serviceshouser/{id}/h', [
-//    'uses' => 'api\\ServicesHousersController@getServicesHousersByID',
-//    'as' => 'api.serviceshousers.id.search'
-//]);
-//
 
 /*************** WORKS **************/
 
+/** Trae el listado de todas las Contrataciones  **/
 Route::get('works', [
     'uses' => 'api\\WorksController@getAllWorks',
-    'as' => 'api.works'
+    'as' => 'api.works',
+    'middleware' => ['auth:sanctum']
 ]);
 
+/** Trae listado de Contrataciones Pendientes **/
 Route::get('workspending', [
     'uses' => 'api\\WorksController@showPendingWork',
-    'as' => 'api.works.pending'
+    'as' => 'api.works.pending',
+    'middleware' => ['auth:sanctum']
 ]);
 
+/** Genera y guarda en DB Contratación al Houser **/
 Route::post('works', [
     'uses' => 'api\\WorksController@requestWork',
-    'as' => 'api.works.request'
+    'as' => 'api.works.request',
+    'middleware' => ['auth:sanctum']
 ]);
