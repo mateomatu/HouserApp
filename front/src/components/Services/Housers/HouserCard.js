@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import  { PUBLIC_PATH } from "../../../constants/api";
+import  { API_IMGS } from "../../../constants/api";
 
 import styles from "./HouserCard.module.css";
 
@@ -9,14 +9,14 @@ const cardStlyes = `mb-5 ${styles['houser-card']}`
 const HouserCard = props => {
     
     const houser = props.houser;
-    console.log(houser);
+    
 
     return (
         <li>
             <Link to="/">
                 <article className={cardStlyes}>
                     <header className={styles['profile-header']}>
-                        <img className={styles['houser-avatar']} src={`${PUBLIC_PATH}/assets/imgs/${houser.avatar}`} alt={houser.alt}/>
+                        <img className={styles['houser-avatar']} src={`${API_IMGS}/${houser.avatar}`} alt={houser.alt}/>
                     </header>
                     <h3>{houser.name + " " + houser.lastname}</h3>
                     <section className={styles.valoration}>

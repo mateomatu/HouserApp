@@ -24,6 +24,19 @@ class ServicesController extends Controller
     }
 
     /**
+     * Bring/Get the list of all services
+     * @return JsonResponse
+     */
+    public function bringServiceById($id)
+    {
+        $service = Service::find($id);
+
+        return response()->json([
+            'data' => $service
+        ]);
+    }
+
+    /**
      * Bring/Get Housers by Service.
      * @param $id
      * @return JsonResponse

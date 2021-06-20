@@ -56,7 +56,7 @@ class UserTableSeeder extends Seeder
             'birthday' => "1988-10-15",
             'address' => "avenida buena vibra 123",
             'portrait' => "avatar.png",
-            'avatar' => "perfil2.jpg",
+            'avatar' => "javier.jpg",
             'alt' => "foto de perfil del usuario",
             'fk_level' => 3,
             'fk_service' => 2
@@ -71,8 +71,8 @@ class UserTableSeeder extends Seeder
             'quote' => "Soy Ténica de Pc",
             'birthday' => "1988-10-15",
             'address' => "avenida buena vibra 123",
-            'portrait' => "avatar.png",
-            'avatar' => "avatar.png",
+            'portrait' => "portrait.jpg",
+            'avatar' => "laura.jpg",
             'alt' => "foto de perfil del usuario",
             'fk_level' => 3,
             'fk_service' => 2
@@ -88,7 +88,7 @@ class UserTableSeeder extends Seeder
             'birthday' => "1988-10-15",
             'address' => "avenida buena vibra 123",
             'portrait' => "avatar.png",
-            'avatar' => "avatar.png",
+            'avatar' => "jorge.jpg",
             'alt' => "foto de perfil del usuario",
             'fk_level' => 3,
             'fk_service' => 1
@@ -104,7 +104,7 @@ class UserTableSeeder extends Seeder
             'birthday' => "1988-10-15",
             'address' => "avenida buena vibra 123",
             'portrait' => "avatar.png",
-            'avatar' => "avatar.png",
+            'avatar' => "raul.jpg",
             'alt' => "foto de perfil del usuario",
             'fk_level' => 3,
             'fk_service' => 1
@@ -120,7 +120,7 @@ class UserTableSeeder extends Seeder
             'birthday' => "1988-10-15",
             'address' => "avenida buena vibra 123",
             'portrait' => "avatar.png",
-            'avatar' => "avatar.png",
+            'avatar' => "matias.jpg",
             'alt' => "foto de perfil del usuario",
             'fk_level' => 3,
             'fk_service' => 3
@@ -136,7 +136,7 @@ class UserTableSeeder extends Seeder
             'birthday' => "1988-10-15",
             'address' => "avenida buena vibra 123",
             'portrait' => "avatar.png",
-            'avatar' => "avatar.png",
+            'avatar' => "pablo.jpg",
             'alt' => "foto de perfil del usuario",
             'fk_level' => 3,
             'fk_service' => 3
@@ -152,7 +152,7 @@ class UserTableSeeder extends Seeder
             'birthday' => "1988-10-15",
             'address' => "avenida buena vibra 123",
             'portrait' => "avatar.png",
-            'avatar' => "avatar.png",
+            'avatar' => "valeria.jpg",
             'alt' => "foto de perfil del usuario",
             'fk_level' => 3,
             'fk_service' => 6
@@ -168,7 +168,7 @@ class UserTableSeeder extends Seeder
             'birthday' => "1988-10-15",
             'address' => "avenida buena vibra 123",
             'portrait' => "avatar.png",
-            'avatar' => "avatar.png",
+            'avatar' => "gladys.jpg",
             'alt' => "foto de perfil del usuario",
             'fk_level' => 3,
             'fk_service' => 6

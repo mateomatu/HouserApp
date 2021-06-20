@@ -56,14 +56,21 @@ Route::post('users/{id}/profile', [
 Route::get('services', [
     'uses' => 'api\\ServicesController@getAllServices',
     'as' => 'api.service',
-    'middleware' => ['auth:sanctum']
+    /* 'middleware' => ['auth:sanctum'] */
+]);
+
+/** Trae servicio específico **/
+Route::get('service/{id}', [
+    'uses' => 'api\\ServicesController@bringServiceById',
+    'as' => 'api.service',
+    /* 'middleware' => ['auth:sanctum'] */
 ]);
 
 /** Retorna los Housers por Servicios **/
-Route::get('services/{id}', [
+Route::get('services/housers/{id}', [
     'uses' => 'api\\ServicesController@showHousersByService',
     'as' => 'api.services.id',
-    'middleware' => ['auth:sanctum']
+/*     'middleware' => ['auth:sanctum'] */
 ]);
 
 // Servicio Buscador dado de baja desde Back, se muestra/implementa desde Front.

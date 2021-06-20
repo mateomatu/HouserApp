@@ -154,7 +154,6 @@ const AuthService = {
      */
     authorizationHeader() {
         if(!this.isAuthenticated()) return null;
-        //console.log(AuthService.getToken());
         return {'Authorization': 'Bearer ' + AuthService.getToken()};
     }
 }
