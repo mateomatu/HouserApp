@@ -40,10 +40,6 @@ const Services = () => {
             
             setServices(loadedServices);
             setIsLoading(false)
-
-            return () => {
-                serviceServices.unsubscribe.allServices();
-            }
         })().catch(err => console.log("ERROR AL TRAER SERVICIOS"))
     }, [])
 

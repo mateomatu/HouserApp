@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from "react";  
+import React, { useState, useEffect } from "react";
+
+import Loader from "../../UI/Loader";
 import Houser from "./HouserCard";
 import serviceServices from "../../../services/Services/Service-service";
 
@@ -23,6 +25,7 @@ const HousersList = (props) => {
                     desc: houser.quote,
                     avatar: houser.avatar,
                     name: houser.name,
+                    portrait: houser.portrait,
                     lastname: houser.lastname
                 })
             });  
@@ -32,13 +35,16 @@ const HousersList = (props) => {
         })().catch(err => console.log("Error al traer housers"))
     }, [serviceId])
 
-
-
     const housers = houserUsers.map(houser=>{ return <Houser key={houser.id} houser={houser} />});
+
+    if (housers.length === 0) {
+        //TODO: Componente de no hay housers por mostrar!
+    }
 
     return (
         <ul className="housers-list">
-            {housers}
+            { !isLoading && housers}
+            { isLoading && <Loader />}
         </ul>
     )
         

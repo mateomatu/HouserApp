@@ -16,6 +16,7 @@ const HouserCard = props => {
             <Link to="/">
                 <article className={cardStlyes}>
                     <header className={styles['profile-header']}>
+                        { houser.portrait !== undefined && houser.portrait !== null && <img className={styles['img-portrait']} src={`${API_IMGS}/${houser.portrait}`} alt={houser.alt}/>}
                         <img className={styles['houser-avatar']} src={`${API_IMGS}/${houser.avatar}`} alt={houser.alt}/>
                     </header>
                     <h3>{houser.name + " " + houser.lastname}</h3>
