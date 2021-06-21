@@ -26,8 +26,7 @@ Route::prefix('auth')
             ->name('auth.login');
         /** Registrar Nuevo Usuario **/
         Route::post('signup', 'api\\AuthController@signUp')
-            ->name('auth.signup')
-            ->middleware(['auth:sanctum']);
+            ->name('auth.signup');
         /** Desloguea Usuario **/
         Route::post('logout', 'api\\AuthController@logout')
             ->name('auth.logout')

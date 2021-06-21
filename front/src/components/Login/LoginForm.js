@@ -69,7 +69,7 @@ const LoginForm = (props) => {
       </section>)}
       <section className={styles["input-section"]}>
         <label htmlFor="email">Email</label>
-        <input ref={emailInputRef} type="text" id="email" name="email" />
+        <input ref={emailInputRef} type="email" id="email" name="email" />
       </section>
       <section className={styles["input-section"]}>
         <label htmlFor="password">Contraseña</label>

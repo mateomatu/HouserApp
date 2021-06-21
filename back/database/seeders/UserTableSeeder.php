@@ -173,6 +173,86 @@ class UserTableSeeder extends Seeder
             'fk_level' => 3,
             'fk_service' => 1
         ]);
+        Users::create([
+            'id_user' => 11,
+            'password' => Hash::make('user'),
+            'email' => "teresa@gmail.com",
+            'name' => "Teresa",
+            'lastname' => "Salendis",
+            'telephone' => "155550010",
+            'quote' => "He reparado diversos electrodomésticos a lo largo de 15 años",
+            'birthday' => "1988-10-15",
+            'address' => "avenida buena vibra 123",
+            'portrait' => "cold1.jpg",
+            'avatar' => "teresa.jpg",
+            'alt' => "foto de perfil del usuario",
+            'fk_level' => 3,
+            'fk_service' => 4
+        ]);
+        Users::create([
+            'id_user' => 12,
+            'password' => Hash::make('user'),
+            'email' => "fedelew@gmail.com",
+            'name' => "Federico",
+            'lastname' => "Lewis",
+            'telephone' => "155550010",
+            'quote' => "¡Reparador especial de Aires Acondicionados!",
+            'birthday' => "1988-10-15",
+            'address' => "avenida buena vibra 123",
+            'portrait' => "cold2.jpg",
+            'avatar' => "fede.jpg",
+            'alt' => "foto de perfil del usuario",
+            'fk_level' => 3,
+            'fk_service' => 4
+        ]);
+        Users::create([
+            'id_user' => 13,
+            'password' => Hash::make('user'),
+            'email' => "manunande@gmail.com",
+            'name' => "Manuel",
+            'lastname' => "Nandez",
+            'telephone' => "155550010",
+            'quote' => "Reparo todo tipo de electrodomésticos: Aires - Heladeras - Hornos y mas!",
+            'birthday' => "1988-10-15",
+            'address' => "avenida buena vibra 123",
+            'portrait' => "cold3.jpg",
+            'avatar' => "manuel.jpg",
+            'alt' => "foto de perfil del usuario",
+            'fk_level' => 3,
+            'fk_service' => 4
+        ]);
+        Users::create([
+            'id_user' => 14,
+            'password' => Hash::make('user'),
+            'email' => "ramirogus@gmail.com",
+            'name' => "Ramiro",
+            'lastname' => "Gustamonte",
+            'telephone' => "155550010",
+            'quote' => "Servicio de fletería a domicilio, el mejor servicio en Houser",
+            'birthday' => "1988-10-15",
+            'address' => "avenida buena vibra 123",
+            'portrait' => "flete1.jpg",
+            'avatar' => "ramiro.jpg",
+            'alt' => "foto de perfil del usuario",
+            'fk_level' => 3,
+            'fk_service' => 5
+        ]);
+        Users::create([
+            'id_user' => 15,
+            'password' => Hash::make('user'),
+            'email' => "nicolastofe@gmail.com",
+            'name' => "Nicolas",
+            'lastname' => "Tofe",
+            'telephone' => "155550010",
+            'quote' => "Servicio de Flete con experiencia de más de 20 años",
+            'birthday' => "1988-10-15",
+            'address' => "avenida buena vibra 123",
+            'portrait' => "flete2.jpg",
+            'avatar' => "nicolas.jpg",
+            'alt' => "foto de perfil del usuario",
+            'fk_level' => 3,
+            'fk_service' => 5
+        ]);
     }
 }
 

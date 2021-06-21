@@ -43,7 +43,7 @@ const AllServices = () => {
                     {services.map(service => { 
                         return (
                         <li key={service.id} className={styles['service-item']}>
-                            <Link className={styles['service-link']} to={`/services/${services.id}`}> 
+                            <Link className={styles['service-link']} to={`/services/${service.id}`}> 
                                 <h3>{service.title}</h3>
                                 <img src={`${PUBLIC_PATH}/assets/imgs/${service.img}`} alt={service.alt} />
                             </Link>

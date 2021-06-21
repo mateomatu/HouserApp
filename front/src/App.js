@@ -4,6 +4,7 @@ import { Route, Switch, Redirect } from "react-router-dom";
 /* Components */
 import Header from "./components/Layout/Header";
 import Navbar from "./components/Layout/Navbar";
+import LoginFooter from "./components/Login/LoginFooter";
 
 /* Pages */
 import HomePage from "./pages/HomePage";
@@ -11,6 +12,7 @@ import ProfilePage from "./pages/ProfilePage";
 import NotificationsPage from "./pages/NotificationsPage";
 import LookForHousersPage from "./pages/LookForHousersPage";
 import LoginPage from "./pages/LoginPage";
+import SignUpPage from "./pages/SignUpPage";
 
 /* Services */
 import AuthService, { AuthContext } from "./services/User/User-service";
@@ -18,6 +20,7 @@ import AuthService, { AuthContext } from "./services/User/User-service";
 /* Styles */
 import "./App.css";
 import BurgerMenu from "./components/Layout/BurgerMenu";
+import Ad from "./components/Ads/Ad";
 
 function App() {
   const [auth, setAuth] = useState(AuthService.getLoggedUser());
@@ -46,9 +49,17 @@ function App() {
           { showSidebar && <BurgerMenu onCloseSidebar={closeCartHandler}/>} 
           <Header onOpenSidebar={showCartHandler} />
           <Switch>
+            <Route path="/ad" exact>
+              { userIsLogged && <Ad />}
+              { !userIsLogged && <LoginPage />}
+            </Route>
             <Route path="/login" exact>
               { userIsLogged && <Redirect to="/" />}
               { !userIsLogged && <LoginPage />}
+            </Route>
+            <Route path="/sign-up" exact>
+              { userIsLogged && <Redirect to="/home" />}
+              { !userIsLogged && <SignUpPage />}
             </Route>
             <Route path="/" exact>
               { userIsLogged && <Redirect to="/home" />}
@@ -73,6 +84,7 @@ function App() {
           </Switch>
         </div>
         {userIsLogged && <Navbar />}
+        {!userIsLogged && <LoginFooter />}
       </AuthContext.Provider>
     </Fragment>
   );
