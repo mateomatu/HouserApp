@@ -146,6 +146,30 @@ const AuthService = {
         return token;
     },
 
+
+    async signUp (data) {
+        console.log("data", data)
+        const res = await fetch(`${API_HOST}/api/auth/signup`, {
+            method: 'POST',
+            body: JSON.stringify({
+                email: data.email,
+                password: data.password,
+                name: data.name,
+                lastname: data.lastname,
+                telephone: data.telephone,
+                address: data.address
+
+               }),
+               headers: {
+                   'Content-Type': 'application/json',
+                   'X-Requested-With': 'XMLHttpRequest',
+               }
+           });
+       const responseData = await res.json();
+
+       console.log(responseData);
+    },
+
         /**
      * Retorna un objeto con el Authorization header configurado si el usuario está autenticado.
      * null de lo contrario.

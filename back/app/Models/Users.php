@@ -50,8 +50,7 @@ class Users extends Authenticatable
         'name' => 'required',
         'lastname' => 'required',
         'telephone' => 'required',
-        'adress' => 'required',
-        'birthday' => 'required'
+        'address' => 'required'
     ];
 
     /**
@@ -66,7 +65,7 @@ class Users extends Authenticatable
         'name.required' => 'El nombre no puede quedar vacío.',
         'lastname.required' => 'El apellido no puede quedar vacío.',
         'telephone.required' => 'Debes ingresar tu número de teléfono.',
-        'adress.required' => 'Debes ingresar tu domicilio.',
+        'address.required' => 'Debes ingresar tu domicilio.',
         'bithday.required' => 'La fecha de nacimiento no puede quedar vacía.'
     ];
 

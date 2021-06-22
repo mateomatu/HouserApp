@@ -1,7 +1,6 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 
-import LoginFooter from "../Login/LoginFooter";
 import SignUpForm from "./SignUpForm";
 
 import styles from "./SignUp.module.css";

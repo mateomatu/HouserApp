@@ -24,6 +24,26 @@ li {
   list-style: none;
 }
 
+.input {
+  width: 100%;
+  padding: 15px 0;
+  margin-bottom: 1.5em;
+  border-radius: 10px;
+  border: 1px solid #33333380;
+  box-shadow: none;
+  outline: none;
+  font-size: 16px;
+  text-align: center;
+}
+
+.error-input {
+  border: 1px solid rgb(170, 51, 51) !important;
+}
+
+.ok-input {
+  border: 1px solid rgba(55, 138, 55, 0.801) !important;
+}
+
 a:visited {
   color: inherit;
 }
@@ -63,11 +83,11 @@ a {
 }
 
 .primary-color {
-  color: #FF9800;
+  color: #FF9800 !important;
 }
 
 .bold {
-  font-weight: bold;
+  font-weight: bold !important;
 }
 
 .d-block {

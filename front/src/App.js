@@ -13,6 +13,8 @@ import NotificationsPage from "./pages/NotificationsPage";
 import LookForHousersPage from "./pages/LookForHousersPage";
 import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SignUpPage";
+import ChangePasswordPage from "./pages/ChangePasswordPage";
+import ChangeAddressPage from "./pages/ChangeAddressPage";
 
 /* Services */
 import AuthService, { AuthContext } from "./services/User/User-service";
@@ -69,8 +71,16 @@ function App() {
               { userIsLogged && <HomePage />}
               { !userIsLogged && <Redirect to="/login" />}
             </Route>
-            <Route path="/profile/">
+            <Route path="/profile" exact>
               { userIsLogged && <ProfilePage />}
+              { !userIsLogged && <Redirect to="/login" />}
+            </Route>
+            <Route path="/profile/change-password">
+              { userIsLogged && <ChangePasswordPage />}
+              { !userIsLogged && <Redirect to="/login" />}
+            </Route>
+            <Route path="/profile/change-address">
+              { userIsLogged && <ChangeAddressPage />}
               { !userIsLogged && <Redirect to="/login" />}
             </Route>
             <Route path="/notifications/">

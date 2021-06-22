@@ -1,6 +1,8 @@
 import React, { useRef, useContext, useState } from "react";
 import { useHistory } from "react-router";
+
 import AuthService, { AuthContext } from "../../services/User/User-service";
+import RepeatPassword from "../UI/RepeatPassword";
 
 import Loader from "../UI/Loader";
 
@@ -12,12 +14,41 @@ const SignUpForm = (props) => {
   const history = useHistory();
   const authCtx = useContext(AuthContext);
 
+  let errorMsg = "";
+  let enteredPassword = "";
   let emailInputRef = useRef();
-  let passwordInputRef = useRef();
-  let rePasswordInputRef = useRef();
+  let nameInputRef = useRef();
+  let lastnameInputRef = useRef();
+  let phoneInputRef = useRef();
+  let addressInputRef = useRef();
+
+
+  const getNewPassword = (pwd) => {
+    enteredPassword = pwd;
+  }
+
 
   const submitHandler = async (event) => {
     event.preventDefault();
+    setLoading(true);
+
+    const enteredEmail = emailInputRef.current.value;
+    const enteredName = nameInputRef.current.value;
+    const enteredLastname = lastnameInputRef.current.value;
+    const enteredTelephone = phoneInputRef.current.value;
+    const enteredAddress = addressInputRef.current.value;
+
+    const response = await AuthService.signUp({
+      email: enteredEmail,
+      password: enteredPassword,
+      name: enteredName,
+      lastname: enteredLastname,
+      telephone: enteredTelephone,
+      address: enteredAddress
+    });
+
+    console.log("response: ", response);
+
   };
 
   if (loading) {
@@ -32,30 +63,21 @@ const SignUpForm = (props) => {
       </section>
       <section className={styles["input-section"]}>
         <label htmlFor="name">Nombre</label>
-        <input ref={emailInputRef} type="text" id="name" name="name" />
+        <input ref={nameInputRef} type="text" id="name" name="name" />
       </section>
       <section className={styles["input-section"]}>
         <label htmlFor="lastname">Apellido</label>
-        <input ref={emailInputRef} type="text" id="lastname" name="lastname" />
+        <input ref={lastnameInputRef} type="text" id="lastname" name="lastname" />
       </section>
       <section className={styles["input-section"]}>
-        <label htmlFor="password">Contraseña</label>
-        <input
-          ref={passwordInputRef}
-          id="password"
-          type="password"
-          name="password"
-        />
+        <label htmlFor="telephone">Teléfono</label>
+        <input ref={phoneInputRef} type="text" id="telephone" name="telephone" />
       </section>
       <section className={styles["input-section"]}>
-        <label htmlFor="rePassword">Repetir contraseña</label>
-        <input
-          ref={rePasswordInputRef}
-          id="rePassword"
-          type="password"
-          name="rePassword"
-        />
+        <label htmlFor="address">Domicilio</label>
+        <input ref={addressInputRef} type="text" id="address" name="address" />
       </section>
+      <RepeatPassword passwordHandler={getNewPassword} errorMsg={errorMsg}/>
 
       <button className="gibson-medium">Registrarse</button>
     </form>
