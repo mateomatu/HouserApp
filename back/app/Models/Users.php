@@ -50,7 +50,7 @@ class Users extends Authenticatable
         'name' => 'required',
         'lastname' => 'required',
         'telephone' => 'required',
-        'address' => 'required'
+        'address' => 'required',
     ];
 
     /**
@@ -66,7 +66,6 @@ class Users extends Authenticatable
         'lastname.required' => 'El apellido no puede quedar vacío.',
         'telephone.required' => 'Debes ingresar tu número de teléfono.',
         'address.required' => 'Debes ingresar tu domicilio.',
-        'bithday.required' => 'La fecha de nacimiento no puede quedar vacía.'
     ];
 
     public function level()

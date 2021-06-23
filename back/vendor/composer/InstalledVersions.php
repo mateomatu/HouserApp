@@ -24,12 +24,12 @@ class InstalledVersions
 private static $installed = array (
   'root' => 
   array (
-    'pretty_version' => 'dev-main',
-    'version' => 'dev-main',
+    'pretty_version' => 'dev-master',
+    'version' => 'dev-master',
     'aliases' => 
     array (
     ),
-    'reference' => '13feb7c1120766915099e64936d264daae000161',
+    'reference' => '057f291ae4bd552ef51c49e30c5930cf69688245',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -70,6 +70,15 @@ private static $installed = array (
       ),
       'reference' => '6b69015d83d3daf9004a71a89f26e27d27ef6a16',
     ),
+    'beyondcode/laravel-websockets' => 
+    array (
+      'pretty_version' => '1.12.0',
+      'version' => '1.12.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '0380f5e37310f2c9b93444b67e81d469800b6483',
+    ),
     'brick/math' => 
     array (
       'pretty_version' => '0.9.2',
@@ -78,6 +87,15 @@ private static $installed = array (
       array (
       ),
       'reference' => 'dff976c2f3487d42c1db75a3b180e2b9f0e72ce0',
+    ),
+    'cboden/ratchet' => 
+    array (
+      'pretty_version' => 'v0.4.3',
+      'version' => '0.4.3.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '466a0ecc83209c75b76645eb823401b5c52e5f21',
     ),
     'composer/ca-bundle' => 
     array (
@@ -218,6 +236,15 @@ private static $installed = array (
       array (
       ),
       'reference' => '0dbf5d78455d4d6a41d186da50adc1122ec066f4',
+    ),
+    'evenement/evenement' => 
+    array (
+      'pretty_version' => 'v3.0.1',
+      'version' => '3.0.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '531bfb9d15f8aa57454f5f0285b18bec903b8fb7',
     ),
     'facade/flare-client-php' => 
     array (
@@ -571,12 +598,12 @@ private static $installed = array (
     ),
     'laravel/laravel' => 
     array (
-      'pretty_version' => 'dev-main',
-      'version' => 'dev-main',
+      'pretty_version' => 'dev-master',
+      'version' => 'dev-master',
       'aliases' => 
       array (
       ),
-      'reference' => '13feb7c1120766915099e64936d264daae000161',
+      'reference' => '057f291ae4bd552ef51c49e30c5930cf69688245',
     ),
     'laravel/sail' => 
     array (
@@ -721,6 +748,24 @@ private static $installed = array (
       array (
       ),
       'reference' => '06e2ebd25f2869e54a306dda991f7db58066f7f6',
+    ),
+    'paragonie/random_compat' => 
+    array (
+      'pretty_version' => 'v9.99.100',
+      'version' => '9.99.100.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '996434e5492cb4c3edcb9168db6fbb1359ef965a',
+    ),
+    'paragonie/sodium_compat' => 
+    array (
+      'pretty_version' => 'v1.16.1',
+      'version' => '1.16.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '2e856afe80bfc968b47da1f4a7e1ea8f03d06b38',
     ),
     'phar-io/manifest' => 
     array (
@@ -938,6 +983,15 @@ private static $installed = array (
       ),
       'reference' => 'e4573f47750dd6c92dca5aee543fa77513cbd8d3',
     ),
+    'pusher/pusher-php-server' => 
+    array (
+      'pretty_version' => '5.0.3',
+      'version' => '5.0.3.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '1024077ff60beebaf5706b4e0208a1e648d20cf4',
+    ),
     'ralouphie/getallheaders' => 
     array (
       'pretty_version' => '3.0.3',
@@ -965,6 +1019,51 @@ private static $installed = array (
       ),
       'reference' => 'cd4032040a750077205918c86049aa0f43d22947',
     ),
+    'ratchet/rfc6455' => 
+    array (
+      'pretty_version' => 'v0.3',
+      'version' => '0.3.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'c8651c7938651c2d55f5d8c2422ac5e57a183341',
+    ),
+    'react/cache' => 
+    array (
+      'pretty_version' => 'v1.1.1',
+      'version' => '1.1.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '4bf736a2cccec7298bdf745db77585966fc2ca7e',
+    ),
+    'react/dns' => 
+    array (
+      'pretty_version' => 'v1.5.0',
+      'version' => '1.5.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'b22b0b20278e8535e633ab71a52472c5bf620aa1',
+    ),
+    'react/event-loop' => 
+    array (
+      'pretty_version' => 'v1.1.1',
+      'version' => '1.1.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '6d24de090cd59cfc830263cfba965be77b563c13',
+    ),
+    'react/http' => 
+    array (
+      'pretty_version' => 'v1.3.0',
+      'version' => '1.3.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'bc537273d11ee769c723a830e63aa33c0c35a530',
+    ),
     'react/promise' => 
     array (
       'pretty_version' => 'v2.8.0',
@@ -974,12 +1073,57 @@ private static $installed = array (
       ),
       'reference' => 'f3cff96a19736714524ca0dd1d4130de73dbbbc4',
     ),
+    'react/promise-stream' => 
+    array (
+      'pretty_version' => 'v1.2.0',
+      'version' => '1.2.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '6384d8b76cf7dcc44b0bf3343fb2b2928412d1fe',
+    ),
+    'react/promise-timer' => 
+    array (
+      'pretty_version' => 'v1.6.0',
+      'version' => '1.6.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'daee9baf6ef30c43ea4c86399f828bb5f558f6e6',
+    ),
+    'react/socket' => 
+    array (
+      'pretty_version' => 'v1.6.0',
+      'version' => '1.6.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'e2b96b23a13ca9b41ab343268dbce3f8ef4d524a',
+    ),
+    'react/stream' => 
+    array (
+      'pretty_version' => 'v1.1.1',
+      'version' => '1.1.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '7c02b510ee3f582c810aeccd3a197b9c2f52ff1a',
+    ),
     'rhumsaa/uuid' => 
     array (
       'replaced' => 
       array (
         0 => '4.1.1',
       ),
+    ),
+    'ringcentral/psr7' => 
+    array (
+      'pretty_version' => '1.3.0',
+      'version' => '1.3.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '360faaec4b563958b673fb52bbe94e37f14bc686',
     ),
     'sebastian/cli-parser' => 
     array (
@@ -1365,6 +1509,15 @@ private static $installed = array (
       array (
       ),
       'reference' => '313a38f09c77fbcdc1d223e57d368cea76a2fd2f',
+    ),
+    'symfony/psr-http-message-bridge' => 
+    array (
+      'pretty_version' => 'v2.1.0',
+      'version' => '2.1.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '81db2d4ae86e9f0049828d9343a72b9523884e5d',
     ),
     'symfony/routing' => 
     array (

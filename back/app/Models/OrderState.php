@@ -8,16 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class OrderState extends Model
 {
     use HasFactory;
-    protected $table = "orders_state";
+    protected $table = "orders_states";
     protected $primaryKey = "id_order_state";
     protected $fillable = ['state'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function contracts()
+    public function order()
     {
-        return $this->belongsTo(Contract::class);
+        return $this->belongsTo(Order::class);
     }
 
 }

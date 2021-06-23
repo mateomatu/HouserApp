@@ -22,11 +22,11 @@ class CreateUserTable extends Migration
             $table->string('lastname', 80);
             $table->string('telephone', 20);
             $table->string('address', 255)->nullable();
-            $table->string('quote', 200);
-            $table->date('birthday');
-            $table->string('portrait', 255);
-            $table->string('avatar', 255);
-            $table->string('alt', 255);
+            $table->string('quote', 200)->nullable();
+            $table->date('birthday')->nullable();
+            $table->string('portrait', 255)->nullable();
+            $table->string('avatar', 255)->nullable();
+            $table->string('alt', 255)->nullable();
             $table->unsignedBigInteger('fk_service')->nullable();
             $table->rememberToken();
             $table->timestamps();

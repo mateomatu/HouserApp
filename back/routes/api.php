@@ -18,7 +18,29 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-/****************  LOGIN *****************/
+
+/**************** NOTIFICACIONES *************/
+Route::get('notifications', [
+    'uses' => 'api\\NotificationsController@notifications',
+    'as' => 'api.notifications',
+    'middleware' => ['auth:sanctum']
+]);
+
+Route::put('notifications-read', [
+    'uses' => 'api\\NotificationsController@markAsRead',
+    'as' => 'api.notifications.read',
+    'middleware' => ['auth:sanctum']
+]);
+
+Route::put('notifications-allread', [
+    'uses' => 'api\\NotificationsController@markAllAsRead',
+    'as' => 'api.notifications.allread',
+    'middleware' => ['auth:sanctum']
+]);
+
+Broadcast::routes();
+
+/**************** LOGIN *****************/
 Route::prefix('auth')
     ->group(function() {
         /** Loguea Usuario **/
@@ -54,19 +76,21 @@ Route::post('users/{id}/profile', [
 /** Trae el listado de Servicios **/
 Route::get('services', [
     'uses' => 'api\\ServicesController@getAllServices',
-    'as' => 'api.service'
+    'as' => 'api.service',
+    'middleware' => ['auth:sanctum']
 ]);
 
-/** Trae servicio específico **/
 Route::get('service/{id}', [
     'uses' => 'api\\ServicesController@bringServiceById',
-    'as' => 'api.service'
+    'as' => 'api.service',
+    'middleware' => ['auth:sanctum']
 ]);
 
 /** Retorna los Housers por Servicios **/
-Route::get('services/housers/{id}', [
+Route::get('services/{id}', [
     'uses' => 'api\\ServicesController@showHousersByService',
-    'as' => 'api.services.id'
+    'as' => 'api.services.id',
+    'middleware' => ['auth:sanctum']
 ]);
 
 // Servicio Buscador dado de baja desde Back, se muestra/implementa desde Front.
@@ -78,23 +102,24 @@ Route::get('services/housers/{id}', [
 
 /*************** WORKS **************/
 
-/** Trae el listado de todas las Contrataciones  **/
-Route::get('works', [
-    'uses' => 'api\\WorksController@getAllWorks',
-    'as' => 'api.works',
+/** Trae el listado de todas las Ordenes de Trabajo **/
+Route::get('orders', [
+    'uses' => 'api\\OrderssController@getAllOrders',
+    'as' => 'api.orders',
     'middleware' => ['auth:sanctum']
 ]);
 
-/** Trae listado de Contrataciones Pendientes **/
-Route::get('workspending', [
-    'uses' => 'api\\WorksController@showPendingWork',
-    'as' => 'api.works.pending',
+
+/** Genera y guarda en DB Orden de Trabajos al Houser **/
+Route::post('orders', [
+    'uses' => 'api\\OrdersController@requestOrder',
+    'as' => 'api.orders.request',
     'middleware' => ['auth:sanctum']
 ]);
 
-/** Genera y guarda en DB Contratación al Houser **/
-Route::post('works', [
-    'uses' => 'api\\WorksController@requestWork',
-    'as' => 'api.works.request',
+/** Trae listado de Ordenes de Trabajo Pendientes **/
+Route::get('orders/pending', [
+    'uses' => 'api\\OrdersController@showPendingOrder',
+    'as' => 'api.orders.pending',
     'middleware' => ['auth:sanctum']
 ]);

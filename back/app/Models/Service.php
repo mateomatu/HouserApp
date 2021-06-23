@@ -33,21 +33,6 @@ class Service extends Model
     }
 
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function works()
-    {
-        return $this->belongsTo(Work::class);
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function contracts()
-    {
-        return $this->belongsTo(Contract::class);
-    }
 
 
 }
