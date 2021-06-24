@@ -166,8 +166,8 @@ const AuthService = {
                }
            });
        const responseData = await res.json();
-
-       console.log(responseData);
+       console.log("aa", responseData);
+       return responseData;
     },
 
         /**

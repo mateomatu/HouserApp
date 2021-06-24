@@ -46,8 +46,16 @@ const SignUpForm = (props) => {
       telephone: enteredTelephone,
       address: enteredAddress
     });
-
+    
     console.log("response: ", response);
+
+    if (response.errors) {
+      setLoading(false);
+      //TODO: Estilado de errores
+    } else {
+      //TODO: En realidad aca llama al login con el email y la password creada.
+      history.push("/");
+    }
 
   };
 
