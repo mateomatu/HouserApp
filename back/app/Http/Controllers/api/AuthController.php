@@ -53,12 +53,11 @@ class AuthController extends Controller
      * @return \Illuminate\Http\JsonResponse
      */
     public function signUp(Request $request)
-    {   
+    {
         $request->validate(Users::$rulesCreate, Users::$errorMessages);
 
         $data = $request->input();
         $data['password'] = Hash::make($data['password']);
-
         $user = Users::create($data);
 
         return response()->json(['data' => $user])

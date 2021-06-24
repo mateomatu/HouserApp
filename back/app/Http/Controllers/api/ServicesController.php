@@ -45,7 +45,7 @@ class ServicesController extends Controller
     public function showHousersByService($id)
     {
         $query = DB::table('user')
-            ->select('id_user', 'name', 'lastname', 'avatar', 'quote', 'portrait')
+            ->select('id_user', 'name', 'lastname', 'avatar', 'quote')
             ->where('fk_level', '=', '3')
             ->where('fk_service', '=', $id)->get();
 

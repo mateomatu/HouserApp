@@ -83,9 +83,9 @@ class Users extends Authenticatable
     }
 
 
-    public function contracts()
+    public function orders()
     {
-        return $this->belongsToMany(Contract::class, 'users_has_contracts', 'id_user', 'id_contract', 'id_user', 'id_contract');
+        return $this->belongsTo(Order::class, 'fk_order', 'id_order');
     }
 
 }

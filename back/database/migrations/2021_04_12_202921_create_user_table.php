@@ -20,7 +20,7 @@ class CreateUserTable extends Migration
             $table->string('email', 150);
             $table->string('name', 80);
             $table->string('lastname', 80);
-            $table->string('telephone', 20)->nullable();
+            $table->string('telephone', 20);
             $table->string('address', 255)->nullable();
             $table->string('quote', 200)->nullable();
             $table->date('birthday')->nullable();

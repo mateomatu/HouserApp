@@ -16,7 +16,7 @@ class OrdersStatesTableSeeder extends Seeder
     {
         OrderState::create([
             'id_order_state' => 1,
-            'state' => "Procesando"
+            'state' => "Pendiente"
         ]);
         OrderState::create([
             'id_order_state' => 2,

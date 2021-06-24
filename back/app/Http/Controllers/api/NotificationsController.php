@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\api;
 
+use Auth;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Users;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Notification;
+use App\Notifications\ContactHouser;
 use Illuminate\Support\Facades\DB;
 
 class NotificationsController extends Notification //implements ShouldQueue
@@ -16,11 +19,11 @@ class NotificationsController extends Notification //implements ShouldQueue
     public function notifications(Request $request)
     {
 //        $notifications = $request->user()->unreadNotifications;
-        $notifications = Users::get('name');
+        $getUser = Users::get('name');
 
         return response()->json([
-            'data' => $notifications,
-            'message' => 'Tu Houser se pondrá en contacto con vos.'
+//            'data' => $notifications,
+            'message' => $getUser . 'Tu Houser se pondrá en contacto con vos.'
         ]);
     }
 
