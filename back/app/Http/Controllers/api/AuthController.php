@@ -60,8 +60,7 @@ class AuthController extends Controller
         $data['password'] = Hash::make($data['password']);
         $user = Users::create($data);
 
-        return response()->json(['data' => $user])
-            ->with('success', 'Usuario: '. $user->email .' creado con éxito. Ya podés iniciar sesión!');
+        return response()->json(['data' => $user]);
 
     }
 

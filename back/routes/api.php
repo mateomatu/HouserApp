@@ -80,16 +80,16 @@ Route::get('services', [
 //    'middleware' => ['auth:sanctum']
 ]);
 
-Route::get('services/{id}', [
+Route::get('service/{id}', [
     'uses' => 'api\\ServicesController@bringServiceById',
     'as' => 'api.service',
 //    'middleware' => ['auth:sanctum']
 ]);
 
 /** Retorna los Housers por Servicios **/
-Route::get('services/houser/{id}', [
+Route::get('services/housers/{id}', [
     'uses' => 'api\\ServicesController@showHousersByService',
-    'as' => 'api.services.id',
+    'as' => 'api.services.housers.id',
 //    'middleware' => ['auth:sanctum']
 ]);
 
