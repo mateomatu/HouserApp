@@ -15,17 +15,17 @@ class CreateUserTable extends Migration
     {
         Schema::create('user', function (Blueprint $table) {
             $table->bigIncrements('id_user');
-            $table->unsignedTinyInteger('fk_level');
+            $table->unsignedTinyInteger('fk_level')->default(2);
             $table->string('password', 100);
             $table->string('email', 150);
             $table->string('name', 80);
             $table->string('lastname', 80);
-            $table->string('telephone', 20);
+            $table->string('telephone', 20)->nullable();
             $table->string('address', 255)->nullable();
             $table->string('quote', 200)->nullable();
             $table->date('birthday')->nullable();
             $table->string('portrait', 255)->nullable();
-            $table->string('avatar', 255)->nullable();
+            $table->string('avatar', 255)->nullable()->default("avatar.png");
             $table->string('alt', 255)->nullable();
             $table->unsignedBigInteger('fk_service')->nullable();
             $table->rememberToken();

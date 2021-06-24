@@ -147,18 +147,18 @@ const AuthService = {
     },
 
 
-    async signUp (data) {
-        console.log("data", data)
+    async signUp (userData) {
+        console.log("userData", userData)
         const res = await fetch(`${API_HOST}/api/auth/signup`, {
             method: 'POST',
             body: JSON.stringify({
-                email: data.email,
-                password: data.password,
-                name: data.name,
-                lastname: data.lastname,
-                telephone: data.telephone,
-                address: data.address
-
+                email: userData.email,
+                password: userData.password,
+                name: userData.name,
+                lastname: userData.lastname,
+                telephone: userData.telephone,
+                address: userData.address,
+                fklevel: 2
                }),
                headers: {
                    'Content-Type': 'application/json',

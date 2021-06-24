@@ -10,7 +10,7 @@ const ServiceItem = props => {
 
     return (
         <li className={styles['service-item']}>
-            <Link className={styles['service-link']} to={`/services/${service.id}/housers`}> 
+            <Link className={styles['service-link']} to={`/services/housers/${service.id}`}> 
                 <h3>{props.service.title}</h3>
                 <img src={`${PUBLIC_PATH}/assets/imgs/${service.img}`} alt={service.alt} />
             </Link>
