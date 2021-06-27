@@ -8,11 +8,11 @@ use App\Models\Order;
 use App\Models\OrderState;
 use App\Models\Service;
 use App\Models\Users;
-use App\Notifications\sendNotifUser;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Carbon;
 
 
 class OrdersController extends Controller
@@ -36,12 +36,33 @@ class OrdersController extends Controller
             ->orderBy('orders.created_at', 'ASC')->get();
 
         return response()->json(['data' => $ordersByUser]);
-
     }
 
 
     /**
-     * MATU, ACORDATE DE PROBAR PARA EL INSERT ESTA FUNCION
+     * Mock-up response from Houser to User.
+     * @param $fk_user
+     * @param $fk_houser
+     * @param $orderID
+     */
+    protected function houserMsg($fk_user, $fk_houser, $orderID)
+    {
+        $getUserName = DB::table('user')
+            ->select('name')
+            ->where('id_user', '=', $fk_user)->get();
+
+        $getHouserName = DB::table('user')
+            ->select('name')
+            ->where('id_user', '=', $fk_houser)->get();
+
+        $notifyMsg= "Hola " . $getUserName . ", mi nombre es: " . $getHouserName . ". Voy a estar contactándome con vos por email o whatsapp brevemente para coordinar la visita";
+
+        DB::table('orders')
+            ->where('id_order', $orderID)
+            ->update(['houser_message' => $notifyMsg]);
+    }
+
+    /**
      * Generates Work Order and saves it in Database. Issues notification to the User.
      * @param Request $request
      * @return JsonResponse
@@ -58,6 +79,11 @@ class OrdersController extends Controller
         $nameHouser = $queryNameHouser[0]->name;
 
 
+        $lastInsert = Order::all()->last();
+//        dd($lastInsert);
+
+        $this->houserMsg($data['fk_user'], $data['fk_houser'], $lastInsert->id);
+
         return response()->json([
             'success' => true,
             'data' => $requestOrder,
@@ -66,9 +92,10 @@ class OrdersController extends Controller
         ]);
     }
 
+
+
     /**
-     * MATU, ACORDATE DE PROBAR PARA EL INSERT ESTA FUNCION
-     * Guarda Orden de Trabajo en Tabla con sus 2 ID'S de Usuario respectivos.
+     * Generates Work Order and saves it in Database. Issues notification to the User.
      * @param Request $request
      * @return JsonResponse
      */
@@ -82,12 +109,15 @@ class OrdersController extends Controller
 
         $requestOrder = Order::create($order);
 
-
         $queryNameHouser = DB::table('user')
             ->select('name')
             ->where('id_user', '=', $request->get('fk_houser'))->get();
 
         $nameHouser = $queryNameHouser[0]->name;
+
+        $lastInsert = Order::all()->last();
+
+        $this->houserMsg($order['fk_user'], $order['fk_houser'], $lastInsert[0]->id);
 
         return response()->json([
             'success' => true,
@@ -98,7 +128,7 @@ class OrdersController extends Controller
     }
 
     /**
-     * Update Status on Order Table, when User Accept, Decline, Completed o Rating.
+     * Updates Orders Status
      * @param $id_order
      * @param $status
      * @return JsonResponse
@@ -110,8 +140,25 @@ class OrdersController extends Controller
             ->update(['fk_order_state' => $status]);
 
         return response()->json([
-        'success' => true,
-        'message' => "Se modificó el Estado de la Orden de Solicitud"
+           'success' => true,
+           'message' => "Se modificó el Estado de la Orden de Solicitud"
+        ]);
+    }
+
+    /**
+     * Updates Read Date of the Order (Message)
+     * @param $id_order
+     * @return JsonResponse
+     */
+    public function updateReadMsg($id_order)
+    {
+        DB::table('orders')
+            ->where('id_order', $id_order)
+            ->update(['read_at' => now()]);
+
+        return response()->json([
+            'success' => true,
+            'message' => "Mensaje Leído"
         ]);
     }
 

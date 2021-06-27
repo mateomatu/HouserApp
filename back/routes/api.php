@@ -13,11 +13,11 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-Broadcast::routes();
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
 
 
 /**************** LOGIN *****************/
@@ -75,8 +75,7 @@ Route::get('services/housers/{id}', [
 
 
 /*************** ORDERS **************/
-
-/** Retorna todos los Orders por Usuario **/
+/** Retorna los Orders por Usuario **/
 Route::get('orders/users/{id}', [
     'uses' => 'api\\OrdersController@OrdersByUser',
     'as' => 'api.orders.users.id',
@@ -84,7 +83,7 @@ Route::get('orders/users/{id}', [
 ]);
 
 /**
- * MATU, ACORDATE DE PROBAR ESTA RUTA, SI INSERTA EN BD.
+ * MATU, ACORDATE DE PROBAR ESTA TURA, SI INSERTA EN DB CON ID_USER LOGUEADO.
  *  Genera y guarda en DB Orden de Trabajos al Houser **/
 Route::post('orders/request', [
     'uses' => 'api\\OrdersController@requestOrder',
@@ -92,9 +91,9 @@ Route::post('orders/request', [
 //    'middleware' => ['auth:sanctum']
 ]);
 
-/**
- * MATU, ACORDATE DE PROBAR ESTA RUTA, SI INSERTA EN BD.
- *  Genera y guarda en DB Orden de Trabajos al Houser **/
+/** 
+ * MATU, ACORDATE DE PROBAR ESTA TURA, SI INSERTA EN DB CON ID_USER LOGUEADO.
+ * Genera y guarda en DB Orden de Trabajos al Houser **/
 Route::post('orders/save', [
     'uses' => 'api\\OrdersController@saveOrder',
     'as' => 'api.orders.save',
@@ -108,22 +107,9 @@ Route::patch('orders/{idorder}/{status}', [
 //    'middleware' => ['auth:sanctum']
 ]);
 
-
-/**************** NOTIFICATIONS *************/
-Route::get('notifications', [
-    'uses' => 'api\\NotificationsController@notifications',
-    'as' => 'api.notifications',
-//    'middleware' => ['auth:sanctum']
-]);
-
-Route::put('notifications-read', [
-    'uses' => 'api\\NotificationsController@markAsRead',
-    'as' => 'api.notifications.read',
-//    'middleware' => ['auth:sanctum']
-]);
-
-Route::put('notifications-allread', [
-    'uses' => 'api\\NotificationsController@markAllAsRead',
-    'as' => 'api.notifications.allread',
+/** Cambia a Leído (Fecha) la Orden de Pedido */
+Route::patch('notification/read/{id_order}', [
+    'uses' => 'api\\OrdersController@updateReadMsg',
+    'as' => 'api.notification.read.id_order',
 //    'middleware' => ['auth:sanctum']
 ]);
