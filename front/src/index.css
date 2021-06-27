@@ -36,6 +36,10 @@ li {
   text-align: center;
 }
 
+.stars {
+  text-align: center;
+}
+
 .error-input {
   border: 1px solid rgb(170, 51, 51) !important;
 }
@@ -50,6 +54,14 @@ a:visited {
 
 a {
   text-decoration: none;
+}
+
+a.button {
+  color: white !important;
+}
+
+a p{
+  color: black;
 }
 
 #root{ 
@@ -103,6 +115,23 @@ a {
   margin-bottom: 0.5rem;
   color: #262626;
   font-size: 1.3rem;
+}
+
+.houser-button {
+  display: block;
+  width: 80%;
+  border-radius: 10px;
+  margin: auto;
+  padding: 13px;
+  box-shadow: none;
+  border: none;
+  background: #ff9801;
+  color: white;
+  font-size: 1.2rem;
+}
+
+.houser-button a:visited, .houser-button a{
+  color: white !important;
 }
 
 .w-50 {

@@ -10,10 +10,9 @@ const HouserCard = props => {
     
     const houser = props.houser;
     
-
     return (
         <li>
-            <Link to="/ad">
+            <Link to={`/ad/${houser.id}`}>
                 <article className={cardStlyes}>
                     <header className={styles['profile-header']}>
                         { houser.portrait !== undefined && houser.portrait !== null && <img className={styles['img-portrait']} src={`${API_IMGS}/${houser.portrait}`} alt={houser.alt}/>}

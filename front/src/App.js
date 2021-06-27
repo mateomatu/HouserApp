@@ -15,6 +15,7 @@ import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SignUpPage";
 import ChangePasswordPage from "./pages/ChangePasswordPage";
 import ChangeAddressPage from "./pages/ChangeAddressPage";
+import HouserInfoPage from "./pages/HouserInfoPage";
 
 /* Services */
 import AuthService, { AuthContext } from "./services/User/User-service";
@@ -26,16 +27,16 @@ import Ad from "./components/Ads/Ad";
 
 function App() {
   const [auth, setAuth] = useState(AuthService.getLoggedUser());
-  const [showSidebar, setShowSidebar] = useState(false)
+  const [showSidebar, setShowSidebar] = useState(false);
   /* const authCtx = useContext(AuthContext); */
   const userIsLogged = AuthService.isLogged();
 
   const showCartHandler = (open) => {
     setShowSidebar(open);
-  }
+  };
   const closeCartHandler = (close) => {
     setShowSidebar(close);
-  }
+  };
 
   return (
     <Fragment>
@@ -48,48 +49,52 @@ function App() {
         }}
       >
         <div className="content">
-          { showSidebar && <BurgerMenu onCloseSidebar={closeCartHandler}/>} 
+          {showSidebar && <BurgerMenu onCloseSidebar={closeCartHandler} />}
           <Header onOpenSidebar={showCartHandler} />
           <Switch>
-            <Route path="/ad" exact>
-              { userIsLogged && <Ad />}
-              { !userIsLogged && <LoginPage />}
+            <Route path="/ad/:houserId" exact>
+              {userIsLogged && <Ad />}
+              {!userIsLogged && <LoginPage />}
             </Route>
             <Route path="/login" exact>
-              { userIsLogged && <Redirect to="/" />}
-              { !userIsLogged && <LoginPage />}
+              {userIsLogged && <Redirect to="/" />}
+              {!userIsLogged && <LoginPage />}
             </Route>
             <Route path="/sign-up" exact>
-              { userIsLogged && <Redirect to="/home" />}
-              { !userIsLogged && <SignUpPage />}
+              {userIsLogged && <Redirect to="/home" />}
+              {!userIsLogged && <SignUpPage />}
             </Route>
             <Route path="/" exact>
-              { userIsLogged && <Redirect to="/home" />}
-              { !userIsLogged && <Redirect to="/login" />}
+              {userIsLogged && <Redirect to="/home" />}
+              {!userIsLogged && <Redirect to="/login" />}
             </Route>
             <Route path="/home">
-              { userIsLogged && <HomePage />}
-              { !userIsLogged && <Redirect to="/login" />}
+              {userIsLogged && <HomePage />}
+              {!userIsLogged && <Redirect to="/login" />}
             </Route>
             <Route path="/profile" exact>
-              { userIsLogged && <ProfilePage />}
-              { !userIsLogged && <Redirect to="/login" />}
+              {userIsLogged && <ProfilePage />}
+              {!userIsLogged && <Redirect to="/login" />}
             </Route>
             <Route path="/profile/change-password">
-              { userIsLogged && <ChangePasswordPage />}
-              { !userIsLogged && <Redirect to="/login" />}
+              {userIsLogged && <ChangePasswordPage />}
+              {!userIsLogged && <Redirect to="/login" />}
             </Route>
             <Route path="/profile/change-address">
-              { userIsLogged && <ChangeAddressPage />}
-              { !userIsLogged && <Redirect to="/login" />}
+              {userIsLogged && <ChangeAddressPage />}
+              {!userIsLogged && <Redirect to="/login" />}
             </Route>
             <Route path="/notifications/">
-              { userIsLogged && <NotificationsPage />}
-              { !userIsLogged && <Redirect to="/login" />}
+              {userIsLogged && <NotificationsPage />}
+              {!userIsLogged && <Redirect to="/login" />}
             </Route>
             <Route path="/services/:serviceId">
-              { userIsLogged && <LookForHousersPage />}
-              { !userIsLogged && <Redirect to="/login" />}
+              {userIsLogged && <LookForHousersPage />}
+              {!userIsLogged && <Redirect to="/login" />}
+            </Route>
+            <Route path="/houser/:houserId" exact>
+              {userIsLogged && <HouserInfoPage />}
+              {!userIsLogged && <Redirect to="/login" />}
             </Route>
           </Switch>
         </div>
