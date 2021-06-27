@@ -82,10 +82,13 @@ class Users extends Authenticatable
         return $this->belongsTo(Service::class, 'fk_service', 'id_service');
     }
 
-
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function orders()
     {
-        return $this->belongsTo(Order::class, 'fk_order', 'id_order');
+        return $this->hasMany(Order::class, 'fk_user', 'id_user');
     }
+
 
 }

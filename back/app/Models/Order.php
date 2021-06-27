@@ -10,7 +10,8 @@ class Order extends Model
     use HasFactory;
     protected $table = "orders";
     protected $primaryKey = "id_order";
-    protected $fillable = ['fk_order_state', 'fk_service', 'fk_user'];
+    protected $fillable = ['fk_order_state', 'fk_service', 'fk_user', 'fk_houser', 'comment'];
+
 
     /**
      * FK 'id_order_state' belongs To Orders_States
@@ -31,10 +32,19 @@ class Order extends Model
     }
 
     /**
-     * FK 'id_user' belongs To User
+     * FK 'fk_user' belongs To User
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function users()
+    {
+        return $this->belongsTo(Users::class);
+    }
+
+    /**
+     * FK 'fk_houser' belongs To User
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function houser()
     {
         return $this->belongsTo(Users::class);
     }

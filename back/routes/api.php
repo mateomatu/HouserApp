@@ -13,32 +13,12 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+Broadcast::routes();
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-
-/**************** NOTIFICATIONS *************/
-Route::get('notifications', [
-    'uses' => 'api\\NotificationsController@notifications',
-    'as' => 'api.notifications',
-//    'middleware' => ['auth:sanctum']
-]);
-
-Route::put('notifications-read', [
-    'uses' => 'api\\NotificationsController@markAsRead',
-    'as' => 'api.notifications.read',
-//    'middleware' => ['auth:sanctum']
-]);
-
-Route::put('notifications-allread', [
-    'uses' => 'api\\NotificationsController@markAllAsRead',
-    'as' => 'api.notifications.allread',
-//    'middleware' => ['auth:sanctum']
-]);
-
-Broadcast::routes();
 
 /**************** LOGIN *****************/
 Route::prefix('auth')
@@ -96,31 +76,54 @@ Route::get('services/housers/{id}', [
 
 /*************** ORDERS **************/
 
-/** Trae el listado de todas las Ordenes de Trabajo **/
-Route::get('orders', [
-    'uses' => 'api\\OrdersController@getAllOrders',
-    'as' => 'api.orders',
+/** Retorna todos los Orders por Usuario **/
+Route::get('orders/users/{id}', [
+    'uses' => 'api\\OrdersController@OrdersByUser',
+    'as' => 'api.orders.users.id',
 //    'middleware' => ['auth:sanctum']
 ]);
 
-/** Genera y guarda en DB Orden de Trabajos al Houser **/
-Route::post('orders', [
+/**
+ * MATU, ACORDATE DE PROBAR ESTA RUTA, SI INSERTA EN BD.
+ *  Genera y guarda en DB Orden de Trabajos al Houser **/
+Route::post('orders/request', [
     'uses' => 'api\\OrdersController@requestOrder',
     'as' => 'api.orders.request',
 //    'middleware' => ['auth:sanctum']
 ]);
 
-/** Trae listado de Ordenes de Trabajo Pendientes **/
-Route::get('orders/pending', [
-    'uses' => 'api\\OrdersController@showPendingOrder',
-    'as' => 'api.orders.pending',
+/**
+ * MATU, ACORDATE DE PROBAR ESTA RUTA, SI INSERTA EN BD.
+ *  Genera y guarda en DB Orden de Trabajos al Houser **/
+Route::post('orders/save', [
+    'uses' => 'api\\OrdersController@saveOrder',
+    'as' => 'api.orders.save',
 //    'middleware' => ['auth:sanctum']
 ]);
 
-/** Trae listado de Ordenes de Trabajo Completadas **/
-Route::get('orders/completed', [
-    'uses' => 'api\\OrdersController@showCompletedOrder',
-    'as' => 'api.orders.completed',
+/** Cambia Estado de la Orden de Pedido */
+Route::patch('orders/{idorder}/{status}', [
+    'uses' => 'api\\OrdersController@updateStatus',
+    'as' => 'api.orders.idorder.status',
 //    'middleware' => ['auth:sanctum']
 ]);
 
+
+/**************** NOTIFICATIONS *************/
+Route::get('notifications', [
+    'uses' => 'api\\NotificationsController@notifications',
+    'as' => 'api.notifications',
+//    'middleware' => ['auth:sanctum']
+]);
+
+Route::put('notifications-read', [
+    'uses' => 'api\\NotificationsController@markAsRead',
+    'as' => 'api.notifications.read',
+//    'middleware' => ['auth:sanctum']
+]);
+
+Route::put('notifications-allread', [
+    'uses' => 'api\\NotificationsController@markAllAsRead',
+    'as' => 'api.notifications.allread',
+//    'middleware' => ['auth:sanctum']
+]);

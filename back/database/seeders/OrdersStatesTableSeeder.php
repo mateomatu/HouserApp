@@ -16,18 +16,22 @@ class OrdersStatesTableSeeder extends Seeder
     {
         OrderState::create([
             'id_order_state' => 1,
-            'state' => "Pendiente"
+            'state' => "Solicitado"
         ]);
         OrderState::create([
             'id_order_state' => 2,
-            'state' => "Cancelado"
+            'state' => "Pendiente"
         ]);
         OrderState::create([
             'id_order_state' => 3,
-            'state' => "Completado"
+            'state' => "Cancelado"
         ]);
         OrderState::create([
             'id_order_state' => 4,
+            'state' => "Completado"
+        ]);
+        OrderState::create([
+            'id_order_state' => 5,
             'state' => "Valorado"
         ]);
     }
