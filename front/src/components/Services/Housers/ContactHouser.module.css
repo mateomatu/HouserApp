@@ -1,0 +1,34 @@
+.contact-houser {
+    width: 90%;
+    margin: auto;
+}
+
+.contact-houser-textarea {
+    display: inline-block;
+    width: 100%;
+    margin: auto;
+    border: 1px solid #33333362;
+    height: 6rem;
+    font-size: 1rem;
+    padding: 3px;
+    margin-bottom: 10px;
+}
+
+.contact-houser-svg {
+    width: 5rem;
+    margin: auto;
+    display: flex;
+    fill: #e4af13;
+}
+
+img.photo {
+    width: 6rem;
+    border-radius: 100%;
+    height: 6rem;
+    border: 3px solid #e4af13;
+    margin: 0 auto;
+    display: block;
+    position: relative;
+    z-index: 2;
+    margin-bottom: 10px;
+}

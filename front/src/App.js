@@ -5,6 +5,7 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import Header from "./components/Layout/Header";
 import Navbar from "./components/Layout/Navbar";
 import LoginFooter from "./components/Login/LoginFooter";
+import ContactHouserOK from "./components/Services/Housers/ContactHouserOK";
 
 /* Pages */
 import HomePage from "./pages/HomePage";
@@ -16,6 +17,7 @@ import SignUpPage from "./pages/SignUpPage";
 import ChangePasswordPage from "./pages/ChangePasswordPage";
 import ChangeAddressPage from "./pages/ChangeAddressPage";
 import HouserInfoPage from "./pages/HouserInfoPage";
+import ContactHouserPage from "./pages/ContactHouserPage";
 
 /* Services */
 import AuthService, { AuthContext } from "./services/User/User-service";
@@ -52,7 +54,7 @@ function App() {
           {showSidebar && <BurgerMenu onCloseSidebar={closeCartHandler} />}
           <Header onOpenSidebar={showCartHandler} />
           <Switch>
-            <Route path="/ad/:houserId" exact>
+            <Route path="/ad/:houserId/:serviceId" exact>
               {userIsLogged && <Ad />}
               {!userIsLogged && <LoginPage />}
             </Route>
@@ -92,8 +94,16 @@ function App() {
               {userIsLogged && <LookForHousersPage />}
               {!userIsLogged && <Redirect to="/login" />}
             </Route>
-            <Route path="/houser/:houserId" exact>
+            <Route path="/houser/:houserId/:serviceId" exact>
               {userIsLogged && <HouserInfoPage />}
+              {!userIsLogged && <Redirect to="/login" />}
+            </Route>
+            <Route path="/contact-houser/:houserId/:serviceId" exact>
+              {userIsLogged && <ContactHouserPage />}
+              {!userIsLogged && <Redirect to="/login" />}
+            </Route>
+            <Route path="/contact-houser/ok" exact>
+              {userIsLogged && <ContactHouserOK />}
               {!userIsLogged && <Redirect to="/login" />}
             </Route>
           </Switch>

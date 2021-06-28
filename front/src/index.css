@@ -113,13 +113,14 @@ a p{
 .pages-title {
   margin-top: 2rem;
   margin-bottom: 0.5rem;
-  color: #262626;
+  color: #303030;
   font-size: 1.3rem;
 }
 
 .houser-button {
   display: block;
   width: 80%;
+  text-align: center;
   border-radius: 10px;
   margin: auto;
   padding: 13px;
@@ -140,6 +141,10 @@ a p{
 
 .w-100 {
   width: 100%;
+}
+
+.text-center {
+  text-align: center;
 }
 
 .m-0 {

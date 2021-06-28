@@ -35,7 +35,7 @@ const HousersList = (props) => {
         })().catch(err => console.log("Error al traer housers"))
     }, [serviceId])
 
-    const housers = houserUsers.map(houser=>{ return <Houser key={houser.id} houser={houser} />});
+    const housers = houserUsers.map(houser=>{ return <Houser key={houser.id} service={serviceId} houser={houser} />});
 
     if (housers.length === 0) {
         //TODO: Componente de no hay housers por mostrar!

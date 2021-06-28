@@ -11,6 +11,7 @@ const Ad = () => {
 
     const params = useParams();
     const houserId = params.houserId;
+    const serviceId = params.serviceId;
 
     setTimeout(() => {
         setLoading(false)
@@ -22,7 +23,7 @@ const Ad = () => {
 
     return (
         <Fragment>
-            <Link to={`/houser/${houserId}`} className={styles.adbtn}>X</Link>
+            <Link to={`/houser/${houserId}/${serviceId}`} className={styles.adbtn}>X</Link>
             <img className={styles['ad']} src={`${PUBLIC_PATH}/assets/imgs/ad.jpg`} alt="Publicidad" />
         </Fragment>
     );
