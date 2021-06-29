@@ -45,6 +45,7 @@ const ContactHouser = () => {
 
     const submitContact = async (e) => {
         e.preventDefault();
+        setIsLoading(true);
 
         const enteredMessage = textAreaInputRef.current.value;
         const userId = authCtx.user.id_user;
@@ -62,7 +63,7 @@ const ContactHouser = () => {
 
         // IF RESPONSE.OK HAGO EL HISTORY PUSH AL OK
         // IF RESPONSE.FAIL HAGO EL HISTORY PUSH AL FAIL
-
+        setIsLoading(false);
         history.push(`/contact-houser/ok`);
 
 

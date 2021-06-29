@@ -2,10 +2,12 @@ import React, { Fragment } from "react";
 
 import NotificationItem from "./NotificationItem";
 
+import styles from "./NotificationList.module.css";
+
 const NotificationList = () => {
     return (
         <Fragment >
-            <ul>
+            <ul className={styles['notification-list']}>
                 <NotificationItem />
             </ul>
         </Fragment>

@@ -1,9 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
+
+import OrderService from "../../services/Orders/Order-service";
+import { AuthContext } from "../../services/User/User-service";
 
 import styles from "./Navbar.module.css";
 
 const Navbar = () => {
+
+    const authCtx = useContext(AuthContext);
+
+/*     setInterval( async () => {
+        const data = await OrderService.checkForOrders(1)
+        console.log(data);
+    }
+    , 5000); */
+
     return (
             <nav className={styles.navbar}>
                 <ul>

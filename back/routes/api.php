@@ -41,14 +41,14 @@ Route::prefix('auth')
 Route::get('users/{id}', [
     'uses' => 'api\\UsersController@showProfile',
     'as' => 'api.users.profile',
-//    'middleware' => ['auth:sanctum']
+    'middleware' => ['auth:sanctum']
 ]);
 
 /** Edita el Perfil del Usuario **/
 Route::post('users/{id}/profile', [
     'uses' => 'api\\UsersController@editProfile',
     'as' => 'api.users.profile-edit',
-//    'middleware' => ['auth:sanctum']
+    'middleware' => ['auth:sanctum']
 ]);
 
 /*************** SERVICES **************/
@@ -57,20 +57,20 @@ Route::post('users/{id}/profile', [
 Route::get('services', [
     'uses' => 'api\\ServicesController@getAllServices',
     'as' => 'api.service',
-//    'middleware' => ['auth:sanctum']
+    'middleware' => ['auth:sanctum']
 ]);
 
 Route::get('service/{id}', [
     'uses' => 'api\\ServicesController@bringServiceById',
     'as' => 'api.service',
-//    'middleware' => ['auth:sanctum']
+    'middleware' => ['auth:sanctum']
 ]);
 
 /** Retorna los Housers por Servicios **/
 Route::get('services/housers/{id}', [
     'uses' => 'api\\ServicesController@showHousersByService',
     'as' => 'api.services.housers.id',
-//    'middleware' => ['auth:sanctum']
+    'middleware' => ['auth:sanctum']
 ]);
 
 
@@ -79,32 +79,22 @@ Route::get('services/housers/{id}', [
 Route::get('orders/users/{id}', [
     'uses' => 'api\\OrdersController@OrdersByUser',
     'as' => 'api.orders.users.id',
-//    'middleware' => ['auth:sanctum']
+    'middleware' => ['auth:sanctum']
 ]);
 
-/**
- * MATU, ACORDATE DE PROBAR ESTA TURA, SI INSERTA EN DB CON ID_USER LOGUEADO.
- *  Genera y guarda en DB Orden de Trabajos al Houser **/
+/** Genera y guarda en DB Orden de Trabajos al Houser **/
 Route::post('orders/request', [
     'uses' => 'api\\OrdersController@requestOrder',
     'as' => 'api.orders.request',
-//    'middleware' => ['auth:sanctum']
+    'middleware' => ['auth:sanctum']
 ]);
 
-/** 
- * MATU, ACORDATE DE PROBAR ESTA TURA, SI INSERTA EN DB CON ID_USER LOGUEADO.
- * Genera y guarda en DB Orden de Trabajos al Houser **/
-Route::post('orders/save', [
-    'uses' => 'api\\OrdersController@saveOrder',
-    'as' => 'api.orders.save',
-//    'middleware' => ['auth:sanctum']
-]);
 
 /** Cambia Estado de la Orden de Pedido */
 Route::patch('orders/{idorder}/{status}', [
     'uses' => 'api\\OrdersController@updateStatus',
     'as' => 'api.orders.idorder.status',
-//    'middleware' => ['auth:sanctum']
+    'middleware' => ['auth:sanctum']
 ]);
 
 /** Cambia a Leído (Fecha) la Orden de Pedido */
