@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 
 import OrderService from "../../services/Orders/Order-service";
@@ -10,11 +10,29 @@ const Navbar = () => {
 
     const authCtx = useContext(AuthContext);
 
-/*     setInterval( async () => {
-        const data = await OrderService.checkForOrders(1)
-        console.log(data);
-    }
-    , 5000); */
+    const [hasNotifications, setHasNotifications] = useState(false);
+
+        let popup = "";
+
+        useEffect(() => {
+            const interval = setInterval( async () => {
+                const data = await OrderService.checkForOrders(authCtx.user.id_user);
+                console.log(data);
+                if (data.some(notification => notification.read_at === null)) {
+                    setHasNotifications(true);
+                } else {
+                    setHasNotifications(false);
+                }
+            }, 2500)
+            return () => {
+                clearInterval(interval);
+            }
+        }, [])
+
+
+        if (hasNotifications) {
+            popup = 'has-notifications';
+        }
 
     return (
             <nav className={styles.navbar}>
@@ -41,7 +59,7 @@ const Navbar = () => {
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink activeClassName={styles.navActive} to="/notifications">
+                        <NavLink activeClassName={styles.navActive} className={`${styles.notifications} ${styles[popup]}`} to="/notifications">
                             <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                             viewBox="0 0 500 500" enableBackground="new 0 0 500 500">
                             <path d="M375,33c-69.1,0-125,44-125,113c0-69.1-55.9-113-125-113S0,89,0,158c0,23.6,6.5,45.7,18,64.6

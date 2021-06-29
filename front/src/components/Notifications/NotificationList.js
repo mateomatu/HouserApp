@@ -4,11 +4,16 @@ import NotificationItem from "./NotificationItem";
 
 import styles from "./NotificationList.module.css";
 
-const NotificationList = () => {
+const NotificationList = props => {
+
+    const notificationItems = props.notifications.map(order => {
+        return <NotificationItem key={order.id} order={order} />
+    })
+
     return (
         <Fragment >
             <ul className={styles['notification-list']}>
-                <NotificationItem />
+                {notificationItems}
             </ul>
         </Fragment>
     )

@@ -4,7 +4,7 @@ import { API_HOST } from "../../constants/api";
 const OrderService = {
     
     async checkForOrders(id){
-        const response = await fetch(API_HOST + `/api/orders/users/${1}`);
+        const response = await fetch(API_HOST + `/api/orders/users/${id}`);
         const responseData = await response.json();
         return responseData.data;
     },
