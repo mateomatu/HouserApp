@@ -28,7 +28,7 @@ class OrdersController extends Controller
     public function OrdersByUser($id)
     {
         $ordersByUser = DB::table('orders')
-            ->select('orders.id_order', 'houser.orders.fk_houser', 'houser.user.name', 'services.title', 'orders_states.state', 'orders.created_at')
+            ->select('orders.id_order', 'houser.orders.fk_houser', 'houser.user.name', 'houser.user.avatar', 'services.title', 'orders_states.state', 'orders.created_at', 'orders.user_message', 'orders.houser_message', 'orders.read_at')
             ->join('houser.user', 'orders.fk_houser', '=', 'houser.user.id_user')
             ->join('houser.services', 'orders.fk_service', '=', 'services.id_service')
             ->join('houser.orders_states', 'orders.fk_order_state', '=', 'orders_states.id_order_state')
@@ -40,12 +40,12 @@ class OrdersController extends Controller
 
 
     /**
-     * Mock-up response from Houser to User.
+     * Mockapea Mensaje de Houser al Usuario
      * @param $fk_user
      * @param $fk_houser
      * @param $orderID
      */
-    protected function houserMsg($fk_user, $fk_houser, $orderID)
+    public function houserMsg($fk_user, $fk_houser, $orderID)
     {
         $getUserName = DB::table('user')
             ->select('name')
@@ -55,11 +55,13 @@ class OrdersController extends Controller
             ->select('name')
             ->where('id_user', '=', $fk_houser)->get();
 
-        $notifyMsg= "Hola " . $getUserName . ", mi nombre es: " . $getHouserName . ". Voy a estar contactándome con vos por email o whatsapp brevemente para coordinar la visita";
+        $notifyMsg = "Hola " . $getUserName[0]->name . ", mi nombre es: " . $getHouserName[0]->name . ". Voy a estar contactándome con vos por email o whatsapp brevemente para coordinar la visita";
 
-        DB::table('orders')
+        $query = DB::table('orders')
             ->where('id_order', $orderID)
             ->update(['houser_message' => $notifyMsg]);
+
+
     }
 
     /**
@@ -71,6 +73,9 @@ class OrdersController extends Controller
     {
         $data = $request->all();
         $requestOrder = Order::create($data);
+        $orderID = $requestOrder->id_order;
+
+//        dd($orderID);
 
         $queryNameHouser = DB::table('user')
             ->select('name')
@@ -78,11 +83,7 @@ class OrdersController extends Controller
 
         $nameHouser = $queryNameHouser[0]->name;
 
-
-        $lastInsert = Order::all()->last();
-//        dd($lastInsert);
-
-        $this->houserMsg($data['fk_user'], $data['fk_houser'], $lastInsert->id);
+        $respuesta = $this->houserMsg($data['fk_user'], $data['fk_houser'], $orderID);
 
         return response()->json([
             'success' => true,
@@ -92,40 +93,6 @@ class OrdersController extends Controller
         ]);
     }
 
-
-
-    /**
-     * Generates Work Order and saves it in Database. Issues notification to the User.
-     * @param Request $request
-     * @return JsonResponse
-     */
-    public function saveOrder(Request $request)
-    {
-        $order = new Order;
-        $order = $request->all();
-        $fk_user = Auth::id();
-//        $order->$fk_user;
-//        return response()->json([$fk_user]);
-
-        $requestOrder = Order::create($order);
-
-        $queryNameHouser = DB::table('user')
-            ->select('name')
-            ->where('id_user', '=', $request->get('fk_houser'))->get();
-
-        $nameHouser = $queryNameHouser[0]->name;
-
-        $lastInsert = Order::all()->last();
-
-        $this->houserMsg($order['fk_user'], $order['fk_houser'], $lastInsert[0]->id);
-
-        return response()->json([
-            'success' => true,
-            'data' => $requestOrder,
-            'messageBody' => "Ya contactaste al Houser",
-            'messageTitle' => $nameHouser . " se pondrá en contacto con vos"
-        ]);
-    }
 
     /**
      * Updates Orders Status
