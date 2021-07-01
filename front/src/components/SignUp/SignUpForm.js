@@ -54,6 +54,11 @@ const SignUpForm = (props) => {
       //TODO: Estilado de errores
     } else {
       //TODO: En realidad aca llama al login con el email y la password creada.
+      const userData = await AuthService.login({
+        email: enteredEmail,
+        password: enteredPassword,
+      });
+      authCtx.updateAuthState(userData);
       history.push("/");
     }
 

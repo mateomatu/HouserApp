@@ -24,7 +24,7 @@ const Login = () => {
                 <h2 className={titleClass}>Iniciar Sesión</h2>
                 <LoginForm addFailAnimation={failLogin} />
                 <div className={`mt-3 ${styles["signup-text"]} gibson-regular`}>
-                    <span>¿Aún no te has registrado?</span><Link to="/sign-up" className="primary-color d-inlineblock ml-1">Haz click aquí</Link>
+                    <span>¿Aún no tienes una cuenta?</span><Link to="/sign-up" className="link-primary d-inlineblock ml-1">Presiona aquí</Link>
                 </div>
             </section>
         </Fragment>

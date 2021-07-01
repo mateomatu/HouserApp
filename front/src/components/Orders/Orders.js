@@ -10,7 +10,7 @@ const Orders = () => {
 
     return (
         <section className={styles.orders}>
-            <h2 className={"ml-2 " + titleClass}>TUS PEDIDOS</h2>
+            <h2 className={"ml-2 " + titleClass}>PEDIDOS ACTIVOS</h2>
             <OrdersList />
         </section>
     );

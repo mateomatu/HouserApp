@@ -28,7 +28,7 @@ class OrdersController extends Controller
     public function OrdersByUser($id)
     {
         $ordersByUser = DB::table('orders')
-            ->select('orders.id_order', 'houser.orders.fk_houser', 'houser.user.name', 'houser.user.avatar', 'houser.user.portrait', 'houser.user.alt', 'services.title', 'orders_states.state', 'orders.created_at', 'orders.user_message', 'orders.houser_message', 'orders.read_at')
+            ->select('orders.id_order', 'houser.orders.fk_houser', 'houser.user.name', 'houser.user.avatar', 'houser.user.portrait', 'houser.user.telephone', 'houser.user.alt', 'services.title', 'orders_states.state', 'orders.created_at', 'orders.user_message', 'orders.houser_message', 'orders.read_at')
             ->join('houser.user', 'orders.fk_houser', '=', 'houser.user.id_user')
             ->join('houser.services', 'orders.fk_service', '=', 'services.id_service')
             ->join('houser.orders_states', 'orders.fk_order_state', '=', 'orders_states.id_order_state')
@@ -55,7 +55,7 @@ class OrdersController extends Controller
             ->select('name')
             ->where('id_user', '=', $fk_houser)->get();
 
-        $notifyMsg = "Hola " . $getUserName[0]->name . ", mi nombre es: " . $getHouserName[0]->name . ". Voy a estar contactándome con vos por email o whatsapp brevemente para coordinar la visita";
+        $notifyMsg = "Hola " . $getUserName[0]->name . ", mi nombre es: " . $getHouserName[0]->name . ". Voy a estar contactándome con vos por teléfono brevemente para coordinar la visita. Si llegamos a un acuerdo te pediré que por favor aceptes el pedido, de lo contrario puedes rechazar";
 
         $query = DB::table('orders')
             ->where('id_order', $orderID)

@@ -85,7 +85,11 @@ const AuthService = {
     },
     
     async getUserData(id) {
-        const response = await fetch(`${API_HOST}/api/users/${id}`);
+        const response = await fetch(`${API_HOST}/api/users/${id}`, {
+            headers: {
+                ...AuthService.authorizationHeader()
+            }
+        });
         const responseData = await response.json();
         return responseData.data;
     },

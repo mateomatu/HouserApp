@@ -18,6 +18,7 @@ import ChangePasswordPage from "./pages/ChangePasswordPage";
 import ChangeAddressPage from "./pages/ChangeAddressPage";
 import HouserInfoPage from "./pages/HouserInfoPage";
 import ContactHouserPage from "./pages/ContactHouserPage";
+import NotificationChatPage from "./pages/NotificationChatPage";
 
 /* Services */
 import AuthService, { AuthContext } from "./services/User/User-service";
@@ -86,8 +87,12 @@ function App() {
               {userIsLogged && <ChangeAddressPage />}
               {!userIsLogged && <Redirect to="/login" />}
             </Route>
-            <Route path="/notifications/">
+            <Route path="/notifications/" exact>
               {userIsLogged && <NotificationsPage />}
+              {!userIsLogged && <Redirect to="/login" />}
+            </Route>
+            <Route path="/notifications/chat/:orderId" exact>
+              {userIsLogged && <NotificationChatPage />}
               {!userIsLogged && <Redirect to="/login" />}
             </Route>
             <Route path="/services/:serviceId">

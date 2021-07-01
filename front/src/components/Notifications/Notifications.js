@@ -1,10 +1,10 @@
 import React, { Fragment, useState, useContext, useEffect } from "react";
+import NotificationList from "./NotificationList";
+
 import OrderService from "../../services/Orders/Order-service";
 import { AuthContext } from "../../services/User/User-service";
-
 import Loader from "../UI/Loader";
 
-import NotificationList from "./NotificationList";
 
 const Notifications = () => {
 
@@ -33,7 +33,12 @@ const Notifications = () => {
                     userMsg: notification.user_message,
                     houserAvatar: notification.avatar
                 })
-            });        
+            });
+            
+            loadedOrders.sort((a,b) => {
+                return new Date(b.creationDate) - new Date(a.creationDate);
+            })
+            
             
             setNotifications(loadedOrders);
             setIsLoading(false)

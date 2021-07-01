@@ -9,12 +9,11 @@ const NotificationList = props => {
 
   const notification = props.order;
 
-  console.log("notif: ", notification);
-
   return (
     <Fragment>
       <li className={`mb-2 ${styles["notification-container"]} ${!notification.read ? styles["read"] : styles['no-read']}`}>
-        <Link to="/" className={`flex align-center ${styles['notification-link']}`}>
+        {/* */}
+        <Link to={`/notifications/chat/${notification.id}`}  className={`flex align-center ${styles['notification-link']}`}>
           <img
             className={styles.photo}
             src={`${API_IMGS}/${notification.houserAvatar}`}

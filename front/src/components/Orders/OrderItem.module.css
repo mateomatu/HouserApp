@@ -1,0 +1,57 @@
+.profile-header {
+    position: relative;
+    background: #ff9800;
+    height: 3rem;
+    padding-top: 10px;
+    margin-bottom: 3rem;
+    border-radius: 10px 10px 0 0;
+}
+
+.houser-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 100px;
+    border: 6px solid white;
+    margin: 0 auto;
+    display: block;
+}
+
+.houser-card {
+    width: 90%;
+    margin-left: 10px;
+    border-radius: 10px;
+    box-shadow: 0 1px 6px #33333363;
+    min-height: auto;
+    height: 170px;
+    position: relative;
+}
+
+/* .action-buttons {
+    position: absolute;
+    bottom: 0;
+} */
+
+.action-buttons{
+    display: flex;
+    justify-content: space-around;
+}
+
+.cancel {
+    border: 1px solid #d03b3b;
+    padding: 15px;
+    border-radius: 10px;
+    background: #d03b3b;
+    color: white;
+    font-weight: bold;
+    width: 150px;
+}
+
+.finish {
+    border: 1px solid #48b75f;
+    padding: 15px;
+    border-radius: 10px;
+    background: #48b75f;
+    color: white;
+    font-weight: bold;
+    width: 150px;
+}
