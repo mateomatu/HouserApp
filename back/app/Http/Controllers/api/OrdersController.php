@@ -28,7 +28,7 @@ class OrdersController extends Controller
     public function OrdersByUser($id)
     {
         $ordersByUser = DB::table('orders')
-            ->select('orders.id_order', 'houser.orders.fk_houser', 'houser.user.name', 'houser.user.avatar', 'houser.user.portrait', 'houser.user.alt', 'services.title', 'orders_states.state', 'orders.created_at', 'orders.user_message', 'orders.houser_message', 'orders.read_at')
+            ->select('orders.id_order', 'houser.orders.fk_houser', 'houser.user.name', 'houser.user.avatar', 'services.title', 'orders_states.state', 'orders.fk_order_state', 'orders.created_at', 'orders.user_message', 'orders.houser_message', 'orders.read_at')
             ->join('houser.user', 'orders.fk_houser', '=', 'houser.user.id_user')
             ->join('houser.services', 'orders.fk_service', '=', 'services.id_service')
             ->join('houser.orders_states', 'orders.fk_order_state', '=', 'orders_states.id_order_state')
@@ -71,11 +71,11 @@ class OrdersController extends Controller
      */
     public function requestOrder(Request $request)
     {
+        $request->validate(Order::rulesCreate());
+
         $data = $request->all();
         $requestOrder = Order::create($data);
         $orderID = $requestOrder->id_order;
-
-//        dd($orderID);
 
         $queryNameHouser = DB::table('user')
             ->select('name')
@@ -107,8 +107,8 @@ class OrdersController extends Controller
             ->update(['fk_order_state' => $status]);
 
         return response()->json([
-           'success' => true,
-           'message' => "Se modificó el Estado de la Orden de Solicitud"
+            'success' => true,
+            'message' => "Se modificó el Estado de la Orden de Solicitud"
         ]);
     }
 
