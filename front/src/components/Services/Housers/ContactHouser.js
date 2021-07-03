@@ -15,7 +15,7 @@ import OrderService from "../../../services/Orders/Order-service";
 
 const ContactHouser = () => {
 
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
     const [houser, setHouser] = useState({});
 
     const textAreaInputRef = useRef();
@@ -28,7 +28,6 @@ const ContactHouser = () => {
     const authCtx = useContext(AuthContext);
 
     useEffect(() => {
-        setIsLoading(true);
         (async () => {
             const data = await AuthService.getUserData(houserId);
 

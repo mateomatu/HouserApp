@@ -1,28 +1,49 @@
-import React, { Fragment } from "react";
-import { Link } from "react-router-dom";
+import React, { Fragment, useState } from "react";
+import { Link, useHistory } from "react-router-dom";
 
 import { API_IMGS } from "../../constants/api";
+
+import OrderService from "../../services/Orders/Order-service";
 
 import styles from "./NotificationItem.module.css";
 
 const NotificationList = props => {
 
   const notification = props.order;
+  const history = useHistory();
+
+  const clickNotificationHandler = () => {
+    if (notification.read === null) {
+      (async () => {
+        const data = await OrderService.readNotification(notification.id);
+        
+        //Devuelve un success
+        if (data.success) {
+          history.push(`/notifications/chat/${notification.id}`);
+        }
+      })().catch(err => console.log("Error al actualizar la solicitud"))
+    } else {
+      history.push(`/notifications/chat/${notification.id}`);
+    }
+  }
+    
+
+  //`/notifications/chat/${notification.id`
 
   return (
     <Fragment>
-      <li className={`mb-2 ${styles["notification-container"]} ${!notification.read ? styles["read"] : styles['no-read']}`}>
-        {/* */}
-        <Link to={`/notifications/chat/${notification.id}`}  className={`flex align-center ${styles['notification-link']}`}>
+      <li onClick={clickNotificationHandler} className={`mb-2 flex align-center ${styles["notification-container"]} ${!notification.read ? styles["read"] : styles['no-read']}`}>
           <img
             className={styles.photo}
             src={`${API_IMGS}/${notification.houserAvatar}`}
             alt={`ahre`}
             />
-          <p className={styles["notification-text"]}>
+          {!notification.read && (<p className={styles["notification-text"]}>
             Tienes un nuevo mensaje de {notification.houserName}
-          </p>
-        </Link>
+          </p>)}
+          {notification.read && (<p className={styles["notification-text"]}>
+            Mensaje de {notification.houserName}
+          </p>)}
       </li>
 {/*       <li className={`${styles["notification-container"]} ${styles["no-read"]}`}>
         <img

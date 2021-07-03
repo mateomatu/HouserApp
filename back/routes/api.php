@@ -91,15 +91,15 @@ Route::post('orders/request', [
 
 
 /** Cambia Estado de la Orden de Pedido */
-Route::patch('orders/{idorder}/{status}', [
+Route::put('orders/{idorder}/{status}', [
     'uses' => 'api\\OrdersController@updateStatus',
     'as' => 'api.orders.idorder.status',
     'middleware' => ['auth:sanctum']
 ]);
 
 /** Cambia a Leído (Fecha) la Orden de Pedido */
-Route::patch('notification/read/{id_order}', [
+Route::put('notification/read/{id_order}', [
     'uses' => 'api\\OrdersController@updateReadMsg',
     'as' => 'api.notification.read.id_order',
-//    'middleware' => ['auth:sanctum']
+    'middleware' => ['auth:sanctum']
 ]);

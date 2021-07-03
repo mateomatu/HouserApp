@@ -14,7 +14,7 @@ import styles from "./HouserInfo.module.css";
 
 const HouserInfo = () => {
 
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
     const [houser, setHouser] = useState({});
 
     const params = useParams();
@@ -23,7 +23,6 @@ const HouserInfo = () => {
 
 
     useEffect(() => {
-        setIsLoading(true);
         (async () => {
             const data = await AuthService.getUserData(houserId);
 

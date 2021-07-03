@@ -3,6 +3,8 @@ import { useParams } from "react-router";
 
 import Loader from "../UI/Loader";
 
+import NotificationMatch from "./NotificationMatch";
+
 import OrderService from "../../services/Orders/Order-service";
 import { AuthContext } from "../../services/User/User-service";
 
@@ -12,7 +14,7 @@ import styles from "./NotificationChat.module.css";
 
 const NotificationChat = () => {
 
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
     const [notification, setNotification] = useState({});
 
     const authCtx = useContext(AuthContext);
@@ -26,10 +28,7 @@ const NotificationChat = () => {
     }, [])
 
     const fetchData = async () => {
-        setIsLoading(true);
             const data = await OrderService.checkForOrders(authCtx.user.id_user);
-
-            console.log("data", data);
 
             const notificationFinded = data.find(notif => {
                 return notif.id_order === notificationId;
@@ -53,6 +52,7 @@ const NotificationChat = () => {
                 <p className={styles['message-content']}>{notification.houser_message}</p>
                 <p className={styles['message-content']}>Si quieres contactarte conmigo mi teléfono es: <b>{notification.telephone}</b></p>
             </section>
+            <NotificationMatch notification={notification} />
         </Fragment>
     );
 }

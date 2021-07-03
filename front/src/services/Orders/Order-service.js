@@ -14,6 +14,27 @@ const OrderService = {
         return responseData.data;
     },
 
+    async updateOrderState(id_order, id_status){
+        const response = await fetch(API_HOST + `/api/orders/${id_order}/${id_status}`, {
+            method: 'PUT',
+            headers: {
+                ...AuthService.authorizationHeader()
+            }
+        })
+        const responseData = await response.json();
+        return responseData;
+    },
+    async readNotification(id_order){
+        const response = await fetch(API_HOST + `/api/notification/read/${id_order}`, {
+            method: 'PUT',
+            headers: {
+                ...AuthService.authorizationHeader()
+            }
+        })
+        const responseData = await response.json();
+        return responseData;
+    },
+
     async generateOrder(data) {
         const res = await fetch(`${API_HOST}/api/orders/request`, {
             method: 'POST',
