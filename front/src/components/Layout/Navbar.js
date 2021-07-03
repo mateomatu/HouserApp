@@ -17,7 +17,6 @@ const Navbar = () => {
         useEffect(() => {
             const interval = setInterval( async () => {
                 const data = await OrderService.checkForOrders(authCtx.user.id_user);
-                console.log(data);
                 if (data.some(notification => notification.read_at === null)) {
                     setHasNotifications(true);
                 } else {

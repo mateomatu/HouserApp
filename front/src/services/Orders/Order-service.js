@@ -1,10 +1,15 @@
 import { API_HOST } from "../../constants/api";
+import AuthService from "../User/User-service";
 
 
 const OrderService = {
     
     async checkForOrders(id){
-        const response = await fetch(API_HOST + `/api/orders/users/${id}`);
+        const response = await fetch(API_HOST + `/api/orders/users/${id}`, {
+            headers: {
+                ...AuthService.authorizationHeader()
+            }
+        });
         const responseData = await response.json();
         return responseData.data;
     },
@@ -20,24 +25,13 @@ const OrderService = {
                }),
                headers: {
                    'Content-Type': 'application/json',
-                   'X-Requested-With': 'XMLHttpRequest'
+                   'X-Requested-With': 'XMLHttpRequest',
+                   ...AuthService.authorizationHeader()
                }
            });
        const responseData = await res.json();
        console.log("generate order: ", responseData);
-   },
-
-   /**
-* Retorna un objeto con el Authorization header configurado si el usuario está autenticado.
-* null de lo contrario.
-*
-* @returns {{Authorization: string}|null}
-*/
-/* authorizationHeader() {
-   if(!this.isAuthenticated()) return null;
-   return {'Authorization': 'Bearer ' + AuthService.getToken()};
-} */
-
+   }
 }
 
 export default OrderService;

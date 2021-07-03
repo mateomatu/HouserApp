@@ -50,9 +50,10 @@ class UsersController extends Controller
             unlink(public_path('/imgs/' . $oldImg));
         }
 
-        return response()->json(['data' => $user])
-            ->with('success', 'Tu perfil fue actualizado con éxito.');
+        return response()->json([
+            'success' => true,
+            'data' => $user,
+            'message' => "Tus datos han sido actualizados con éxito."
+        ]);
     }
-
-
 }

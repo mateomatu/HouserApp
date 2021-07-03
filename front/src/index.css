@@ -98,6 +98,10 @@ a p{
   color: #FF9800 !important;
 }
 
+.link-primary {
+  color: #cd7b03 !important;
+}
+
 .bold {
   font-weight: bold !important;
 }

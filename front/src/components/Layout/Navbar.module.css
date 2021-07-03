@@ -45,7 +45,7 @@ nav.navbar ul .navActive svg {
     background-color: #c32b2b;
     box-shadow: 0 1px 3px #000000;
     border: 1px solid #ff9800;
-    animation: fade-in 400ms ease-in-out forwards;
+    animation: fade-in 800ms ease-in-out forwards;
 }
 
 @keyframes fade-in {

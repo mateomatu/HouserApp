@@ -5,10 +5,9 @@ const OrdersList = () => {
     return (
         <Fragment>
         <ul>
-            <OrderItem />
-            
+            <OrderItem /> 
         </ul>
-        <p className="ml-2">Aún no tienes ningún pedido</p>
+        <p className="ml-2">No tienes ningún pedido activo</p>
         </Fragment>
     );
 }
