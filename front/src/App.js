@@ -19,6 +19,7 @@ import ChangeAddressPage from "./pages/ChangeAddressPage";
 import HouserInfoPage from "./pages/HouserInfoPage";
 import ContactHouserPage from "./pages/ContactHouserPage";
 import NotificationChatPage from "./pages/NotificationChatPage";
+import OrdersHistoryPage from "./pages/OrdersHistoryPage";
 
 /* Services */
 import AuthService, { AuthContext } from "./services/User/User-service";
@@ -109,6 +110,10 @@ function App() {
             </Route>
             <Route path="/contact-houser/ok" exact>
               {userIsLogged && <ContactHouserOK />}
+              {!userIsLogged && <Redirect to="/login" />}
+            </Route>
+            <Route path="/orders-history" exact>
+              {userIsLogged && <OrdersHistoryPage />}
               {!userIsLogged && <Redirect to="/login" />}
             </Route>
           </Switch>

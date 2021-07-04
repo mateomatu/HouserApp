@@ -23,12 +23,13 @@
     fill: #949494d4;
 }
 
-.burger-nav button {
-    color: #949494d4;
+.burger-nav button, .burger-nav a {
+    color: #949494d4 !important;
     font-size: 1.5rem;
     font-family: "Calibri";
     display: inline-block;
     margin-left: 0.8rem;
     vertical-align: top;
     border: none;
+    background: transparent;
 }

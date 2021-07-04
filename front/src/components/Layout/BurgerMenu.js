@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { useHistory } from "react-router";
+import { Link } from "react-router-dom";
 import AuthService, { AuthContext } from "../../services/User/User-service";
 
 import Sidebar from "./Sidebar";
@@ -39,6 +40,20 @@ const BurgerMenu = props => {
             </section>
             <nav className={styles['burger-nav']}>
                 <ul>
+                    <li className={`mb-2`}>
+                    <svg className={styles['burger-nav-svg']} version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                        viewBox="0 0 500 500" enableBackground="new 0 0 500 500">
+                        <g>
+                            <path d="M315.1,0H44v500H456V165.8v-24.5v-0.5L315.1,0z M314.8,34.2l107,107h-107L314.8,34.2L314.8,34.2z
+                                M431.5,475.5H68.5v-451h221.7v141.3h141.3v309.7H431.5z"/>
+                            <rect x="122.4" y="205.6" fill="#010101" width="255.2" height="24.5"/>
+                            <rect x="122.4" y="115.5" fill="#010101" width="127.6" height="24.5"/>
+                            <rect x="122.4" y="295.7" fill="#010101" width="255.2" height="24.5"/>
+                            <rect x="122.4" y="385.9" fill="#010101" width="255.2" height="24.5"/>
+                        </g>
+                    </svg>
+                        <Link onClick={closeSidebarHandler} to="/orders-history" >Historial Pedidos</Link>
+                    </li>
                     <li>
                         <svg className={styles['burger-nav-svg']} version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                         viewBox="0 0 500 500">
