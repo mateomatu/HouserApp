@@ -1,16 +1,16 @@
 .burger-container {
-    width: 13rem;
+    position: fixed;
+    left: -300px;
+    top: 0;
+    bottom: 0;
+    z-index: 102;
+    width: 65%;
     padding: 0.5rem;
     padding-right: 1rem;
-    position: absolute;
-    top: 0;
-    background: white;
-    bottom: 0;
-    left: -300px;
-    z-index: 102;
     display: flex;
     flex-direction: column;
     align-items: center;
+    background: white;
     border-right: 1px solid #33333355;
     box-shadow: 1px 0 3px #33333355;
     animation: slide-left 650ms ease-out forwards;

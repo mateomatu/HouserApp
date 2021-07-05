@@ -6,15 +6,20 @@ const ServicesFilter = props => {
 
     const filterRef = useRef();
 
-    const filterHandler = () => {
-        props.onFilterServices(filterRef.current.value);
+    const filterHandler = (event) => {
+
+        const enteredFilter = filterRef.current.value;
+
+        if (event.charCode === 13) {
+            props.onFilterServices(enteredFilter);
+        }
     }
 
     const titleClass = `${styles['services-filter']} gibson-semibold`;
 
     return (
         <div className={titleClass}>
-            <input ref={filterRef} onChange={filterHandler} maxLength={50} placeholder="Buscar servicio"></input>
+            <input ref={filterRef} onKeyPress={filterHandler} maxLength={50} placeholder="Buscar servicio"></input>
         </div>
     );
 }

@@ -29,18 +29,23 @@ const Notifications = () => {
                     houserName: notification.name,
                     read: notification.read_at,
                     state: notification.state,
+                    fkOrderState: notification.fk_order_state,
                     serviceTitle: notification.title,
                     userMsg: notification.user_message,
                     houserAvatar: notification.avatar
                 })
             });
+
+            const filteredNotifications = loadedOrders.filter(not => {
+                return not.fkOrderState === 1;
+            })
             
-            loadedOrders.sort((a,b) => {
+            filteredNotifications.sort((a,b) => {
                 return new Date(b.creationDate) - new Date(a.creationDate);
             })
             
             
-            setNotifications(loadedOrders);
+            setNotifications(filteredNotifications);
             setIsLoading(false)
             
         })().catch(err => console.log("ERROR AL TRAER notificaciones"))

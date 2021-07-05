@@ -167,6 +167,18 @@ a p{
   text-align: center;
 }
 
+.mt-upper {
+  margin-top: 6.5rem;
+}
+
+.text-danger {
+  color: rgb(219 28 28);
+}
+
+.text-success {
+  color: rgb(94, 163, 67);
+}
+
 .m-0 {
   margin: 0;
 }

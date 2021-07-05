@@ -8,7 +8,7 @@ const HousersList = (props) => {
     
     //TODO: Utilizar el ID del servicio para consultar a la tabla pivot los housers que pertenecen
     //a dicho servicio
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
     const [houserUsers, setHouserUsers] = useState([]);
     const serviceId = props.serviceId;
 

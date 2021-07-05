@@ -21,13 +21,9 @@ const Orders = () => {
         (async () => {
             const data = await OrderService.checkForOrders(authCtx.user.id_user);
 
-            console.log("data", data);
-
             const loadedOrders = data.filter(order => {
                 return order.fk_order_state === 2 || order.fk_order_state === 4;
             })
-
-            console.log("asd", loadedOrders);
             
             loadedOrders.sort((a,b) => {
                 return new Date(b.created_at) - new Date(a.created_at);

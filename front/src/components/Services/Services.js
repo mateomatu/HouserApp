@@ -22,6 +22,8 @@ const Services = () => {
         setFilteredService(filter);
     }
 
+    const suggestions = ["mueble", "compu"];
+
     useEffect(() => {
         setIsLoading(true);
         (async () => {
@@ -44,10 +46,24 @@ const Services = () => {
     }, [])
 
     const titleClass = `ml-2 ${styles['service-title']} pages-title gibson-semibold`;
-    const servicesFiltered = services.filter(service => { return service.title.toUpperCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "").includes(filteredService.toUpperCase()); })
+    const servicesFiltered = services.filter(service => {
+/*         if (filteredService.toUpperCase().includes("PINTOR")) {
+            return service.title === "Pinturería";
+        }
+        if (filteredService.toUpperCase().includes("MADERA") || filteredService.toUpperCase().includes("MUEBLE") || filteredService.toUpperCase().includes("CARPINTER") ) {
+            return service.title === "Carpintería";
+        }
+        if (filteredService.toUpperCase().includes("AIRE")) {
+            return service.title === "Aires acondicionados";
+        }
+        if (filteredService.toUpperCase().includes("PC") || filteredService.toUpperCase().includes("COMPU") || filteredService.toUpperCase().includes("NOTEBOOK")) {
+            return service.title === "Técnico PC";
+        } */
+         return service.title.toUpperCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "").includes(filteredService.toUpperCase()); 
+        })
     return (
         <section>
-            <ServicesFilter onFilterServices={serviceFilterHandler} />
+            <ServicesFilter suggestions={suggestions} onFilterServices={serviceFilterHandler} />
             <h2 className={titleClass}>SERVICIOS</h2>
             <Link to="/home/all" className={styles['see-all']}>Ver todos</Link>
             { isLoading && <Loader />}
