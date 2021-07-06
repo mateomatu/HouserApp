@@ -90,5 +90,14 @@ class Users extends Authenticatable
         return $this->hasMany(Order::class, 'fk_user', 'id_user');
     }
 
+    /**
+     * FK 'id_rating' belongs To Rating
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function rating()
+    {
+        return $this->hasMany(Rating::class);
+    }
+
 
 }

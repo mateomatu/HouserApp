@@ -3,21 +3,22 @@
 namespace App\Http\Controllers\api;
 
 use Auth;
-use Session;
+use Faker\Provider\UserAgent;
 use App\Models\Order;
+use App\Models\Rating;
 use App\Models\OrderState;
 use App\Models\Service;
 use App\Models\Users;
+use App\Http\Resources\Rating as RatingResource;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Carbon;
 
 
 class OrdersController extends Controller
 {
-    use Notifiable;
+//    use Notifiable;
 
 
     /**
@@ -61,6 +62,7 @@ class OrdersController extends Controller
             ->where('id_order', $orderID)
             ->update(['houser_message' => $notifyMsg]);
 
+
     }
 
     /**
@@ -70,7 +72,7 @@ class OrdersController extends Controller
      */
     public function requestOrder(Request $request)
     {
-        /* $request->validate(Order::rulesCreate()); */
+        $request->validate(Order::rulesCreate());
 
         $data = $request->all();
         $requestOrder = Order::create($data);
@@ -101,7 +103,6 @@ class OrdersController extends Controller
      */
     public function updateStatus($id_order, $status)
     {
-        
         DB::table('orders')
             ->where('id_order', $id_order)
             ->update(['fk_order_state' => $status]);
@@ -126,6 +127,38 @@ class OrdersController extends Controller
         return response()->json([
             'success' => true,
             'message' => "Mensaje Leído"
+        ]);
+    }
+
+
+    /**
+     * Rating Completed Order.
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function setRatingOrder(Request $request)
+    {
+
+        $data = $request->all();
+        $requestRating = Rating::create($data);
+
+
+        return response()->json([
+            'success' => true,
+            'data' => $requestRating,
+            'message' => "¡Valoraste al Houser y a su trabajo exitosamente!"
+        ]);
+
+    }
+
+    public function getRating($id)
+    {
+        $query = DB::table('rating')
+            ->select('id_rating', 'fk_user', 'fk_order', 'rating')
+            ->where('id_rating', '=', $id)->get();
+
+        return response()->json([
+            'data' => $query
         ]);
     }
 

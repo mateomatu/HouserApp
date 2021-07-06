@@ -75,6 +75,7 @@ Route::get('services/housers/{id}', [
 
 
 /*************** ORDERS **************/
+
 /** Retorna los Orders por Usuario **/
 Route::get('orders/users/{id}', [
     'uses' => 'api\\OrdersController@OrdersByUser',
@@ -97,9 +98,22 @@ Route::put('orders/{idorder}/{status}', [
     'middleware' => ['auth:sanctum']
 ]);
 
-/** Cambia a Leído (Fecha) la Orden de Pedido */
+/** Cambia a Leído la Orden de Pedido */
 Route::put('notification/read/{id_order}', [
     'uses' => 'api\\OrdersController@updateReadMsg',
     'as' => 'api.notification.read.id_order',
     'middleware' => ['auth:sanctum']
 ]);
+
+/** Genera y guarda Valoración a Pedido */
+Route::post('orders/rating', [
+    'uses' => 'api\\OrdersController@setRatingOrder',
+    'as' => 'api.orders.rating',
+    'middleware' => ['auth:sanctum']
+]);
+
+//Route::get('orders/rating/{id_order}',[
+//    'uses' => 'api\\OrdersController@getRating',
+//    'as' => 'api.orders.rating.id_order',
+////    'middleware' => ['auth:sanctum']
+//]);

@@ -25,6 +25,7 @@ return array(
     'App\\Models\\Level' => $baseDir . '/app/Models/Level.php',
     'App\\Models\\Order' => $baseDir . '/app/Models/Order.php',
     'App\\Models\\OrderState' => $baseDir . '/app/Models/OrderState.php',
+    'App\\Models\\Rating' => $baseDir . '/app/Models/Rating.php',
     'App\\Models\\Service' => $baseDir . '/app/Models/Service.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
     'App\\Models\\Users' => $baseDir . '/app/Models/Users.php',

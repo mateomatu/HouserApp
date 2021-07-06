@@ -30,7 +30,7 @@ class UsersController extends Controller
      */
     public function editProfile(Request $request, $id) {
 
-        $request->validate(Users::$rulesCreate, Users::$errorMessages);
+        $request->validate(Users::$errorMessages);
 
         $user = Users::findOrFail($id);
         $data = $request->all();
@@ -56,4 +56,6 @@ class UsersController extends Controller
             'message' => "Tus datos han sido actualizados con éxito."
         ]);
     }
+
+
 }

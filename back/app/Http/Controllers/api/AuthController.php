@@ -19,7 +19,7 @@ class AuthController extends Controller
 
         if(!auth()->attempt($credentials)){
             return response()->json([
-               'success' => false,
+                'success' => false,
             ]);
         }
 
@@ -60,7 +60,11 @@ class AuthController extends Controller
         $data['password'] = Hash::make($data['password']);
         $user = Users::create($data);
 
-        return response()->json(['data' => $user]);
+        return response()->json([
+            'success' => true,
+            'data' => $user,
+            'message' => $user->name . ", ¡Te registraste exitosamente!"
+        ]);
 
     }
 

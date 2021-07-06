@@ -18,8 +18,8 @@ class Service extends Model
     ];
     /** @var array error Messages. */
     public static $errorMessages = [
-        'service.required' => 'El nombre del servicio no puede quedar vacío.',
-        'service.min' => 'El nombre del servicio debe tener al menos :min caracteres.'
+        'title.required' => 'El nombre del servicio no puede quedar vacío.',
+        'title.min' => 'El nombre del servicio debe tener al menos :min caracteres.'
     ];
 
 

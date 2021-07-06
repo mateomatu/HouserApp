@@ -707,6 +707,7 @@ class ComposerStaticInit32ee85a23d708b384a200e887baf7c47
         'App\\Models\\Level' => __DIR__ . '/../..' . '/app/Models/Level.php',
         'App\\Models\\Order' => __DIR__ . '/../..' . '/app/Models/Order.php',
         'App\\Models\\OrderState' => __DIR__ . '/../..' . '/app/Models/OrderState.php',
+        'App\\Models\\Rating' => __DIR__ . '/../..' . '/app/Models/Rating.php',
         'App\\Models\\Service' => __DIR__ . '/../..' . '/app/Models/Service.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Models\\Users' => __DIR__ . '/../..' . '/app/Models/Users.php',
