@@ -151,7 +151,7 @@ class OrdersController extends Controller
 
     }
 
-    public function getRating($id)
+/*     public function getRating($id)
     {
         $query = DB::table('rating')
             ->select('id_rating', 'fk_user', 'fk_order', 'rating')
@@ -160,6 +160,6 @@ class OrdersController extends Controller
         return response()->json([
             'data' => $query
         ]);
-    }
+    } */
 
 }
