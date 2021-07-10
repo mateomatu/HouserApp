@@ -1,20 +1,36 @@
-import React, { useRef } from "react";
+import React, { useContext, useRef } from "react";
 import { Link } from "react-router-dom";
+
+import AuthService from "../../../services/User/User-service";
+import { AuthContext } from "../../../services/User/User-service";
 
 import styles from "./ChangeAddress.module.css";
 
 
-
-
-
 const ChangeAddress = () => {
+
+    const authCtx = useContext(AuthContext);
+    console.log(authCtx);
 
     const inputAddressRef = useRef();
 
     const submitNewAddress = (e) => {
         e.preventDefault();
 
+        const idUser = authCtx.user.id_user
         const enteredAddress = inputAddressRef.current.value;
+
+        const userData = {
+            id_user: idUser,
+            address: enteredAddress
+        }
+
+        if (enteredAddress !== null && enteredAddress !== "" && enteredAddress !== undefined) {
+            AuthService.editProfile(userData);
+        }
+
+
+
 
     }
 
@@ -26,7 +42,7 @@ const ChangeAddress = () => {
                 <form onSubmit={submitNewAddress} className={styles["login-form"]}>
                     <section className={styles["input-section"]}>
                         <label htmlFor="address">Nuevo Domicilio</label>
-                        <input className="input" id="address" />
+                        <input ref={inputAddressRef} className="input" id="address" />
                     </section>
                     <button className="gibson-medium">Confirmar</button>
                 </form>

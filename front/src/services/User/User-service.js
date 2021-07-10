@@ -75,6 +75,21 @@ const AuthService = {
         return false;
     },
 
+    editProfile(userData) {
+        console.log(userData);
+        fetch(`${API_HOST}/users/${userData.id_user}/profile`, {
+            method: 'PUT',
+            body: JSON.stringify({
+                address: userData.address
+            }),
+            headers: {
+                'Content-Type': 'application/json',
+                'X-Requested-With': 'XMLHttpRequest',
+                'Access-Control-Allow-Origin': '*'
+            }
+        })
+    },
+
     /**
      * Return all services.
      *

@@ -54,7 +54,7 @@ const HouserInfo = () => {
                     <p className="mt-3"><b>Teléfono:</b> {houser.telephone}</p>
                     <p><b>Ubicación:</b> {houser.address}</p>
                     <img className={styles['google-maps']} src={`${PUBLIC_PATH}/assets/imgs/address.png`} alt="google maps"></img>
-                    <Link to={`/contact-houser/${houserId}/${serviceId}`} className={`gibson-medium houser-button mb-5 button`}>Contactar Houser</Link>
+                    <Link to={`/ad/${houserId}/${serviceId}`} className={`gibson-medium houser-button mb-5 button`}>Contactar Houser</Link>
                 </section>
             </Fragment>
         );

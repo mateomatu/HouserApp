@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useHistory } from "react-router";
 
 import AuthService, { AuthContext } from "../../../services/User/User-service";
@@ -7,7 +7,6 @@ import AuthService, { AuthContext } from "../../../services/User/User-service";
 import Loader from "../../UI/Loader";
 
 import { API_IMGS } from "../../../constants/api";
-import { PUBLIC_PATH } from "../../../constants/api";
 
 
 import styles from "./ContactHouser.module.css";

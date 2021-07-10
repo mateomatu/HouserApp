@@ -19,6 +19,9 @@ const OrderItem = props => {
       setIsLoading(true);
       const data = await OrderService.updateOrderState(order.id_order, 3);
       
+      if (data) {
+                
+      }
       //Devuelve un success
 
       setIsLoading(false);

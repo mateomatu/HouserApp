@@ -1,4 +1,4 @@
-import React, { useContext, useState, useRef } from "react";
+import React, { useContext } from "react";
 import { Link, Switch, Route } from "react-router-dom";
 
 //Constants
@@ -6,7 +6,6 @@ import { API_IMGS } from "../../constants/api"
 
 //Components
 import Loader from "../UI/Loader";
-import RepeatPassword from "../UI/RepeatPassword";
 
 //Services
 import { AuthContext } from "../../services/User/User-service";
@@ -16,8 +15,6 @@ import styles from "./UserProfile.module.css";
 
 
 const UserProfile = () => {
-
-    const [loading, setLoading] = useState(false);
     
     const authCtx = useContext(AuthContext);
 

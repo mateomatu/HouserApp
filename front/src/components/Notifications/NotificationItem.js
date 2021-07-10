@@ -1,5 +1,5 @@
-import React, { Fragment, useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import React, { Fragment } from "react";
+import { useHistory } from "react-router-dom";
 
 import { API_IMGS } from "../../constants/api";
 

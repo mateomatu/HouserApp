@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from "react";
+import React, { useState, Fragment } from "react";
 
 import OrderService from "../../services/Orders/Order-service";
 
@@ -13,10 +13,6 @@ const NotificationMatch = props => {
     const [state, setState] = useState(props.notification.fk_order_state);
     const [isLoading, setIsLoading] = useState(false);
 
-    /* useEffect(() => {    
-        setState(state);
-    }, [state]); */
-
     const changeStateCancelHandler = () => {
         setIsLoading(true);
 
@@ -27,6 +23,9 @@ const NotificationMatch = props => {
         (async () => {
             const data = await OrderService.updateOrderState(orderId, 3);
             
+            if (data) {
+                
+            }
             //Devuelve un success
 
             setIsLoading(false);
@@ -44,6 +43,9 @@ const NotificationMatch = props => {
         (async () => {
             const data = await OrderService.updateOrderState(orderId, 2);
 
+            if (data) {
+                
+            }
             //Devuelve un success
             
             setIsLoading(false);
