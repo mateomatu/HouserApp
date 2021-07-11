@@ -29,12 +29,12 @@ class OrdersController extends Controller
     public function OrdersByUser($id)
     {
         $ordersByUser = DB::table('orders')
-            ->select('orders.id_order', 'houser.orders.fk_houser', 'houser.user.name', 'houser.user.lastname', 'houser.user.alt', 'houser.user.portrait', 'houser.user.telephone', 'houser.user.avatar', 'services.title', 'orders_states.state', 'orders.fk_order_state', 'orders.created_at', 'orders.user_message', 'orders.houser_message', 'orders.read_at')
+            ->select('orders.id_order', 'houser.orders.fk_houser', 'orders.rating', 'houser.user.name', 'houser.user.lastname', 'houser.user.alt', 'houser.user.portrait', 'houser.user.telephone', 'houser.user.avatar', 'services.title', 'orders_states.state', 'orders.fk_order_state', 'orders.created_at', 'orders.user_message', 'orders.houser_message', 'orders.read_at')
             ->join('houser.user', 'orders.fk_houser', '=', 'houser.user.id_user')
             ->join('houser.services', 'orders.fk_service', '=', 'services.id_service')
             ->join('houser.orders_states', 'orders.fk_order_state', '=', 'orders_states.id_order_state')
             ->where('orders.fk_user', '=', $id)
-            ->orderBy('orders.created_at', 'ASC')->get();
+            ->orderBy('orders.updated_at', 'ASC')->get();
 
         return response()->json(['data' => $ordersByUser]);
     }
@@ -132,34 +132,56 @@ class OrdersController extends Controller
 
 
     /**
-     * Rating Completed Order.
-     * @param Request $request
+     * @param $id_order
+     * @param $rating
      * @return JsonResponse
      */
-    public function setRatingOrder(Request $request)
+    public function setOrderRating($id_order, $rating)
     {
+        $this->updateStatus($id_order, 5);
 
-        $data = $request->all();
-        $requestRating = Rating::create($data);
+        DB::table('orders')
+            ->where('id_order', $id_order)
+            ->update(['rating' => $rating]);
 
+        $queryHouser = DB::table('orders')
+            ->select('fk_houser')
+            ->where('id_order', '=', $id_order)->get();
+
+        $this->setHouserRating($queryHouser[0]->fk_houser);
 
         return response()->json([
             'success' => true,
-            'data' => $requestRating,
-            'message' => "¡Valoraste al Houser y a su trabajo exitosamente!"
+            'message' => "¡Valoraste al Houser y a su trabajo exitosamente!",
+            'orderRating' => $rating
         ]);
 
     }
 
-/*     public function getRating($id)
+
+    /**
+     * Set Houser Total Rating.
+     * @param $id
+     * @return JsonResponse
+     */
+    public function setHouserRating($id)
     {
-        $query = DB::table('rating')
-            ->select('id_rating', 'fk_user', 'fk_order', 'rating')
-            ->where('id_rating', '=', $id)->get();
+        $houser = Users::findOrFail($id);
+
+        $ratedOrders = DB::table('orders')
+            ->where('fk_houser', '=', $id)
+            ->where('fk_order_state', '=', 5)
+            ->groupBy('fk_order_state')
+            ->average('rating');
+
+
+        $houser->update(['total_rating' => $ratedOrders]);
 
         return response()->json([
-            'data' => $query
+            'success' => true,
         ]);
-    } */
+
+    }
+
 
 }

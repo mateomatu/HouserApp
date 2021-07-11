@@ -28,6 +28,7 @@ class CreateUserTable extends Migration
             $table->string('avatar', 255)->nullable()->default("avatar.png");
             $table->string('alt', 255)->nullable();
             $table->unsignedBigInteger('fk_service')->nullable();
+            $table->float('total_rating')->nullable();
             $table->rememberToken();
             $table->timestamps();
 

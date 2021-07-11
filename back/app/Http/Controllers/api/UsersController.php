@@ -5,8 +5,11 @@ namespace App\Http\Controllers\api;
 //use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Users;
+use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class UsersController extends Controller
 {
@@ -56,6 +59,8 @@ class UsersController extends Controller
             'message' => "Tus datos han sido actualizados con éxito."
         ]);
     }
+
+
 
 
 }
