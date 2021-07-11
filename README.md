@@ -149,6 +149,22 @@
         <li>Retorna null</li>
     </ul>
 </li>
+    
+<li>Genera y guarda Valoración a Orden de Pedido => Ruta: api/orders/rate/{idorder}/{rating}
+    <ul>
+        <li>Recibe id_order</li>
+        <li>Recibe Rating</li>
+    </ul>
+    <ul>
+         <li>Retorna
+            <ul>
+                <li>success</li>
+                <li>message</li>
+                <li>orderRating</li>
+            </ul>
+        </li>
+    </ul>    
+</li>
 
 </ul>
 
