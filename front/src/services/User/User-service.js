@@ -1,6 +1,7 @@
 import React from "react";
 import { API_HOST } from "../../constants/api";
 
+
 let userData = {
     id_usuario: null,
     email: null,
@@ -75,19 +76,22 @@ const AuthService = {
         return false;
     },
 
-    editProfile(userData) {
+    async editProfile(userData) {
         console.log(userData);
-        fetch(`${API_HOST}/users/${userData.id_user}/profile`, {
-            method: 'PUT',
+        const response = await fetch(`${API_HOST}/api/users/${userData.id_user}/profile`, {
+            method: 'POST',
             body: JSON.stringify({
                 address: userData.address
             }),
             headers: {
                 'Content-Type': 'application/json',
                 'X-Requested-With': 'XMLHttpRequest',
-                'Access-Control-Allow-Origin': '*'
+                ...this.authorizationHeader()
             }
         })
+        const responseData = await response.json();
+        console.log(responseData);
+        return responseData;
     },
 
     /**
