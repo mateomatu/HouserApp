@@ -59,7 +59,8 @@ class UserTableSeeder extends Seeder
             'avatar' => "javier.jpg",
             'alt' => "foto de perfil del usuario",
             'fk_level' => 3,
-            'fk_service' => 2
+            'fk_service' => 2,
+            'total_rating' => 3.7
         ]);
         Users::create([
             'id_user' => 4,
@@ -75,7 +76,8 @@ class UserTableSeeder extends Seeder
             'avatar' => "laura.jpg",
             'alt' => "foto de perfil del usuario",
             'fk_level' => 3,
-            'fk_service' => 2
+            'fk_service' => 2,
+            'total_rating' => 4.7
         ]);
         Users::create([
             'id_user' => 5,
@@ -91,7 +93,8 @@ class UserTableSeeder extends Seeder
             'avatar' => "jorge.jpg",
             'alt' => "foto de perfil del usuario",
             'fk_level' => 3,
-            'fk_service' => 1
+            'fk_service' => 1,
+            'total_rating' => 2.9
         ]);
         Users::create([
             'id_user' => 6,
@@ -107,7 +110,8 @@ class UserTableSeeder extends Seeder
             'avatar' => "raul.jpg",
             'alt' => "foto de perfil del usuario",
             'fk_level' => 3,
-            'fk_service' => 1
+            'fk_service' => 1,
+            'total_rating' => 5
         ]);
         Users::create([
             'id_user' => 7,
@@ -123,7 +127,8 @@ class UserTableSeeder extends Seeder
             'avatar' => "matias.jpg",
             'alt' => "foto de perfil del usuario",
             'fk_level' => 3,
-            'fk_service' => 3
+            'fk_service' => 3,
+            'total_rating' => 4.1
         ]);
         Users::create([
             'id_user' => 8,
@@ -139,7 +144,8 @@ class UserTableSeeder extends Seeder
             'avatar' => "pablo.jpg",
             'alt' => "foto de perfil del usuario",
             'fk_level' => 3,
-            'fk_service' => 3
+            'fk_service' => 3,
+            'total_rating' => 0
         ]);
         Users::create([
             'id_user' => 9,
@@ -155,7 +161,8 @@ class UserTableSeeder extends Seeder
             'avatar' => "valeria.jpg",
             'alt' => "foto de perfil del usuario",
             'fk_level' => 3,
-            'fk_service' => 1
+            'fk_service' => 1,
+            'total_rating' => 2.5
         ]);
         Users::create([
             'id_user' => 10,
@@ -171,7 +178,8 @@ class UserTableSeeder extends Seeder
             'avatar' => "gladys.jpg",
             'alt' => "foto de perfil del usuario",
             'fk_level' => 3,
-            'fk_service' => 1
+            'fk_service' => 1,
+            'total_rating' => 4
         ]);
         Users::create([
             'id_user' => 11,
@@ -187,7 +195,8 @@ class UserTableSeeder extends Seeder
             'avatar' => "teresa.jpg",
             'alt' => "foto de perfil del usuario",
             'fk_level' => 3,
-            'fk_service' => 4
+            'fk_service' => 4,
+            'total_rating' => 5
         ]);
         Users::create([
             'id_user' => 12,
@@ -203,7 +212,8 @@ class UserTableSeeder extends Seeder
             'avatar' => "fede.jpg",
             'alt' => "foto de perfil del usuario",
             'fk_level' => 3,
-            'fk_service' => 4
+            'fk_service' => 4,
+            'total_rating' => 4.6
         ]);
         Users::create([
             'id_user' => 13,
@@ -219,7 +229,8 @@ class UserTableSeeder extends Seeder
             'avatar' => "manuel.jpg",
             'alt' => "foto de perfil del usuario",
             'fk_level' => 3,
-            'fk_service' => 4
+            'fk_service' => 4,
+            'total_rating' => 3.8
         ]);
         Users::create([
             'id_user' => 14,
@@ -235,7 +246,8 @@ class UserTableSeeder extends Seeder
             'avatar' => "ramiro.jpg",
             'alt' => "foto de perfil del usuario",
             'fk_level' => 3,
-            'fk_service' => 5
+            'fk_service' => 5,
+            'total_rating' => 4.5
         ]);
         Users::create([
             'id_user' => 15,
@@ -251,7 +263,8 @@ class UserTableSeeder extends Seeder
             'avatar' => "nicolas.jpg",
             'alt' => "foto de perfil del usuario",
             'fk_level' => 3,
-            'fk_service' => 5
+            'fk_service' => 5,
+            'total_rating' => 4
         ]);
     }
 }
