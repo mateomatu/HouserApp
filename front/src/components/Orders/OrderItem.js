@@ -53,7 +53,16 @@ const OrderItem = props => {
             </header>
             { !isLoading && <section className={styles['houser-card-content']}>
               <h3>{order.name + " " + order.lastname}</h3>
-              <p>Aca van las estrellitas :3</p>
+              { state === 4 && <p>Valora el trabajo del houser</p>}
+              { state === 4 && (
+                <ul className={'flex justify-center'}>
+                  <li>star 1</li>
+                  <li>star 2</li>
+                  <li>star 3</li>
+                  <li>star 4</li>
+                  <li>star 5</li>
+                </ul>
+              )}
               <p className={styles.service}>{order.title}</p>
             </section>}
             { isLoading && <Loader />}

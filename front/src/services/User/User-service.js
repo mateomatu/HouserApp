@@ -77,7 +77,6 @@ const AuthService = {
     },
 
     async editProfile(userData) {
-        console.log(userData);
         const response = await fetch(`${API_HOST}/api/users/${userData.id_user}/profile`, {
             method: 'POST',
             body: JSON.stringify({
@@ -90,7 +89,6 @@ const AuthService = {
             }
         })
         const responseData = await response.json();
-        console.log(responseData);
         return responseData;
     },
 
@@ -171,7 +169,6 @@ const AuthService = {
 
 
     async signUp (userData) {
-        console.log("userData", userData)
         const res = await fetch(`${API_HOST}/api/auth/signup`, {
             method: 'POST',
             body: JSON.stringify({
@@ -189,7 +186,6 @@ const AuthService = {
                }
            });
        const responseData = await res.json();
-       console.log("aa", responseData);
        return responseData;
     },
 

@@ -26,7 +26,8 @@ const HousersList = (props) => {
                     avatar: houser.avatar,
                     name: houser.name,
                     portrait: houser.portrait,
-                    lastname: houser.lastname
+                    lastname: houser.lastname,
+                    total_rating: houser.total_rating
                 })
             });  
             

@@ -24,14 +24,16 @@ const OrdersHistory = () => {
 
             const loadedOrders = data
 
-            console.log("asd", loadedOrders);
+            const filteredNotifications = loadedOrders.filter(not => {
+                return not.fk_order_state === 3 || not.fk_order_state === 5;
+            })
             
             loadedOrders.sort((a,b) => {
                 return new Date(b.updated_at) - new Date(a.updated_at);
             })
             
             
-            setOrders(loadedOrders);
+            setOrders(filteredNotifications);
             setIsLoading(false)
         })().catch(err => console.log("Hubo un error al traer las órdenes"))
     }, [])

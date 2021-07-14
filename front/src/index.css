@@ -175,6 +175,14 @@ a p{
   color: rgb(219 28 28);
 }
 
+.border-danger {
+  border: 1px solid rgb(219 28 28) !important;
+}
+
+button:disabled {
+  opacity: .7;
+}
+
 .text-success {
   color: rgb(94, 163, 67);
 }

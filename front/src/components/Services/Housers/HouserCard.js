@@ -1,5 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
+import Star from "../../UI/Star";
+
+
 import  { API_IMGS } from "../../../constants/api";
 
 import styles from "./HouserCard.module.css";
@@ -9,6 +13,11 @@ const cardStlyes = `mb-5 ${styles['houser-card']}`
 const HouserCard = props => {
     
     const houser = props.houser;
+
+    let arrayStars = [];
+    for (let i = 0; i < Math.round(houser.total_rating); i++) {
+        arrayStars.push(i);
+    }
     
     return (
         <li>
@@ -20,7 +29,7 @@ const HouserCard = props => {
                     </header>
                     <h3>{houser.name + " " + houser.lastname}</h3>
                     <section className={styles.valoration}>
-                        <p>Aca van las estrellitas :3</p>
+                        {arrayStars.map( star => <Star key={star} />)}
                     </section>
                     <p className={styles['houser-desc']}>
                         {houser.desc}

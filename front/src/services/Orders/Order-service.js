@@ -51,7 +51,7 @@ const OrderService = {
                }
            });
        const responseData = await res.json();
-       console.log("generate order: ", responseData);
+       return responseData;
    }
 }
 

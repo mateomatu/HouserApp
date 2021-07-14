@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useHistory } from "react-router";
 
 import AuthService, { AuthContext } from "../../../services/User/User-service";
@@ -16,6 +16,7 @@ const ContactHouser = () => {
 
     const [isLoading, setIsLoading] = useState(true);
     const [houser, setHouser] = useState({});
+    const [required, setRequired] = useState(true);
 
     const textAreaInputRef = useRef();
     const history = useHistory();
@@ -57,21 +58,42 @@ const ContactHouser = () => {
         }
 
         const response = await OrderService.generateOrder(data);
-        console.log("contacthouser: ", response);
 
-        // IF RESPONSE.OK HAGO EL HISTORY PUSH AL OK
-        // IF RESPONSE.FAIL HAGO EL HISTORY PUSH AL FAIL
+        if (response.success) {
+            history.push(`/contact-houser/ok`);
+        } else {
+            setRequired(true);
+        }
+
         setIsLoading(false);
-        history.push(`/contact-houser/ok`);
+    }
 
+    const changeHandler = () => {
 
+        const enteredMessage = textAreaInputRef.current.value
 
-
+        if (enteredMessage.trim().length <= 3) {
+            setRequired(true);
+        } else {
+            setRequired(false);
+        }
     }
 
     return (
         <section className={styles['contact-houser']}>
+            <header className={`${styles['header-contact']}`}>
+            <Link to={`/houser/${houserId}/${serviceId}`}>
+                <svg className={`${styles['back-container']}`} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
+                    <g>
+                        <g>
+                            <path d="M250,0C111.932,0,0,111.926,0,250S111.932,500,250,500,500,388.074,500,250,388.067,0,250,0Zm0,469.365c-120.961,0-219.365-98.41-219.365-219.365,0-77.411,40.306-145.588,101.284-184.8A217.832,217.832,0,0,1,250,30.635c120.961,0,219.365,98.41,219.365,219.365S370.961,469.365,250,469.365Z"/>
+                            <path d="M99.923,250l137.823,82.392V167.608Z" transform="translate(56.165)"/>
+                        </g>
+                    </g>
+                </svg>
+            </Link>
             { houser.avatar !== undefined && <img className={styles.photo} src={`${API_IMGS}/${houser?.avatar}`} alt={`${houser.alt}`} />}
+            </header>
             <h2 className="mt-1 pages-title text-center gibson-semibold">¡Estás a un paso de contactar a {`${houser.name} ${houser.lastname}`}!</h2>
             <svg className={`${styles['svg-mail']} ${styles['contact-houser-svg']}`} version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                 viewBox="0 0 500 500" enableBackground="new 0 0 500 500">
@@ -105,9 +127,10 @@ const ContactHouser = () => {
             </section> */}
             <section className={styles['send-details']}>
                 <h3 className="mt-5 mb-1 text-center">Detalla tu necesidad al Houser</h3>
+                { required && <span className="text-danger">*Campo requerido, mínimo 4 caracteres</span>}
                 <form onSubmit={submitContact}>
-                    <textarea ref={textAreaInputRef} className={styles['contact-houser-textarea']}></textarea>
-                    <button className={`gibson-medium houser-button mb-5 button`}>Contactar</button>
+                    <textarea ref={textAreaInputRef} onChange={changeHandler} className={`${styles['contact-houser-textarea']} ${required ? "border-danger" : ""}`}></textarea>
+                    <button disabled={required} className={`gibson-medium houser-button mb-5 button`}>Contactar</button>
                 </form>
             </section>
         </section>

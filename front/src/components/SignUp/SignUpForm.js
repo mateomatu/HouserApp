@@ -46,8 +46,6 @@ const SignUpForm = (props) => {
       telephone: enteredTelephone,
       address: enteredAddress
     });
-    
-    console.log("response: ", response);
 
     if (response.errors) {
       setLoading(false);

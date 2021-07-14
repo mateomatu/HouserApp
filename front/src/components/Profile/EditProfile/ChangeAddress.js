@@ -10,7 +10,6 @@ import styles from "./ChangeAddress.module.css";
 const ChangeAddress = () => {
 
     const authCtx = useContext(AuthContext);
-    console.log(authCtx);
 
     const inputAddressRef = useRef();
 
