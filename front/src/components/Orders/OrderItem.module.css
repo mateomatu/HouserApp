@@ -71,9 +71,11 @@ li.rate {
     margin-left: 5px;
     border-radius: 10px;
     box-shadow: 0 1px 3px #07070736;
+    font-weight: bold;
 }
 
 li.rate .star {
     width: 1.6rem;
     fill: goldenrod;
 }
+

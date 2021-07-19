@@ -52,7 +52,20 @@ const OrderService = {
            });
        const responseData = await res.json();
        return responseData;
+   },
+
+   async rateHouser(id_order, rating){
+       const response = await fetch(API_HOST + `/api/orders/rate/${id_order}/${rating}`, {
+           method: 'PUT',
+           headers: {
+               ...AuthService.authorizationHeader()
+           }
+       })
+       const responseData = await response.json();
+       return responseData;
    }
+
+
 }
 
 export default OrderService;

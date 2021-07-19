@@ -13,6 +13,7 @@ const OrderItem = props => {
   const order = props.order;
   const [state, setState] = useState(order.fk_order_state);
   const [isLoading, setIsLoading] = useState(false);
+  const [toast, setToast] = useState(false)
 
   const clickCancelJobHandler = () => {
     (async () => {
@@ -44,6 +45,20 @@ const OrderItem = props => {
     })().catch(err => console.log("Error al actualizar la orden"))
   }
 
+  const rating = (order, rate) => {
+    (async () => {
+      setIsLoading(true);
+      const data = await OrderService.rateHouser(order.id_order, rate);
+      
+      //Devuelve un success
+
+      console.log(data);
+
+      setIsLoading(false);
+      setState(5);
+    })().catch(err => console.log("Error al actualizar la orden"))
+  }
+
   if (state === 2 || state === 4) {
     return (
       <li>
@@ -58,7 +73,7 @@ const OrderItem = props => {
                 <ul className={'flex justify-center mb-2'}>
                   <li className={styles.rate}>
                     1
-                    <svg className={styles.star} version="1.1" x="0px" y="0px" viewBox="0 0 500 500">
+                    <svg onClick={() => rating(order, 1)} className={styles.star} version="1.1" x="0px" y="0px" viewBox="0 0 500 500">
                         <g>
                             <path d="M485.2,232.4c0.3-0.3,0.1-0.5-0.1-0.5l-142.5-20.6c-0.4,0-0.8-0.4-0.9-0.6L278,81.4
                                 c-0.1-0.3-0.4-0.3-0.5,0l-63.7,129.2c-0.1,0.3-0.5,0.6-0.9,0.6L70.2,231.9c-0.4,0-0.4,0.3-0.1,0.5l103.1,100.6
@@ -69,7 +84,7 @@ const OrderItem = props => {
                   </li>
                   <li className={styles.rate}>
                     2
-                    <svg className={styles.star} version="1.1" x="0px" y="0px" viewBox="0 0 500 500">
+                    <svg onClick={() => rating(order, 2)} className={styles.star} version="1.1" x="0px" y="0px" viewBox="0 0 500 500">
                         <g>
                             <path d="M485.2,232.4c0.3-0.3,0.1-0.5-0.1-0.5l-142.5-20.6c-0.4,0-0.8-0.4-0.9-0.6L278,81.4
                                 c-0.1-0.3-0.4-0.3-0.5,0l-63.7,129.2c-0.1,0.3-0.5,0.6-0.9,0.6L70.2,231.9c-0.4,0-0.4,0.3-0.1,0.5l103.1,100.6
@@ -80,7 +95,7 @@ const OrderItem = props => {
                   </li>
                   <li className={styles.rate}>
                     3
-                    <svg className={styles.star} version="1.1" x="0px" y="0px" viewBox="0 0 500 500">
+                    <svg onClick={() => rating(order, 3)} className={styles.star} version="1.1" x="0px" y="0px" viewBox="0 0 500 500">
                         <g>
                             <path d="M485.2,232.4c0.3-0.3,0.1-0.5-0.1-0.5l-142.5-20.6c-0.4,0-0.8-0.4-0.9-0.6L278,81.4
                                 c-0.1-0.3-0.4-0.3-0.5,0l-63.7,129.2c-0.1,0.3-0.5,0.6-0.9,0.6L70.2,231.9c-0.4,0-0.4,0.3-0.1,0.5l103.1,100.6
@@ -91,7 +106,7 @@ const OrderItem = props => {
                   </li>
                   <li className={styles.rate}>
                     4
-                    <svg className={styles.star} version="1.1" x="0px" y="0px" viewBox="0 0 500 500">
+                    <svg onClick={() => rating(order, 4)} className={styles.star} version="1.1" x="0px" y="0px" viewBox="0 0 500 500">
                         <g>
                             <path d="M485.2,232.4c0.3-0.3,0.1-0.5-0.1-0.5l-142.5-20.6c-0.4,0-0.8-0.4-0.9-0.6L278,81.4
                                 c-0.1-0.3-0.4-0.3-0.5,0l-63.7,129.2c-0.1,0.3-0.5,0.6-0.9,0.6L70.2,231.9c-0.4,0-0.4,0.3-0.1,0.5l103.1,100.6
@@ -102,7 +117,7 @@ const OrderItem = props => {
                   </li> 
                   <li className={styles.rate}>
                     5
-                    <svg className={styles.star} version="1.1" x="0px" y="0px" viewBox="0 0 500 500">
+                    <svg onClick={() => rating(order, 5)} className={styles.star} version="1.1" x="0px" y="0px" viewBox="0 0 500 500">
                         <g>
                             <path d="M485.2,232.4c0.3-0.3,0.1-0.5-0.1-0.5l-142.5-20.6c-0.4,0-0.8-0.4-0.9-0.6L278,81.4
                                 c-0.1-0.3-0.4-0.3-0.5,0l-63.7,129.2c-0.1,0.3-0.5,0.6-0.9,0.6L70.2,231.9c-0.4,0-0.4,0.3-0.1,0.5l103.1,100.6

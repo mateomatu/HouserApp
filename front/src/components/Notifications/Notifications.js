@@ -56,6 +56,7 @@ const Notifications = () => {
             <h2 className={"ml-2 pages-title gibson-semibold"}>NOTIFICACIONES</h2>
             { !isLoading && <NotificationList notifications={notifications} />}
             { isLoading && <Loader />}
+            { !isLoading && notifications?.length === 0 && <p className="ml-2">No tienes notificaciones</p>}
         </Fragment>
     );
 

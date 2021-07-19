@@ -42,6 +42,7 @@ const Orders = () => {
             <h2 className={"ml-2 " + titleClass}>PEDIDOS ACTIVOS</h2>
             { !isLoading && <OrdersList orders={orders} />}
             { isLoading && <Loader />}
+            { orders?.length === 0 && !isLoading && <p className="ml-2">No hay pedidos activos</p>}
         </section>
     );
 }
