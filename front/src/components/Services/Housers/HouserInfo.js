@@ -5,6 +5,7 @@ import AuthService, { AuthContext } from "../../../services/User/User-service";
 import OrderService from "../../../services/Orders/Order-service";
 
 import Loader from "../../UI/Loader";
+import Map from "../../UI/Map"
 
 import { API_IMGS } from "../../../constants/api";
 import { PUBLIC_PATH } from "../../../constants/api";
@@ -84,10 +85,11 @@ const HouserInfo = () => {
                     <p>{houser.quote}</p>
                     <p className="mt-3"><b>Teléfono:</b> {houser.telephone}</p>
                     <p><b>Ubicación:</b> {houser.address}</p>
-                    <img className={styles['google-maps']} src={`${PUBLIC_PATH}/assets/imgs/address.png`} alt="google maps"></img>
-                    { !hasOrderPending && <Link to={`/ad/${houserId}/${serviceId}`} className={`gibson-medium houser-button mb-5 button`}>Contactar Houser</Link>}
-                    { hasOrderPending && <p className={`mb-5 bold`}>Ya tienes una orden pendiente con el Houser</p>}
+                    {/* <img className={styles['google-maps']} src={`${PUBLIC_PATH}/assets/imgs/address.png`} alt="google maps"></img> */}
                 </section>
+                <Map idHouser={houserId} address={houser.address}/>
+                { !hasOrderPending && <Link to={`/ad/${houserId}/${serviceId}`} className={`${styles.hbutton} gibson-medium houser-button mb-5 button`}>Contactar Houser</Link>}
+                { hasOrderPending && <p className={`mb-5 bold`}>Ya tienes una orden pendiente con el Houser</p>}
             </Fragment>
         );
     }
