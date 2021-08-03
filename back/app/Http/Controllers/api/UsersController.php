@@ -38,10 +38,10 @@ class UsersController extends Controller
         $user = Users::findOrFail($id);
         $data = $request->all();
 
-        if($request->image) {
-            $nameImg = date('YmdHis') . "." . $request->image->extension();
+        if($request->avatar) {
+            $nameImg = date('YmdHis') . "." . $request->avatar->extension();
             $request->file('avatar')->move(public_path('/imgs/'), $nameImg);
-            $data['image'] = $nameImg;
+            $data['avatar'] = $nameImg;
             if ($user->image !== 'avatar.png') {
                 $oldImg = $user->image;
             }

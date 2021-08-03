@@ -49,9 +49,10 @@ const SignUpForm = (props) => {
 
     if (response.errors) {
       setLoading(false);
-      //TODO: Estilado de errores
+      console.log(response)
+
+      //Chequear aca q asemo
     } else {
-      //TODO: En realidad aca llama al login con el email y la password creada.
       const userData = await AuthService.login({
         email: enteredEmail,
         password: enteredPassword,
@@ -84,7 +85,7 @@ const SignUpForm = (props) => {
         <label htmlFor="telephone">Teléfono</label>
         <input ref={phoneInputRef} type="text" id="telephone" name="telephone" />
       </section>
-      <section className={styles["input-section"]}>
+      <section className={` mb-5 ${styles["input-section"]}`}>
         <label htmlFor="address">Domicilio</label>
         <input ref={addressInputRef} type="text" id="address" name="address" />
       </section>

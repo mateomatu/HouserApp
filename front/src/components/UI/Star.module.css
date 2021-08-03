@@ -2,3 +2,7 @@
     width: 40px;
     fill: #ffc61e;
 }
+
+.nostar {
+    filter: grayscale(1);
+}

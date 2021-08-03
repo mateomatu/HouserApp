@@ -8,7 +8,6 @@ import Loader from "../../UI/Loader";
 import Map from "../../UI/Map"
 
 import { API_IMGS } from "../../../constants/api";
-import { PUBLIC_PATH } from "../../../constants/api";
 
 import styles from "./HouserInfo.module.css";
 import Star from "../../UI/Star";

@@ -24,14 +24,11 @@ const OrdersHistory = () => {
 
             const loadedOrders = data
 
+            console.log(loadedOrders)
+
             const filteredNotifications = loadedOrders.filter(not => {
-                return not.fk_order_state === 3 || not.fk_order_state === 5;
+                return not.fk_order_state === 3 || not.fk_order_state === 5 || not.fk_order_state === 4;
             })
-            
-            loadedOrders.sort((a,b) => {
-                return new Date(b.updated_at) - new Date(a.updated_at);
-            })
-            
             
             setOrders(filteredNotifications);
             setIsLoading(false)

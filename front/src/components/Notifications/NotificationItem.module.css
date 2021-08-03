@@ -2,10 +2,10 @@
     display: flex;
     align-items: center;
     width: 100%;
-    border: 1px solid #33333385;
+    border: 1px solid #cacaca85;
     position: relative;
     border-radius: 10px;
-    padding-right: 10px;
+    box-shadow: 0 2px 3px #0000001c;
 }
 
 .notification-container.no-read {

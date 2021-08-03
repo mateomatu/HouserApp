@@ -16,6 +16,7 @@ import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SignUpPage";
 import ChangePasswordPage from "./pages/ChangePasswordPage";
 import ChangeAddressPage from "./pages/ChangeAddressPage";
+import ChangeAvatarPage from "./pages/ChangeAvatarPage";
 import HouserInfoPage from "./pages/HouserInfoPage";
 import ContactHouserPage from "./pages/ContactHouserPage";
 import NotificationChatPage from "./pages/NotificationChatPage";
@@ -86,6 +87,10 @@ function App() {
             </Route>
             <Route path="/profile/change-address">
               {userIsLogged && <ChangeAddressPage />}
+              {!userIsLogged && <Redirect to="/login" />}
+            </Route>
+            <Route path="/profile/change-avatar">
+              {userIsLogged && <ChangeAvatarPage />}
               {!userIsLogged && <Redirect to="/login" />}
             </Route>
             <Route path="/notifications/" exact>

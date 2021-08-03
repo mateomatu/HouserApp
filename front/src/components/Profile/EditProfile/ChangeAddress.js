@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
 import AuthService from "../../../services/User/User-service";
@@ -19,18 +19,31 @@ const ChangeAddress = () => {
         const idUser = authCtx.user.id_user
         const enteredAddress = inputAddressRef.current.value;
 
-        const userData = {
-            id_user: idUser,
-            address: enteredAddress
-        }
-
+        
         if (enteredAddress !== null && enteredAddress !== "" && enteredAddress !== undefined) {
-            AuthService.editProfile(userData);
+            console.log("aver");
+            (async () => {
+                const response = await AuthService.getUserData(idUser);
+                const userData = {
+                    ...response,
+                    address: enteredAddress
+                }
+
+                authCtx.updateAuthState(userData);
+    
+            })().catch(err => console.log("Hubo un error al actualizar el perfil, intentar más tarde"))
+            
+
+/*             (async () => {
+                const response = await AuthService.editAddress(userData);
+                if (response.success) {
+                    authCtx.updateAuthState({
+                        address: enteredAddress
+                    })
+                }
+            })().catch(err => console.log("Hubo un error al traer las órdenes")) */
+            
         }
-
-
-
-
     }
 
     return (

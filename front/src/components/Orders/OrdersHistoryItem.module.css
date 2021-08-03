@@ -45,3 +45,25 @@
     justify-content: space-around;
     margin-top: 15px;
 }
+
+li.rate {
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    margin-left: 5px;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px #07070736;
+    font-weight: bold;
+}
+
+li.rate .star {
+    width: 1.6rem;
+    fill: #ffc61e;
+}
+
+.dateformat {
+    margin-left: 10px;
+    margin-bottom: 5px;
+    font-weight: 500;
+}

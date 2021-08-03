@@ -23,7 +23,7 @@ const UserProfile = () => {
         <Route path="/profile" exact>
             <section className={styles.profile}>
                 <header className={styles['profile-header']}>
-                    { authCtx.user.avatar !== undefined && <img className={styles.photo} src={`${API_IMGS}/${authCtx.user.avatar}`} alt={`${authCtx.user.alt}`} />}
+                    { authCtx.user.avatar !== undefined && <Link to="/profile/change-avatar"><img className={styles.photo} src={`${API_IMGS}/${authCtx.user.avatar}`} alt={`${authCtx.user.alt}`} /></Link>}
                     { authCtx.user.avatar === undefined && <Loader />}
                 </header>
                 <section className={styles['profile-data']}>

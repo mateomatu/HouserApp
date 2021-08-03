@@ -30,6 +30,7 @@ const HouserCard = props => {
                     <h3>{houser.name + " " + houser.lastname}</h3>
                     <section className={styles.valoration}>
                         {arrayStars.map( star => <Star key={star} />)}
+                        {arrayStars.length === 0 ?  <div className="flex align-center justify-center"><Star nostar={true} /><p className={styles.nostarp}><b>Sin valoración</b></p></div> : ""}
                     </section>
                     <p className={styles['houser-desc']}>
                         {houser.desc}

@@ -76,11 +76,47 @@ const AuthService = {
         return false;
     },
 
-    async editProfile(userData) {
+    async editAvatar(userData) {
+        const response = await fetch(`${API_HOST}/api/users/${userData.id_user}/profile`, {
+            method: 'POST',
+            body: JSON.stringify({
+                address: userData.address,
+                avatar: userData.avatar,
+                password: userData.password
+            }),
+            headers: {
+                'Content-Type': 'application/json',
+                'X-Requested-With': 'XMLHttpRequest',
+                ...this.authorizationHeader()
+            }
+        })
+        const responseData = await response.json();
+        return responseData;
+    },
+
+    async editAddress(userData) {
         const response = await fetch(`${API_HOST}/api/users/${userData.id_user}/profile`, {
             method: 'POST',
             body: JSON.stringify({
                 address: userData.address
+            }),
+            headers: {
+                'Content-Type': 'application/json',
+                'X-Requested-With': 'XMLHttpRequest',
+                ...this.authorizationHeader()
+            }
+        })
+        const responseData = await response.json();
+        return responseData;
+    },
+
+    async editPassword(userData) {
+        const response = await fetch(`${API_HOST}/api/users/${userData.id_user}/profile`, {
+            method: 'POST',
+            body: JSON.stringify({
+                address: userData.address,
+                avatar: userData.avatar,
+                password: userData.password
             }),
             headers: {
                 'Content-Type': 'application/json',

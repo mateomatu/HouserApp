@@ -24,7 +24,7 @@ const Ad = () => {
     return (
         <Fragment>
             <Link to={`/contact-houser/${houserId}/${serviceId}`} className={styles.adbtn}>X</Link>
-            <img className={styles['ad']} src={`${PUBLIC_PATH}/assets/imgs/ad.jpg`} alt="Publicidad" />
+            <img className={styles['ad']} src={`${PUBLIC_PATH}/assets/imgs/ad3.jpg`} alt="Publicidad" />
         </Fragment>
     );
 }
