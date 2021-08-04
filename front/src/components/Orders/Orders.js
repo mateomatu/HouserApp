@@ -5,6 +5,7 @@ import Loader from "../UI/Loader";
 
 import { AuthContext } from "../../services/User/User-service";
 import OrderService from "../../services/Orders/Order-service";
+import useToastContext from "../../hooks/useToastContext";
 
 import styles from "./Orders.module.css";
 
@@ -15,6 +16,7 @@ const Orders = () => {
     const [isLoading, setIsLoading] = useState(true);
 
     const authCtx = useContext(AuthContext);
+    const addToast = useToastContext();
 
     useEffect(() => {
         setIsLoading(true);
@@ -32,7 +34,7 @@ const Orders = () => {
             
             setOrders(loadedOrders);
             setIsLoading(false)
-        })().catch(err => console.log("Hubo un error al traer las órdenes"))
+        })().catch(err => addToast("⛔ Ha ocurrido un error, intenta más tarde"))
     }, [])
 
     const titleClass = 'pages-title gibson-semibold';

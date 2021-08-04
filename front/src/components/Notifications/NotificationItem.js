@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import { API_IMGS } from "../../constants/api";
 
 import OrderService from "../../services/Orders/Order-service";
+import useToastContext from "../../hooks/useToastContext";
 
 import styles from "./NotificationItem.module.css";
 
@@ -11,6 +12,7 @@ const NotificationList = props => {
 
   const notification = props.order;
   const history = useHistory();
+  const addToast = useToastContext();
 
   const clickNotificationHandler = () => {
     if (notification.read === null) {
@@ -21,7 +23,7 @@ const NotificationList = props => {
         if (data.success) {
           history.push(`/notifications/chat/${notification.id}`);
         }
-      })().catch(err => console.log("Error al actualizar la solicitud"))
+      })().catch(err => addToast("⛔ Ha ocurrido un error, intenta más tarde"))
     } else {
       history.push(`/notifications/chat/${notification.id}`);
     }

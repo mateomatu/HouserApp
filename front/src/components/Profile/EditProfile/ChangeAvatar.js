@@ -16,29 +16,33 @@ const ChangeAvatar = () => {
 
     const fileChangeHandler = (e) => {
         const imgFile = e.target.files[0]
-        const reader = new FileReader();
+/*         const reader = new FileReader();
         reader.addEventListener('load', function() {
             const codeImg = reader.result;
-            setSelectedFile(codeImg);
         });
-        reader.readAsDataURL(imgFile);
+        reader.readAsDataURL(imgFile); */
+        setSelectedFile(imgFile);
+        console.log(imgFile);
     }
 
     const uploadImageHandler = (event) => {
         event.preventDefault();
         (async () => {
-            const data = {
-                id_user: userId,
-                address: "nononoo",
-                avatar: selectedFile,
+            const response = await AuthService.getUserData(userId);
+            const userData = {
+                ...response,
+                avatar: selectedFile
             }
 
-/*             const response = await AuthService.editProfile(data);
-            if (response.success) {
-                console.log(response);
+
+            const res = await AuthService.editAvatar(userData);
+            if (res.success) {
+                //setIsLoading(false);
+                console.log(`✅ Se ha editado la imágen con éxito`);
             } else {
-                console.log(response);
-            } */
+               // setIsLoading(false);
+                console.log(`⛔ Ha ocurrido un error, intenta más tarde`)    
+            }
 
         })().catch(err => console.log("Hubo un error al traer las órdenes"))
     }

@@ -3,6 +3,8 @@ import { useParams, Link } from "react-router-dom";
 import { useHistory } from "react-router";
 
 import AuthService, { AuthContext } from "../../../services/User/User-service";
+import OrderService from "../../../services/Orders/Order-service";
+import useToastContext from "../../../hooks/useToastContext";
 
 import Loader from "../../UI/Loader";
 
@@ -10,7 +12,6 @@ import { API_IMGS } from "../../../constants/api";
 
 
 import styles from "./ContactHouser.module.css";
-import OrderService from "../../../services/Orders/Order-service";
 
 const ContactHouser = () => {
 
@@ -22,6 +23,7 @@ const ContactHouser = () => {
     const history = useHistory();
 
     const params = useParams();
+    const addToast = useToastContext();
     const houserId = params.houserId;
     const serviceId = params.serviceId;
 
@@ -35,7 +37,7 @@ const ContactHouser = () => {
             
             setHouser(houser);
             setIsLoading(false)
-        })().catch(err => console.log("Error al traer housers"))
+        })().catch(err => addToast("⛔ Ha ocurrido un error"))
     }, [houserId])
 
     if (isLoading) {

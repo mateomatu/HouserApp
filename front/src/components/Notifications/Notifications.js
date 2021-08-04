@@ -3,6 +3,8 @@ import NotificationList from "./NotificationList";
 
 import OrderService from "../../services/Orders/Order-service";
 import { AuthContext } from "../../services/User/User-service";
+import useToastContext from "../../hooks/useToastContext";
+
 import Loader from "../UI/Loader";
 
 
@@ -12,6 +14,7 @@ const Notifications = () => {
     const [isLoading, setIsLoading] = useState(false);
 
     const authCtx = useContext(AuthContext);
+    const addToast = useToastContext();
 
     useEffect(() => {
         setIsLoading(true);
@@ -48,7 +51,7 @@ const Notifications = () => {
             setNotifications(filteredNotifications);
             setIsLoading(false)
             
-        })().catch(err => console.log("ERROR AL TRAER notificaciones"))
+        })().catch(err => addToast("⛔ Ha ocurrido un error, intenta más tarde"))
     }, [])
 
     return (

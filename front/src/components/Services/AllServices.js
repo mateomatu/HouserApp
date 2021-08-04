@@ -1,8 +1,12 @@
 import React, { useState, useEffect, Fragment } from "react";
 import serviceService from "../../services/Services/Service-service";
 import { Link } from "react-router-dom";
-import { PUBLIC_PATH } from "../../constants/api";
+
+import useToastContext from "../../hooks/useToastContext";
+
 import Loader from "../UI/Loader";
+
+import { PUBLIC_PATH } from "../../constants/api";
 
 import styles from "./AllServices.module.css";
 
@@ -12,6 +16,7 @@ const AllServices = () => {
     const [isLoading, setIsLoading] = useState(false);
 
     const titleClass = `ml-2 ${styles['service-title']} pages-title gibson-semibold`;
+    const addToast = useToastContext();
 
     useEffect(() => {
         setIsLoading(true);
@@ -31,7 +36,7 @@ const AllServices = () => {
             
             setServices(loadedServices);
             setIsLoading(false)
-        })().catch(err => console.log("ERROR AL TRAER SERVICIOS"))
+        })().catch(err => addToast("⛔ Ha ocurrido un error"))
     }, [])
 
     return (

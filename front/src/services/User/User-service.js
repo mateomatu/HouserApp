@@ -80,9 +80,22 @@ const AuthService = {
         const response = await fetch(`${API_HOST}/api/users/${userData.id_user}/profile`, {
             method: 'POST',
             body: JSON.stringify({
-                address: userData.address,
-                avatar: userData.avatar,
-                password: userData.password
+                avatar: userData.avatar
+            }),
+            headers: {
+                'Content-Type': 'application/json',
+                ...this.authorizationHeader()
+            }
+        })
+        const responseData = await response.json();
+        return responseData;
+    },
+
+    async editTelephone(userData) {
+        const response = await fetch(`${API_HOST}/api/users/${userData.id_user}/profile`, {
+            method: 'POST',
+            body: JSON.stringify({
+                telephone: userData.telephone
             }),
             headers: {
                 'Content-Type': 'application/json',
@@ -93,7 +106,6 @@ const AuthService = {
         const responseData = await response.json();
         return responseData;
     },
-
     async editAddress(userData) {
         const response = await fetch(`${API_HOST}/api/users/${userData.id_user}/profile`, {
             method: 'POST',
@@ -114,8 +126,6 @@ const AuthService = {
         const response = await fetch(`${API_HOST}/api/users/${userData.id_user}/profile`, {
             method: 'POST',
             body: JSON.stringify({
-                address: userData.address,
-                avatar: userData.avatar,
                 password: userData.password
             }),
             headers: {
@@ -129,7 +139,7 @@ const AuthService = {
     },
 
     /**
-     * Return all services.
+     * 
      *
      * @returns {Promise<any>}
      */

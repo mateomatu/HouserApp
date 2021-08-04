@@ -3,19 +3,22 @@ import { useParams } from "react-router-dom";
 import HousersList from "../components/Services/Housers/HousersList";
 import serviceServices from "../services/Services/Service-service";
 
+import useToastContext from "../hooks/useToastContext";
+
 const LookForHouserPage = () => {
 
     const [serviceTitle, setServiceTitle] = useState("");
 
     const params = useParams();
     const serviceId = params.serviceId;
+    const addToast = useToastContext();
 
     useEffect(() => {
         (async () => {
             const data = await serviceServices.bringServiceById(serviceId);
             const title = data.title;
             setServiceTitle(title);
-        })().catch(err => console.log("Error al traer el title"))
+        })().catch(err => { addToast("⛔ Ha ocurrido un error, intenta más tarde")})
     }, [serviceId, serviceTitle])
 
     //TODO: Llamar a un API que me traiga los datos del servicio de houser

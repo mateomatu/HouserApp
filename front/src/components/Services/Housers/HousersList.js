@@ -4,12 +4,15 @@ import Loader from "../../UI/Loader";
 import Houser from "./HouserCard";
 import serviceServices from "../../../services/Services/Service-service";
 
+import useToastContext from "../../../hooks/useToastContext";
+
 const HousersList = (props) => {
     
     //TODO: Utilizar el ID del servicio para consultar a la tabla pivot los housers que pertenecen
     //a dicho servicio
     const [isLoading, setIsLoading] = useState(true);
     const [houserUsers, setHouserUsers] = useState([]);
+    const addToast = useToastContext();
     const serviceId = props.serviceId;
 
     useEffect(() => {
@@ -33,7 +36,7 @@ const HousersList = (props) => {
             
             setHouserUsers(loadedHousers);
             setIsLoading(false)
-        })().catch(err => console.log("Error al traer housers"))
+        })().catch(err => addToast("⛔ Ha ocurrido un error, intenta más tarde"))
     }, [serviceId])
 
     const housers = houserUsers.map(houser=>{ return <Houser key={houser.id} service={serviceId} houser={houser} />});

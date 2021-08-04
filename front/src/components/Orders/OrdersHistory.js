@@ -5,6 +5,7 @@ import Loader from "../UI/Loader";
 
 import OrderService from "../../services/Orders/Order-service";
 import { AuthContext } from "../../services/User/User-service";
+import useToastContext from "../../hooks/useToastContext";
 
 import styles from "./OrdersHistory.module.css";
 
@@ -16,6 +17,7 @@ const OrdersHistory = () => {
     const [isLoading, setIsLoading] = useState(true);
 
     const authCtx = useContext(AuthContext);
+    const addToast = useToastContext();
 
     useEffect(() => {
         setIsLoading(true);
@@ -24,15 +26,13 @@ const OrdersHistory = () => {
 
             const loadedOrders = data
 
-            console.log(loadedOrders)
-
             const filteredNotifications = loadedOrders.filter(not => {
                 return not.fk_order_state === 3 || not.fk_order_state === 5 || not.fk_order_state === 4;
             })
             
             setOrders(filteredNotifications);
             setIsLoading(false)
-        })().catch(err => console.log("Hubo un error al traer las órdenes"))
+        })().catch(err => addToast("⛔ Ha ocurrido un error, intenta más tarde"))
     }, [])
 
     return (

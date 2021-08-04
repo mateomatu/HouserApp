@@ -8,6 +8,7 @@ import Loader from "../UI/Loader";
 
 //Services
 import serviceServices from "../../services/Services/Service-service";
+import useToastContext from "../../hooks/useToastContext";
 
 //Styles
 import styles from "./Services.module.css";
@@ -23,6 +24,7 @@ const Services = () => {
     }
 
     const suggestions = ["mueble", "compu"];
+    const addToast = useToastContext();
 
     useEffect(() => {
         setIsLoading(true);
@@ -42,7 +44,7 @@ const Services = () => {
             
             setServices(loadedServices);
             setIsLoading(false)
-        })().catch(err => console.log("ERROR AL TRAER SERVICIOS"))
+        })().catch(err => addToast("⛔ Ha ocurrido un error"))
     }, [])
 
     const titleClass = `ml-2 ${styles['service-title']} pages-title gibson-semibold`;

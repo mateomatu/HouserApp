@@ -17,7 +17,13 @@ const serviceServices = {
         const responseData = await response.json();
         return responseData.data;
     },
-
+    /**
+     * Returns a specific service.
+     * 
+     * @param id
+     *
+     * @returns {Promise<any>}
+     */
     async bringServiceById(id) {
         const response = await fetch(API_HOST + `/api/service/${id}`, {
             headers: {
@@ -27,7 +33,13 @@ const serviceServices = {
         const responseData = await response.json();
         return responseData.data;
     },
-
+    /**
+     * Return an array of Housers by service ID.
+     * 
+     * @param id
+     *
+     * @returns {Promise<any>}
+     */
     async bringHousersByService(id) {
         const response = await fetch(API_HOST + `/api/services/housers/${id}`, {
             headers: {

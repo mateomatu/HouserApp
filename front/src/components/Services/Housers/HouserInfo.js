@@ -3,14 +3,15 @@ import { useParams, Link } from "react-router-dom";
 
 import AuthService, { AuthContext } from "../../../services/User/User-service";
 import OrderService from "../../../services/Orders/Order-service";
+import useToastContext from "../../../hooks/useToastContext";
 
 import Loader from "../../UI/Loader";
 import Map from "../../UI/Map"
+import Star from "../../UI/Star";
 
 import { API_IMGS } from "../../../constants/api";
 
 import styles from "./HouserInfo.module.css";
-import Star from "../../UI/Star";
 
 
 
@@ -24,6 +25,7 @@ const HouserInfo = () => {
     const houserId = params.houserId;
     const serviceId = params.serviceId;
     const authCtx = useContext(AuthContext)
+    const addToast= useToastContext();
 
 
     useEffect(() => {
@@ -45,7 +47,7 @@ const HouserInfo = () => {
             
             setHouser(houser);
             setIsLoading(false)
-        })().catch(err => console.log("Error al traer orders"))
+        })().catch(err => addToast("⛔ Ha ocurrido un error, intenta más tarde"))
         
     }, [houserId])
     

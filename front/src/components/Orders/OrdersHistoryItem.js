@@ -5,6 +5,7 @@ import { API_IMGS } from "../../constants/api";
 import Loader from "../UI/Loader";
 
 import OrderService from "../../services/Orders/Order-service";
+import useToastContext from "../../hooks/useToastContext";
 
 import styles from "./OrdersHistoryItem.module.css";
 
@@ -12,6 +13,7 @@ const OrdersHistoryItem = props => {
     const order = props.order;
     const [state, setState] = useState(order.fk_order_state);
     const [isLoading, setIsLoading] = useState(false);
+    const addToast = useToastContext();
 
     let formatter = new Intl.DateTimeFormat("es-GB", {
         year: "numeric",
@@ -25,13 +27,17 @@ const OrdersHistoryItem = props => {
           setIsLoading(true);
           const data = await OrderService.rateHouser(order.id_order, rate);
           
-          //Devuelve un success
-    
-          console.log(data);
-    
+          if (data.success) {
+            setIsLoading(false);
+            addToast(`✅ Has valorado ${rate}⭐ exitosamente`);
+          } else {
+            setIsLoading(false);
+            addToast(`⛔ Ha ocurrido un error, intenta más tarde`)    
+            }
+
           setIsLoading(false);
           setState(5);
-        })().catch(err => console.log("Error al actualizar la orden"))
+        })().catch(err => addToast("⛔ Ha ocurrido un error, intenta más tarde"))
       }
 
     return (

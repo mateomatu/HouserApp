@@ -10,6 +10,11 @@ import styles from "./SignUpForm.module.css";
 
 const SignUpForm = (props) => {
   const [loading, setLoading] = useState(false);
+  const [emailError, setEmailError] = useState()
+  const [nameError, setNameError] = useState()
+  const [lastnameError, setLastnameError] = useState()
+  const [telephoneError, setTelephoneError] = useState()
+  const [addressError, setAddressError] = useState()
 
   const history = useHistory();
   const authCtx = useContext(AuthContext);
@@ -49,9 +54,23 @@ const SignUpForm = (props) => {
 
     if (response.errors) {
       setLoading(false);
-      console.log(response)
+      if (response.errors.name) {
+        setNameError(response.errors.name)
+      }
+      if (response.errors.lastname) {
+        setLastnameError(response.errors.lastname)
+      }
+      if (response.errors.telephone) {
+        setTelephoneError(response.errors.telephone)
+      }
+      if (response.errors.address) {
+        setAddressError(response.errors.address)
+      }
+      if (response.errors.email) {
+        setEmailError(response.errors.email)
+      }
 
-      //Chequear aca q asemo
+      
     } else {
       const userData = await AuthService.login({
         email: enteredEmail,
@@ -71,23 +90,28 @@ const SignUpForm = (props) => {
     <form onSubmit={submitHandler} className={styles["login-form"]}>
       <section className={styles["input-section"]}>
         <label htmlFor="email">Email</label>
-        <input ref={emailInputRef} type="email" id="email" name="email" />
+        <input className={emailError && "error-input"} ref={emailInputRef} type="email" id="email" name="email" />
+        {emailError && <span className="text-danger">{emailError}</span>}
       </section>
       <section className={styles["input-section"]}>
         <label htmlFor="name">Nombre</label>
-        <input ref={nameInputRef} type="text" id="name" name="name" />
+        <input className={nameError && "error-input"} ref={nameInputRef} type="text" id="name" name="name" />
+        {nameError && <span className="text-danger">{nameError}</span>}
       </section>
       <section className={styles["input-section"]}>
         <label htmlFor="lastname">Apellido</label>
-        <input ref={lastnameInputRef} type="text" id="lastname" name="lastname" />
+        <input  className={lastnameError && "error-input"} ref={lastnameInputRef} type="text" id="lastname" name="lastname" />
+        {lastnameError && <span className="text-danger">{lastnameError}</span>}
       </section>
       <section className={styles["input-section"]}>
         <label htmlFor="telephone">Teléfono</label>
-        <input ref={phoneInputRef} type="text" id="telephone" name="telephone" />
+        <input className={telephoneError && "error-input"} ref={phoneInputRef} type="text" id="telephone" name="telephone" />
+        {telephoneError && <span className="text-danger">{telephoneError}</span>}
       </section>
       <section className={` mb-5 ${styles["input-section"]}`}>
         <label htmlFor="address">Domicilio</label>
-        <input ref={addressInputRef} type="text" id="address" name="address" />
+        <input className={addressError && "error-input"} ref={addressInputRef} type="text" id="address" name="address" />
+        {addressError && <span className="text-danger">{addressError}</span>}
       </section>
       <RepeatPassword passwordHandler={getNewPassword} errorMsg={errorMsg}/>
 

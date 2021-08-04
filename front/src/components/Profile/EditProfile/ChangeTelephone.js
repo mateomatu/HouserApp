@@ -5,18 +5,19 @@ import AuthService from "../../../services/User/User-service";
 import { AuthContext } from "../../../services/User/User-service";
 import useToastContext from "../../../hooks/useToastContext";
 
-import styles from "./ChangeAddress.module.css";
+import styles from "./ChangeTelephone.module.css";
 import Loader from "../../UI/Loader";
 
 
-const ChangeAddress = () => {
+const ChangeTelephone = () => {
 
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(false)
-    const authCtx = useContext(AuthContext);
-    const addToast = useToastContext();
 
-    const inputAddressRef = useRef();
+    const addToast = useToastContext();
+    const authCtx = useContext(AuthContext);
+
+    const inputTelephoneRef = useRef();
 
     const changeInputHandler = (e) => {
         if (e.target.value !== "") {
@@ -28,27 +29,27 @@ const ChangeAddress = () => {
         e.preventDefault();
         setIsLoading(true);
 
-        const idUser = authCtx.user.id_user
-        const enteredAddress = inputAddressRef.current.value;
+        const idUser = authCtx.user.id_user;
+        const enteredTelephone = inputTelephoneRef.current.value;
 
-        
-        if (enteredAddress !== null && enteredAddress !== "" && enteredAddress !== undefined) {
+        if (enteredTelephone !== null && enteredTelephone !== "" && enteredTelephone !== undefined) {
             setError(false);
             (async () => {
                 const response = await AuthService.getUserData(idUser);
                 const userData = {
                     ...response,
-                    address: enteredAddress
+                    telephone: enteredTelephone
                 }
 
-                const res = await AuthService.editAddress(userData);
+                const res = await AuthService.editTelephone(userData);
                 if (res.success) {
                     setIsLoading(false);
-                    addToast(`✅ Se ha editado la dirección con éxito`);
+                    addToast(`✅ Se ha editado el teléfono con éxito`);
                 } else {
                     setIsLoading(false);
                     addToast(`⛔ Ha ocurrido un error, intenta más tarde`)    
                 }
+                
 
                 authCtx.updateAuthState(userData);
     
@@ -57,17 +58,18 @@ const ChangeAddress = () => {
             setError(true)
             setIsLoading(false);
         }
+
     }
 
     return (
         <section className={styles.profile}>
             <section className={styles['profile-data']}>
                 <Link to="/profile" className="primary-color bold">{"< Volver"}</Link>
-                <h2 className="mt-4 mb-2">Cambiar Domicilio</h2>
+                <h2 className="mt-4 mb-2">Cambiar teléfono</h2>
                 { !isLoading && <form onSubmit={submitNewAddress} className={styles["login-form"]}>
                     <section className={styles["input-section"]}>
-                        <label htmlFor="address">Nuevo Domicilio</label>
-                        <input className={`input ${error ? "error-input" : ""}`} onChange={changeInputHandler} ref={inputAddressRef} id="address" />
+                        <label htmlFor="telephone">Nuevo teléfono</label>
+                        <input className={`input ${error ? "error-input" : ""}`} onChange={changeInputHandler} ref={inputTelephoneRef} id="telephone" />
                     </section>
                     <button className="gibson-medium">Confirmar</button>
                 </form>}
@@ -77,4 +79,4 @@ const ChangeAddress = () => {
     );
 }
 
-export default ChangeAddress
+export default ChangeTelephone

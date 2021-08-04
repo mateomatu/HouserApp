@@ -1,6 +1,7 @@
 import React, { useState, Fragment } from "react";
 
 import OrderService from "../../services/Orders/Order-service";
+import useToastContext from "../../hooks/useToastContext";
 
 import styles from "./NotificationMatch.module.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -12,6 +13,7 @@ const NotificationMatch = props => {
 
     const [state, setState] = useState(props.notification.fk_order_state);
     const [isLoading, setIsLoading] = useState(false);
+    const addToast = useToastContext();
 
     const changeStateCancelHandler = () => {
         setIsLoading(true);
@@ -30,7 +32,7 @@ const NotificationMatch = props => {
 
             setIsLoading(false);
             setState(3);
-        })().catch(err => console.log("Error al actualizar la solicitud"))
+        })().catch(err => addToast("⛔ Ha ocurrido un error, intenta más tarde"))
     }
 
     const changeStateAcceptHandler = () => {
@@ -50,7 +52,7 @@ const NotificationMatch = props => {
             
             setIsLoading(false);
             setState(2);
-        })().catch(err => console.log("Error al actualizar la solicitud"))
+        })().catch(err => addToast("⛔ Ha ocurrido un error, intenta más tarde"))
     }
 
     if (isLoading) {
