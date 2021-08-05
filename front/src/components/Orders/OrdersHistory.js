@@ -40,6 +40,7 @@ const OrdersHistory = () => {
             <h2 className={titleClass}>HISTORIAL DE PEDIDOS</h2>
             { !isLoading && <OrdersHistoryList orders={orders} />}
             { isLoading && <Loader />}
+            { orders?.length === 0 && !isLoading && <p className="ml-2">No hay pedidos activos</p>}
         </Fragment>
     )
 }

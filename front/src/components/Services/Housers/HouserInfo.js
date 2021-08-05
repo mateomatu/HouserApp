@@ -34,6 +34,7 @@ const HouserInfo = () => {
             const orders = await OrderService.checkForOrders(authCtx.user.id_user);
 
             const houser = data;
+            console.log(houser);
 
             const hasOrder = orders.find( order => {
                 return order.fk_houser == houserId && (order.fk_order_state == 1 || order.fk_order_state == 2);
@@ -88,7 +89,7 @@ const HouserInfo = () => {
                     <p><b>Ubicación:</b> {houser.address}</p>
                     {/* <img className={styles['google-maps']} src={`${PUBLIC_PATH}/assets/imgs/address.png`} alt="google maps"></img> */}
                 </section>
-                <Map idHouser={houserId} address={houser.address}/>
+                <Map idHouser={houserId} address={`${houser.address}, ${houser.suburb}, ${houser.state}, ${houser.cp}`}/>
                 { !hasOrderPending && <Link to={`/ad/${houserId}/${serviceId}`} className={`${styles.hbutton} gibson-medium houser-button mb-5 button`}>Contactar Houser</Link>}
                 { hasOrderPending && <p className={`mb-5 bold`}>Ya tienes una orden pendiente con el Houser</p>}
             </Fragment>

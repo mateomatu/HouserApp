@@ -18,14 +18,14 @@ const Map = props => {
   // Initialize map when component mounts
   useEffect(() => {
     (async () => {
-      const adds = await geocodingServices.getLocation(`${props.address}`, props.idHouser);
+      const add = await geocodingServices.getLocation(`${props.address}`, props.idHouser);
 
-      if (adds) {
-        setAddress(adds);
+      if (add) {
+        setAddress(add);
         const map = new mapboxgl.Map({
           container: mapContainerRef.current,
           style: 'mapbox://styles/mapbox/streets-v11',
-          center: [adds.longitude, adds.latitude],
+          center: [add.lon, add.lat],
           zoom: 16
         });
     
@@ -41,7 +41,7 @@ const Map = props => {
         var marker = new mapboxgl.Marker({
           color: "orange"
         })
-          .setLngLat([adds.longitude, adds.latitude])
+          .setLngLat([add.lon, add.lat])
           .addTo(map);
       }
       

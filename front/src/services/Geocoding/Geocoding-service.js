@@ -5,20 +5,17 @@ const geocodingServices = {
      * Gets the location of the solicitated user
      * 
      * @param address
-     * @param idUser
      *
      * @returns {Promise<any>}
      */
-    async getLocation(address, idUser) {
-        const response = await fetch(`http://api.positionstack.com/v1/forward?access_key=4ca2f5c2857819de377374e0dc7e48a8&query=${address}`);
+    async getLocation(address) {
+        const response = await fetch(`https://us1.locationiq.com/v1/search.php?key=pk.97502a624cadd8c8ae71539f9ed7e3c4&q=${address}&addressdetails=1&accept-language=es&countrycodes=AR&dedupe=0&format=json`);
         const responseData = await response.json();
 
-        const houser = await AuthService.getUserData(idUser);
+        console.log("responseData", responseData);
+        const location = responseData[0];
 
-        if (houser) {
-            const location = responseData.data.find( ad => ad.country_code === "ARG" && ad.region_code === houser.region && ad.locality === houser.locality);
-            return location;
-        }
+        return location;
     }
 }
 
