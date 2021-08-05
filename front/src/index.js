@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter } from "react-router-dom";
 import App from './App'; 
 import './index.css';
+import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -18,3 +19,6 @@ ReactDOM.render(
   // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
   /* import reportWebVitals from './reportWebVitals'; */
   /* reportWebVitals(); */
+
+  //PWA
+  serviceWorker.register();

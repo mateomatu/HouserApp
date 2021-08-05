@@ -18,17 +18,15 @@ const ChangeAvatar = () => {
         const imgFile = e.target.files[0]
         const reader = new FileReader();
         reader.addEventListener('load', function() {
-           const codeImg = reader.result;
-          /* setLogo(reader.result); */
+            const codeImg = reader.result;
+            setSelectedFile(codeImg);
         });
-        reader.readAsDataURL(input.files[0]);
-    /*    reader.readAsDataURL(imgFile); 
-        setSelectedFile(imgFile);
-        console.log(imgFile); */
+        reader.readAsDataURL(imgFile);
     }
 
     const uploadImageHandler = (event) => {
         event.preventDefault();
+        console.log(selectedFile);
         (async () => {
             const response = await AuthService.getUserData(userId);
             const userData = {
@@ -55,9 +53,9 @@ const ChangeAvatar = () => {
                 <Link to="/profile" className="primary-color bold">{"< Volver"}</Link>
                 <h2 className="mt-4 mb-2">Cambiar imágen de perfil</h2>
                 <form onSubmit={uploadImageHandler} encType="multipart/form-data">
-                <input className="form-control-file" type="file" id="imagen" ref={inputFile} onChange={fileChangeHandler} />
-                <label htmlFor="imagen" className="btn-2">Buscar foto</label>
-                <button className="gibson-medium">Confirmar</button>
+                    <input className="form-control-file" type="file" id="imagen" ref={inputFile} onChange={fileChangeHandler} />
+                    <label htmlFor="imagen" className="btn-2">Buscar foto</label>
+                    <button className="gibson-medium">Confirmar</button>
                 </form>
             </section>
         </section>
