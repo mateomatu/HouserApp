@@ -16,13 +16,15 @@ const ChangeAvatar = () => {
 
     const fileChangeHandler = (e) => {
         const imgFile = e.target.files[0]
-/*         const reader = new FileReader();
+        const reader = new FileReader();
         reader.addEventListener('load', function() {
-            const codeImg = reader.result;
+           const codeImg = reader.result;
+          /* setLogo(reader.result); */
         });
-        reader.readAsDataURL(imgFile); */
+        reader.readAsDataURL(input.files[0]);
+    /*    reader.readAsDataURL(imgFile); 
         setSelectedFile(imgFile);
-        console.log(imgFile);
+        console.log(imgFile); */
     }
 
     const uploadImageHandler = (event) => {
