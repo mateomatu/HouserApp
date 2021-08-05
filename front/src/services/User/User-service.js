@@ -79,6 +79,7 @@ const AuthService = {
     async editAvatar(userData) {
         const response = await fetch(`${API_HOST}/api/users/${userData.id_user}/profile`, {
             method: 'POST',
+            credentials: 'include',
             body: JSON.stringify({
                 avatar: userData.avatar
             }),
@@ -94,6 +95,7 @@ const AuthService = {
     async editTelephone(userData) {
         const response = await fetch(`${API_HOST}/api/users/${userData.id_user}/profile`, {
             method: 'POST',
+            credentials: 'include',
             body: JSON.stringify({
                 telephone: userData.telephone
             }),
@@ -109,6 +111,7 @@ const AuthService = {
     async editAddress(userData) {
         const response = await fetch(`${API_HOST}/api/users/${userData.id_user}/profile`, {
             method: 'POST',
+            credentials: 'include',
             body: JSON.stringify({
                 address: userData.address
             }),
