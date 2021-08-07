@@ -47,6 +47,9 @@ class UsersController extends Controller
             }
         }
 
+        if(isset($data['password'])){
+            $data['password'] = Hash::make($data['password']);
+        }
         $user->update($data);
 
         if(isset($oldImg) && !empty($oldImg)) {
