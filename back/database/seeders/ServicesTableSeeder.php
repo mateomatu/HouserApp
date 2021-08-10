@@ -45,12 +45,6 @@ class ServicesTableSeeder extends Seeder
             'alt' => '2 hombres cargando cosas a un camión'
         ]);
         Service::create([
-            'id_service' => 5,
-            'title' => "Flete",
-            'img' => 'flete.png',
-            'alt' => '2 hombres cargando cosas a un camión'
-        ]);
-        Service::create([
             'id_service' => 6,
             'title' => "Electricista",
             'img' => 'electricista.png',
@@ -60,7 +54,7 @@ class ServicesTableSeeder extends Seeder
             'id_service' => 7,
             'title' => "Plomería",
             'img' => 'plomeria.png',
-            'alt' => 'Gasista'
+            'alt' => 'plomería'
         ]);
         Service::create([
             'id_service' => 8,

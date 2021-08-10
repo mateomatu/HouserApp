@@ -52,5 +52,14 @@ li.user-data p {
     margin-left: 0.8px;
 }
 
-/* Forms */
-
+.penavatar {
+    background: white;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    border-radius: 100%;
+    top: 20px;
+    left: 50%;
+    transform: translateX(110%);
+    border: 2px solid black;
+}
