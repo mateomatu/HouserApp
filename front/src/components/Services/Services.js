@@ -49,18 +49,18 @@ const Services = () => {
 
     const titleClass = `ml-2 ${styles['service-title']} pages-title gibson-semibold`;
     const servicesFiltered = services.filter(service => {
-/*         if (filteredService.toUpperCase().includes("PINTOR")) {
+        if (filteredService.toUpperCase().includes("PINTOR") || filteredService.toUpperCase().includes("PINTURA") || filteredService.toUpperCase().includes("PAREDES")) {
             return service.title === "Pinturería";
         }
-        if (filteredService.toUpperCase().includes("MADERA") || filteredService.toUpperCase().includes("MUEBLE") || filteredService.toUpperCase().includes("CARPINTER") ) {
+        if (filteredService.toUpperCase().includes("MADERA") || filteredService.toUpperCase().includes("MUEBLE") || filteredService.toUpperCase().includes("ARMARIO") || filteredService.toUpperCase().includes("CARPINTER") ) {
             return service.title === "Carpintería";
         }
         if (filteredService.toUpperCase().includes("AIRE")) {
             return service.title === "Aires acondicionados";
         }
-        if (filteredService.toUpperCase().includes("PC") || filteredService.toUpperCase().includes("COMPU") || filteredService.toUpperCase().includes("NOTEBOOK")) {
+        if (filteredService.toUpperCase().includes("PC") || filteredService.toUpperCase().includes("COMPU") || filteredService.toUpperCase().includes("MAQUINA") || filteredService.toUpperCase().includes("NOTEBOOK") || filteredService.toUpperCase().includes("SERVICIO T")) {
             return service.title === "Técnico PC";
-        } */
+        }
          return service.title.toUpperCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "").includes(filteredService.toUpperCase()); 
         })
     return (
