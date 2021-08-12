@@ -47,16 +47,6 @@ const NotificationList = props => {
             Mensaje de {notification.houserName}
           </p>)}
       </li>
-{/*       <li className={`${styles["notification-container"]} ${styles["no-read"]}`}>
-        <img
-          className={styles.photo}
-          src={`${API_IMGS}/gladys.jpg`}
-          alt={`ahre`}
-        />
-        <p className={styles["notification-text"]}>
-          Notificación ya leída ejemplo
-        </p>
-      </li> */}
     </Fragment>
   );
 };

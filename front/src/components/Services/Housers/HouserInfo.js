@@ -34,7 +34,6 @@ const HouserInfo = () => {
             const orders = await OrderService.checkForOrders(authCtx.user.id_user);
 
             const houser = data;
-            console.log(houser);
 
             const hasOrder = orders.find( order => {
                 return order.fk_houser == houserId && (order.fk_order_state == 1 || order.fk_order_state == 2);

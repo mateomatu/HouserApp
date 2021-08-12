@@ -58,6 +58,15 @@ const Services = () => {
         if (filteredService.toUpperCase().includes("AIRE")) {
             return service.title === "Aires acondicionados";
         }
+        if (filteredService.toUpperCase().includes("LUZ") || filteredService.toUpperCase().includes("ELECTRICI") || filteredService.toUpperCase().includes("LAMPAR")) {
+            return service.title === "Electricista";
+        }
+        if (filteredService.toUpperCase().includes("GAS")) {
+            return service.title === "Gasista";
+        }
+        if (filteredService.toUpperCase().includes("CAÑ")) {
+            return service.title === "Plomería";
+        }
         if (filteredService.toUpperCase().includes("PC") || filteredService.toUpperCase().includes("COMPU") || filteredService.toUpperCase().includes("MAQUINA") || filteredService.toUpperCase().includes("NOTEBOOK") || filteredService.toUpperCase().includes("SERVICIO T")) {
             return service.title === "Técnico PC";
         }

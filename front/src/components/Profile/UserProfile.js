@@ -40,21 +40,24 @@ const UserProfile = () => {
                     { userLogged.avatar !== undefined && <Link to="/profile/change-avatar"><img className={styles.photo} src={`${API_IMGS}/${userLogged.avatar}`} alt={`${userLogged.alt}`} /><div className={styles.penavatars}></div></Link>}
                     { userLogged.avatar === undefined && <Loader />}
                 </header>
-                <section className={styles['profile-data']}>
+                { userLogged && <section className={styles['profile-data']}>
                     <ul>
                         <li className={styles['user-data']}>
                             <h3>Nombre y Apellido</h3>
-                            <p>{userLogged.name + " " + userLogged.lastname}</p>
+                            { userLogged.name && <p>{userLogged.name + " " + userLogged.lastname}</p>}
+                            { !userLogged.name && <Loader />}
                         </li>
                         <li className={styles['user-data']}>
                             <h3>Email</h3>
-                            <p>{userLogged.email}</p>
+                            { userLogged.email && <p>{userLogged.email}</p>}
+                            { !userLogged.email && <Loader />}
                         </li>
                         <li className={styles['user-data']}>
                             <Link to="/profile/change-address">
                                 <div className={styles['user-info-item']}>
                                     <h3>Domicilio</h3>
-                                    <p>{userLogged.address}</p>
+                                    { userLogged.address && <p>{userLogged.address}</p>}
+                                    { !userLogged.address && <Loader />}
                                 </div>
                                 <span className={styles['user-data-icon']}>{'>'}</span>
                             </Link>
@@ -63,7 +66,8 @@ const UserProfile = () => {
                             <Link to="/profile/change-telephone">
                                 <div className={styles['user-info-item']}>
                                     <h3>Teléfono</h3>
-                                    <p>{userLogged.telephone}</p>
+                                    { userLogged.telephone && <p>{userLogged.telephone}</p>}
+                                    { !userLogged.telephone && <Loader />}
                                 </div>
                                 <span className={styles['user-data-icon']}>{'>'}</span>
                             </Link>
@@ -78,7 +82,8 @@ const UserProfile = () => {
                             </Link>
                         </li>
                     </ul>
-                </section>
+                </section>}
+                { !userLogged && <p>No se han encontrado datos del usuario, cierre sesión y vuelva a ingresar</p>}
             </section>
         </Route>
         <Route path="/profile/change-address">

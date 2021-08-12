@@ -1,8 +1,10 @@
 import React, { useRef, useEffect, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
 import styles from './Map.module.css';
-
 import geocodingServices from "../../services/Geocoding/Geocoding-service";
+
+// eslint-disable-next-line import/no-webpack-loader-syntax, import/no-unresolved
+mapboxgl.workerClass = require("worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker").default;
 
 mapboxgl.accessToken =
   'pk.eyJ1Ijoic2hhcnBmb3giLCJhIjoiY2tycTFxZ3g0MmpqdjJwbWxtZjZ1Nnd4dSJ9.1IUpbhGDM54sNTroL1CC6w';
